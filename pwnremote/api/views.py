@@ -1,6 +1,6 @@
 from typing import List
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView
-from jobs.models import Job
+from .models import Job
 from .serializers import JobListSerializer
 
 class JobListView(ListAPIView):

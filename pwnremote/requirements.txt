@@ -1,5 +1,6 @@
 asgiref==3.4.1
 Django==3.2.10
+django-cors-headers==3.10.1
 django-environ==0.8.1
 djangorestframework==3.13.1
 Pillow==8.4.0

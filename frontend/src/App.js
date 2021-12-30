@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import JobList from "./components/JobList";
 import JobDetail from "./components/JobDetail";
+import JobCreate from "./components/JobCreate";
 
 export default function App() {
   return (
@@ -18,7 +19,7 @@ export default function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/post-job">Post</Link>
+              <Link to="/create-job">Post a Job</Link>
             </li>
           </ul>
         </nav>
@@ -26,15 +27,11 @@ export default function App() {
         {/* A <Router> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Routes>
-          <Route path="/post-job" element={<Post />} />
+          <Route path="/create-job" element={<JobCreate />} exact />
           <Route path="/job/:id" element={<JobDetail />} />
           <Route path="/" element={<JobList />} exact />
         </Routes>
       </div>
     </Router>
   );
-}
-
-function Post() {
-  return <h2>Post Job Here</h2>;
 }

@@ -6,34 +6,34 @@ class User(AbstractUser):
 
 class Job(models.Model):
 
-    Employment_type = (
-        ('Full-time', 'Full-time',),
-        ('Part-time', 'Part-time'),
-        ('Contract', 'Contract'),
-        ('Temporary', 'Temporary'),
-        ('Internship', 'Internship')
-    )
-    Primary_Skills = (
-        ('Web-Security', 'Web-Security'),
-        ('Researcher', 'Researcher'),
-        ('SOC/SIEM','SOC/SIEM'),
-        ('VA/PT', 'VA/PT'),
-        ('Quality Assurance', 'Quality Assurance'),
-        ('Consulting', 'Consulting'),
-        ('Forensics/IR', 'Forensics/IR'),
-        ('Mobile Security', 'Mobile Security'),
-        ('Cloud Security', 'Cloud Security'),
-        ('Infrastructure Security', 'Infrastructure Security'),
-        ('Code Source Review', 'Code Source Review'),
-        ('Hardware/IOT', 'Hardware/IOT'),
-        ('DevOps/DevSecOps', 'DevOps/DevSecOps'),
-        ('Sales/Marketing', 'Sales/Marketing'),
+    # Employment_type = (
+    #     ('Full-time', 'Full-time',),
+    #     ('Part-time', 'Part-time'),
+    #     ('Contract', 'Contract'),
+    #     ('Temporary', 'Temporary'),
+    #     ('Internship', 'Internship')
+    # )
+    # Primary_Skills = (
+    #     ('Web-Security', 'Web-Security'),
+    #     ('Researcher', 'Researcher'),
+    #     ('SOC/SIEM','SOC/SIEM'),
+    #     ('VA/PT', 'VA/PT'),
+    #     ('Quality Assurance', 'Quality Assurance'),
+    #     ('Consulting', 'Consulting'),
+    #     ('Forensics/IR', 'Forensics/IR'),
+    #     ('Mobile Security', 'Mobile Security'),
+    #     ('Cloud Security', 'Cloud Security'),
+    #     ('Infrastructure Security', 'Infrastructure Security'),
+    #     ('Code Source Review', 'Code Source Review'),
+    #     ('Hardware/IOT', 'Hardware/IOT'),
+    #     ('DevOps/DevSecOps', 'DevOps/DevSecOps'),
+    #     ('Sales/Marketing', 'Sales/Marketing'),
 
-    )
+    # )
     Company_name = models.CharField(max_length=50)
     Position = models.CharField(max_length=100)
-    Employment_type = models.CharField(max_length=30, choices=Employment_type)
-    Primary_Skills = models.CharField(max_length=30, choices=Primary_Skills)
+    Employment_type = models.CharField(max_length=15)
+    Primary_Skills = models.CharField(max_length=15)
     Skills_tag = models.CharField(max_length=100)
     Location = models.CharField(max_length=50)
     date_created = models.DateTimeField(auto_now_add=True)
@@ -82,10 +82,6 @@ class Feedback(models.Model):
     answer = models.CharField(max_length=20)
 
 class emailList(models.Model):
-    CHOICES = (
-        ('daily', 'daily',),
-        ('weekly', 'weekly'),
-    )
     First_name = models.CharField(max_length=15)
     email = models.EmailField()
-    send_time = models.CharField(max_length=10, choices=CHOICES, default='')
+    send_time = models.CharField(max_length=10)

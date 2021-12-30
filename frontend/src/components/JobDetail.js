@@ -5,7 +5,7 @@ import { API } from "../api"
 
 export default function JobDetail(){
     const [job, setJob] = useState(null)
-    const {id} = useParams()
+    const { id } = useParams()
 
     useEffect(() => {
         function fetchJobList(){

@@ -34,7 +34,7 @@ export default function JobCreate(){
                     Min_salary: '',
                     max_salary: '',
                     Description: '',
-                    company_logo: '',
+                    // company_logo: '',
                     user: '',
                     url: '',
                     email: '',

@@ -23,8 +23,8 @@ export default function JobList() {
       {jobs && jobs.map((job, i) => {
         return (
           <div key={i}>
-            <div>
-              <NavLink to={`/job/${job.id}`}>{job.Position}</ NavLink>
+            <div className="container">
+              <NavLink to={`/job/${job.id}`}>{job.Company_name}:{job.Position}</ NavLink>
             </div>
           </div>
         )

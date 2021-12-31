@@ -35,8 +35,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api.apps.apiConfig',
-    'rest_framework',
     "corsheaders",
+    'rest_framework',
+    'rest_framework.authtoken',
+    
+
+
+    #dj
+    'dj_rest_auth',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth.registration',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +82,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'pwnremote.wsgi.application'
 
+SITE_ID=1
+
+ACCOUNT_EMAIL_REQUIRED=True
+ACCOUNT_USERNAME_REQUIRED=False
+ACCOUNT_AUTHENTICATION_METHOD='email'
+ACCOUNT_EMAIL_METHOD='mandatory'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -100,6 +119,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/

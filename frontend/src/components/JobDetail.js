@@ -16,7 +16,7 @@ export default function JobDetail(){
         })
     }
     fetchJobList()
-}, [])
+}, [id])
 
 return(
     <div>

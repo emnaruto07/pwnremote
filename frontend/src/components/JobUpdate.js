@@ -1,17 +1,38 @@
 import { Formik, Field, Form } from 'formik';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from "axios";
 import { AuthContext } from '../contexts/AuthContext';
+import { useParams } from "react-router-dom"
 import { useContext } from 'react';
 import { API } from '../api';
 
-export default function JobCreate(){
+export default function JobUpdate(){
     const [loading, setLoading] = useState(false)
+    const [loadingJob, setLoadingJob] = useState(false)
+    const [job, setJob] = useState(null)
+    const { id } = useParams()
     const { user: { token } } = useContext(AuthContext)
+
+
+    useEffect(() => {
+        setLoadingJob(true)
+        function fetchJobList(){
+            axios.get(API.jobs.retrieve(id))
+            .then(res => {
+            setJob(res.data)
+        })
+        .finally(() => {
+            setLoadingJob(false)
+        })
+    }
+    fetchJobList()
+}, [id])
+
+    console.log(job)
 
     function handleSubmit(values) {
         setLoading(true)
-        axios.post(API.jobs.create, values, {
+        axios.put(API.jobs.update(id), values, {
             headers: {
                 "Authorization": `Token ${token}`
             }
@@ -28,27 +49,29 @@ export default function JobCreate(){
     return(
         <div>
             {loading && "Loading..."}
-            <Formik
+            {loadingJob && "Featching Job Data..."}
+            {job &&(
+                <Formik
                 initialValues={{
-                    Company_name: '',
-                    Position: '',
-                    Employment_type: '', 
-                    Primary_Skills: '',
-                    Skills_tag: '',
-                    Location: '',
+                    Company_name: job.Company_name,
+                    Position: job.Position,
+                    Employment_type: job.Employment_type, 
+                    Primary_Skills: job.Primary_Skills,
+                    Skills_tag: job.Skills_tag,
+                    Location: job.Location,
                     available: true,
-                    Min_salary: '',
-                    max_salary: '',
-                    Description: '',
+                    Min_salary: job.Min_salary,
+                    max_salary: job.max_salary,
+                    Description: job.Description,
                     // company_logo: '',
                     user: '',
-                    url: '',
-                    email: '',
-                    show_logo: false,
-                    Highlight: true,
-                    sticky_day: false,
-                    sticky_week: false,
-                    sticky_month: false,
+                    url: job.url,
+                    email: job.email,
+                    show_logo: job.show_logo,
+                    Highlight: job.Highlight,
+                    sticky_day: job.sticky_day,
+                    sticky_week: job.sticky_week,
+                    sticky_month: job.sticky_month
                 }}
                 onSubmit={handleSubmit}>
                 {({ values }) => (
@@ -206,6 +229,8 @@ export default function JobCreate(){
                 </Form>
                 )}    
             </Formik>
+            )}
+            
         </div>
     )
 }

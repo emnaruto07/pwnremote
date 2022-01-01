@@ -19,6 +19,7 @@ class JobCreateView(CreateAPIView):
         serializer.save(user=self.request.user)
 
 class JobUpdateView(UpdateAPIView):
+    permission_classes = [IsAuthenticated]
     serializer_class = JobListSerializer
 
     def get_queryset(self):

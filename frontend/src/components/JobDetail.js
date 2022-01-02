@@ -23,7 +23,7 @@ return(
         {!job && "Loading.."}
         {job && (    
             <div>
-                <div className="border border-gray-200 px-2 py-3 shadow-sm">
+                <div className="border border-gray-200 px-2 py-3 shadow-lg rounded">
                 <div className="flex justify-between">
                     <NavLink to={`/jobs/${job.id}`}>
                         <h4 className="mt-1">
@@ -33,7 +33,7 @@ return(
                     </ NavLink>
                 <div>
                     <a className="flex justify-between py-3" href={job.url} target="_blank" rel="noopener noreferrer">
-                    Apply
+                    <h5 className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-lg">Apply</h5>
                     </a>
                 </div>
             </div>   
@@ -42,11 +42,7 @@ return(
                     {job.remote}
                 </p>
                 )} */}
-                {job.Location && (
-                <p className="text-gray-500">
-                    {job.Location}
-                </p>
-                )}
+                
                 <div className="text-gray-600 text-sm">
                     {new Date(job.date_created).toDateString()}📌
                 </div> 
@@ -56,6 +52,12 @@ return(
                         {job.Description} 
                     <h3 className="text-1xl mt-2 text-gray-800 font-bold">Salary and compensation</h3>
                         ${job.Min_salary}-${job.max_salary}/year
+                    <h3 className="text-1xl mt-2 text-gray-800 font-bold">Location</h3>
+                        {job.Location && (
+                        <p className="text-gray-500">
+                            {job.Location}
+                        </p>
+                        )}
                 </div>
                     
         </div>
@@ -63,13 +65,15 @@ return(
             <h4>${job.Min_salary}-${job.max_salary}</h4>
             <h4>{job.Primary_Skills}</h4>
             <h4>{job.Skills_tag}</h4> */}
+            <div className="flex items-center mt-2">
             <NavLink to={`/jobs/${id}/update`}>
-                    Update
+                    <h5 className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md">Update</h5>
             </NavLink>
-            <br />
             <NavLink to={`/jobs/${id}/delete`}>
-                    Delete
+                <h5 className="ml-2 bg-red-700 hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md">Delete</h5>
             </NavLink>
+            </div>
+            
         </div>        
         )}
         

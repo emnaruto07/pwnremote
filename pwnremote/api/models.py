@@ -35,6 +35,7 @@ class Job(models.Model):
     Employment_type = models.CharField(max_length=15)
     Primary_Skills = models.CharField(max_length=15)
     Skills_tag = models.CharField(max_length=100)
+    remote = models.BooleanField(default=True)
     Location = models.CharField(max_length=50)
     date_created = models.DateTimeField(auto_now_add=True)
     available = models.BooleanField(default=True)

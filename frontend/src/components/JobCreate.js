@@ -36,6 +36,7 @@ export default function JobCreate(){
                     Primary_Skills: '',
                     Skills_tag: '',
                     Location: '',
+                    remote: true,
                     available: true,
                     Min_salary: '',
                     max_salary: '',
@@ -89,6 +90,8 @@ export default function JobCreate(){
                     </Field>
                     <label htmlFor="Skills_tag">Skills Tag</label>
                     <Field id="Skills_tag" name="Skills_tag" placeholder="burp, scripting" />
+                    <Field type="checkbox" name="remote" />
+                    <label htmlFor="remote">remote</label>
                     <label htmlFor="Location">Location</label>
                     <Field id="Location" name="Location"/>
                     <label htmlFor="Min_salary">Minimum Salary</label>

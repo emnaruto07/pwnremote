@@ -32,6 +32,7 @@ class JobDetailView(RetrieveAPIView):
         return Job.objects.all()
 
 class JobDeleteView(DestroyAPIView):
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         return Job.objects.all()

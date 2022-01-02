@@ -63,6 +63,7 @@ export default function JobUpdate(){
                     Primary_Skills: job.Primary_Skills,
                     Skills_tag: job.Skills_tag,
                     Location: job.Location,
+                    remote: true,
                     available: true,
                     Min_salary: job.Min_salary,
                     max_salary: job.max_salary,
@@ -116,6 +117,8 @@ export default function JobUpdate(){
                     </Field>
                     <label htmlFor="Skills_tag">Skills Tag</label>
                     <Field id="Skills_tag" name="Skills_tag" placeholder="burp, scripting" />
+                    <Field type="checkbox" name="remote" />
+                    <label htmlFor="remote">remote</label>
                     <label htmlFor="Location">Location</label>
                     <Field id="Location" name="Location"/>
                     <label htmlFor="Min_salary">Minimum Salary</label>

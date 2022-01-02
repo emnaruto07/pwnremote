@@ -1,12 +1,14 @@
 import { Formik, Field, Form } from 'formik';
 import { useState, useEffect } from 'react';
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { useParams } from "react-router-dom"
 import { useContext } from 'react';
 import { API } from '../api';
 
 export default function JobUpdate(){
+    const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
     const [loadingJob, setLoadingJob] = useState(false)
     const [job, setJob] = useState(null)
@@ -16,17 +18,18 @@ export default function JobUpdate(){
 
     useEffect(() => {
         setLoadingJob(true)
-        function fetchJobList(){
-            axios.get(API.jobs.retrieve(id))
-            .then(res => {
-            setJob(res.data)
-        })
-        .finally(() => {
-            setLoadingJob(false)
-        })
-    }
-    fetchJobList()
-}, [id])
+        function fetchJob(){
+                axios.get(API.jobs.retrieve(id))
+                .then(res => {
+                setJob(res.data)
+            })
+            .finally(() => {
+                setLoadingJob(false)
+            })
+        }
+        fetchJob()
+        return () => null
+    }, [id])
 
     console.log(job)
 
@@ -39,6 +42,7 @@ export default function JobUpdate(){
         })
             .then(res => {
                 console.log(res.data)
+                navigate(`/jobs/${id}`)
             })
             .finally(() => {
                 setLoading(false)

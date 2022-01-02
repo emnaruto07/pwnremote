@@ -27,8 +27,12 @@ return(
                 <h4>${job.Min_salary}-${job.max_salary}</h4>
                 <h4>{job.Primary_Skills}</h4>
                 <h4>{job.Skills_tag}</h4>
-                <NavLink to={`/job/${id}/update`}>
+                <NavLink to={`/jobs/${id}/update`}>
                         Update
+                </NavLink>
+                <br />
+                <NavLink to={`/jobs/${id}/delete`}>
+                        Delete
                 </NavLink>
             </div>
             

@@ -24,7 +24,7 @@ export default function JobList() {
         return (
           <div key={i}>
             <div className="container">
-              <NavLink to={`/job/${job.id}`}>{job.Company_name}:{job.Position}</ NavLink>
+              <NavLink to={`/jobs/${job.id}`}>{job.Company_name}:{job.Position}</ NavLink>
             </div>
           </div>
         )

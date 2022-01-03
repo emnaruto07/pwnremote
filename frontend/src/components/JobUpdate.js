@@ -421,8 +421,7 @@ export default function JobUpdate(){
                     </Field>
                  
                     <h3 className='font-bold mx-auto text-center mt-2'>DESIGN YOUR POST</h3>
-                    {/* <Field type="checkbox" name="show_logo" />
-                    <label htmlFor="show_logo">Show Logo</label> */}
+                
                      <Field name="show_logo">
                         {({ field, form }) => (
                             <div className="block">
@@ -465,7 +464,7 @@ export default function JobUpdate(){
                                     focus:ring-1 focus:ring-offset-2 focus:ring-gray-500
                                 "
                                 />
-                                    <span className="ml-2">Highlight</span>
+                                    <span className="ml-2">Highlight your post with yellow (+$25) </span>
                                 </label>
                             </div>
                         )}
@@ -488,12 +487,12 @@ export default function JobUpdate(){
                                     focus:ring-1 focus:ring-offset-2 focus:ring-gray-500
                                 "
                                 />
-                                    <span className="ml-2">Sticky post for a day</span>
+                                    <span className="ml-2">📌 Sticky post for a day</span>
                                 </label>
                             </div>
                         )}
                     </Field>
-            
+                  
                     <Field name="sticky_week">
                         {({ field, form }) => (
                             <div className="block">
@@ -512,12 +511,11 @@ export default function JobUpdate(){
                                     focus:ring-1 focus:ring-offset-2 focus:ring-gray-500
                                 "
                                 />
-                                    <span className="ml-2">Sticky post for a week</span>
+                                    <span className="ml-2">📌 Sticky post for a week</span>
                                 </label>
                             </div>
                         )}
                     </Field>
-                  
                     <Field name="sticky_month">
                         {({ field, form }) => (
                             <div className="block">
@@ -536,12 +534,12 @@ export default function JobUpdate(){
                                     focus:ring-1 focus:ring-offset-2 focus:ring-gray-500
                                 "
                                 />
-                                    <span className="ml-2">Sticky post for a month</span>
+                                    <span className="ml-2">📌 Sticky post for a month</span>
                                 </label>
                             </div>
                         )}
-                    </Field>   
-                    <button className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md mt-2 "type="submit">Submit</button>
+                    </Field> 
+                    <button className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md mt-4 "type="submit">Update</button>
                 </Form>
                 )}    
             </Formik>

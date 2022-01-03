@@ -4,9 +4,11 @@ import { NavLink } from "react-router-dom"
 import { API } from "../api"
 
 function JobListItem({job}){
-  return(
-    <div className="border border-gray-200 px-2 py-3 shadow-lg rounded mb-3">
-      <div className="flex justify-between">
+  const condition = job.Highlight;
+
+  return(  
+    <div {...condition ? 'true': "false" } style={{ backgroundColor: condition ? "#FAF884" : "white" }} className="border border-gray-200 px-2 py-3 shadow-lg rounded mb-3">
+      <div  className="flex justify-between">
         <NavLink to={`/jobs/${job.id}`}>
             <h4 className="mt-1">
               {job.Company_name}
@@ -31,7 +33,7 @@ function JobListItem({job}){
           </p>
         )}
         <div className="text-gray-600 text-sm">
-          {new Date(job.date_created).toDateString()}📌
+          {new Date(job.date_created).toDateString()}
         </div>     
         
     </div>

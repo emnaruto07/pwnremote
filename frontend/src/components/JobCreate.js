@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { useContext } from 'react';
 import { API } from '../api';
-
+// import React from 'react'
+// import { SketchPicker } from 'react-color'
 
 export default function JobCreate(){
     const [loading, setLoading] = useState(false)
@@ -51,7 +52,7 @@ export default function JobCreate(){
                     url: '',
                     email: '',
                     show_logo: false,
-                    Highlight: true,
+                    Highlight: false,
                     sticky_day: false,
                     sticky_week: false,
                     sticky_month: false,
@@ -530,6 +531,7 @@ export default function JobCreate(){
                     {/* <label htmlFor="email">Apply Email</label>
                     <Field name="email" type="email" /> */}
                     <h3 className='font-bold mx-auto text-center mt-2'>DESIGN YOUR POST</h3>
+                    {/* <SketchPicker /> */}
                     {/* <Field type="checkbox" name="show_logo" />
                     <label htmlFor="show_logo">Show Logo</label> */}
                      <Field name="show_logo">
@@ -575,7 +577,7 @@ export default function JobCreate(){
                                     focus:ring-1 focus:ring-offset-2 focus:ring-gray-500
                                 "
                                 />
-                                    <span className="ml-2">Highlight</span>
+                                    <span className="ml-2">Highlight your post with yellow (+$25) </span>
                                 </label>
                             </div>
                         )}
@@ -598,7 +600,7 @@ export default function JobCreate(){
                                     focus:ring-1 focus:ring-offset-2 focus:ring-gray-500
                                 "
                                 />
-                                    <span className="ml-2">Sticky post for a day</span>
+                                    <span className="ml-2">📌 Sticky post for a day</span>
                                 </label>
                             </div>
                         )}
@@ -623,7 +625,7 @@ export default function JobCreate(){
                                     focus:ring-1 focus:ring-offset-2 focus:ring-gray-500
                                 "
                                 />
-                                    <span className="ml-2">Sticky post for a week</span>
+                                    <span className="ml-2">📌 Sticky post for a week</span>
                                 </label>
                             </div>
                         )}
@@ -650,12 +652,13 @@ export default function JobCreate(){
                                     focus:ring-1 focus:ring-offset-2 focus:ring-gray-500
                                 "
                                 />
-                                    <span className="ml-2">Sticky post for a month</span>
+                                    <span className="ml-2">📌 Sticky post for a month</span>
                                 </label>
                             </div>
                         )}
-                    </Field>   
-                    <button className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md mt-2 "type="submit">Submit</button>
+                    </Field>
+                    
+                    <button className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md mt-4 "type="submit">Submit</button>
                 </Form>
                 )}    
             </Formik>

@@ -1,15 +1,15 @@
 
 
-function login(token) {
+function login(key) {
 
     const user = {
         // email: "test@test.com",
-        token: token,
+        token: key,
         // userId: 1
     }
     
     localStorage.setItem('user', JSON.stringify(user))
-    return token
+    return key
 }
 
 function logout() {

@@ -11,9 +11,11 @@ import JobDetail from "./components/JobDetail";
 import JobCreate from "./components/JobCreate";
 import { AuthContext, AuthContextProvider } from './contexts/AuthContext'
 import Login from './components/Login'
+import ConfirmEmail from "./components/ConfirmEmail";
 import Navbar from "./components/Navbar";
 import JobUpdate from "./components/JobUpdate";
 import JobDelete from "./components/JobDelete";
+import Signup from "./components/Signup";
 
 function PrivateRoute({ children }){
   const { user } = useContext(AuthContext)
@@ -33,6 +35,8 @@ export default function App() {
                 <Routes>
                   <Route path="/create-job" element={<PrivateRoute><JobCreate /></PrivateRoute>} exact />
                   <Route path="/login" element={<Login />} exact />
+                  <Route path="/signup" element={<Signup />} exact />
+                  <Route path="/accounts/confirm-email/:key" element={<ConfirmEmail />} exact />
                   <Route path="/jobs/:id" element={<JobDetail />} exact/>
                   <Route path="/jobs/:id/update" element={<PrivateRoute><JobUpdate /></PrivateRoute>} />
                   <Route path="/jobs/:id/delete" element={<PrivateRoute><JobDelete /></PrivateRoute>} />

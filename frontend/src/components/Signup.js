@@ -1,20 +1,19 @@
 import { Formik, Field, Form } from 'formik';
-import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import axios from "axios"
 import { API } from '../api';
-import { AuthContext } from '../contexts/AuthContext';
 
-export default function Login(){
+export default function Signup(){
     const [loading, setLoading] = useState(false)
-    const { login } = useContext(AuthContext)
-    const navigate = useNavigate()
+    const [success, setSuccess] = useState(false)
 
-    function handleSubmit(values) {
+    function handleSubmit(values, { resetForm }) {
         setLoading(true)
-        axios.post(API.auth.login, values)
-            .then(res => login(res.data.key))
-                navigate("/")
+        axios.post(API.auth.signup, values)
+            .then(res => {
+                resetForm()
+                setSuccess(true)
+            })          
             .finally(() => {
                 setLoading(false)
             })
@@ -23,16 +22,39 @@ export default function Login(){
 
     return(
         <div>
+            {success && "You will receive a verification email soon."}
             {loading && "Loading..."}
             <Formik
                 initialValues={{
+                    email: '',
                     username: '',
-                    password: '',
+                    password1: '',
+                    password2: '',
                 }}
                 onSubmit={handleSubmit}>
                 {({ errors, touched }) => (
                     <div className='mx-auto py-7 px-7'>
                         <Form>
+                            <Field name="email">
+                                    {({ field, form }) => (
+                                        <label className="block">
+                                        <span className="text-gray-700">Email</span>
+                                        <input
+                                        {...field}
+                                        type="email"
+                                        className="
+                                            mt-1
+                                            block
+                                            w-full
+                                            rounded-md
+                                            bg-gray-100
+                                            border-transparent
+                                            focus:border-gray-500 focus:bg-white focus:ring-0
+                                        "
+                                        />
+                                    </label>
+                                    )}
+                            </Field>
                             <Field name="username">
                                 {({ field, form }) => (
                                     <label className="block">
@@ -59,7 +81,7 @@ export default function Login(){
 
                             {/* <label htmlFor="password">Password</label>
                             <Field id="password" name="password" type="password" /> */}
-                            <Field name="password">
+                            <Field name="password1">
                                 {({ field, form }) => (
                                     <label className="block">
                                     <span className="text-gray-700">Password</span>
@@ -79,9 +101,30 @@ export default function Login(){
                                 </label>
                                 )}
                             </Field>
-                            {touched.password && errors.password && <div>{errors.password}</div>}
+                            {touched.password1 && errors.password1 && <div>{errors.password1}</div>}
+                            <Field name="password2">
+                                {({ field, form }) => (
+                                    <label className="block">
+                                    <span className="text-gray-700">Confirm Password</span>
+                                    <input
+                                    {...field}
+                                    type="password"
+                                    className="
+                                        mt-1
+                                        block
+                                        w-full
+                                        rounded-md
+                                        bg-gray-100
+                                        border-transparent
+                                        focus:border-gray-500 focus:bg-white focus:ring-0
+                                    "
+                                    />
+                                </label>
+                                )}
+                            </Field>
+                            {touched.password2 && errors.password2 && <div>{errors.password2}</div>}
                             
-                            <button className="mt-2 bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md" type="submit">Login</button>
+                            <button className="mt-2 bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 shadow-md" type="submit">Login</button>
                         </Form>
                     </div>
                 

@@ -15,8 +15,8 @@ export function AuthContextProvider({children}) {
         setUser(null)
     }
 
-    function login(token){
-        const user = authService.login(token)
+    function login(key){
+        const user = authService.login(key)
         setUser(user)
     }
     return (

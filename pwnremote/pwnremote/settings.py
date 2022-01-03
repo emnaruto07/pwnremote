@@ -24,6 +24,8 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
+FRONTEND_URL = "https://www.pwnremote.com"
+
 
 # Application definition
 
@@ -86,9 +88,11 @@ SITE_ID=1
 
 ACCOUNT_EMAIL_REQUIRED=True
 ACCOUNT_USERNAME_REQUIRED=False
-# ACCOUNT_AUTHENTICATION_METHOD='email'
+ACCOUNT_AUTHENTICATION_METHOD='username'
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_EMAIL_METHOD='mandatory'
+ACCOUNT_ADAPTER = "api.adapters.AccountAdapter"
+SOCIALACCOUNT_ADAPTER = "api.adapters.SocialAccountAdapter"
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Database

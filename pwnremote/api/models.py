@@ -33,7 +33,7 @@ class Job(models.Model):
     Company_name = models.CharField(max_length=50)
     Position = models.CharField(max_length=100)
     Employment_type = models.CharField(max_length=15)
-    Primary_Skills = models.CharField(max_length=15)
+    Primary_Skills = models.CharField(max_length=50)
     Skills_tag = models.CharField(max_length=100)
     remote = models.BooleanField(default=True)
     Location = models.CharField(max_length=50)

@@ -9,7 +9,8 @@ class JobListView(ListAPIView):
     serializer_class = JobListSerializer
 
     def get_queryset(self):
-        return Job.objects.filter(available=True)
+        # return Job.objects.filter(available=True)
+        return Job.objects.order_by("-date_created")
 
 class JobCreateView(CreateAPIView):
     permission_classes = [IsAuthenticated]

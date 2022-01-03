@@ -54,8 +54,8 @@ export default function JobList() {
     function fetchJobs(){
       axios.get(API.jobs.list)
         .then(res => {
-        console.log(res.data)
-        setJobs(res.data)
+          console.log(res.data)
+          setJobs(res.data)
         })
   }
   fetchJobs()

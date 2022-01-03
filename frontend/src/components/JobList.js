@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
 import { API } from "../api"
+import New from "../assets/new.gif";
 
 function JobListItem({job}){
   const condition = job.Highlight;
@@ -11,7 +12,10 @@ function JobListItem({job}){
       <div  className="flex justify-between">
         <NavLink to={`/jobs/${job.id}`}>
             <h4 className="mt-1">
-              {job.Company_name}
+              <div className="flex">
+                {job.Company_name} <img src={New} width="40" height="20" />
+              </div>
+              
             </h4>
             <h3 className="text-1xl text-gray-800 font-bold">{job.Position}</h3>
         </ NavLink>

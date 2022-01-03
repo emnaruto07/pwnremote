@@ -658,7 +658,7 @@ export default function JobCreate(){
                         )}
                     </Field>
                     
-                    <button className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md mt-4 "type="submit">Submit</button>
+                    <button className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md mt-4 "type="submit">Post Job</button>
                 </Form>
                 )}    
             </Formik>

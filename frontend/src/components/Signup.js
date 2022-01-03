@@ -124,7 +124,7 @@ export default function Signup(){
                             </Field>
                             {touched.password2 && errors.password2 && <div>{errors.password2}</div>}
                             
-                            <button className="mt-2 bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 shadow-md" type="submit">Login</button>
+                            <button className="mt-2 bg-black hover:bg-gray-600 text-white font-bold py-2 px-4 shadow-md rounded-lg" type="submit">Signup</button>
                         </Form>
                     </div>
                 

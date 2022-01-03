@@ -81,7 +81,7 @@ export default function Login(){
                             </Field>
                             {touched.password && errors.password && <div>{errors.password}</div>}
                             
-                            <button className="mt-2 bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md" type="submit">Login</button>
+                            <button className="mt-2 bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md rounded-lg" type="submit">Login</button>
                         </Form>
                     </div>
                 

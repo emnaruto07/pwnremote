@@ -13,29 +13,32 @@ function JobListItem({job}){
         <NavLink to={`/jobs/${job.id}`}>
             <h4 className="mt-1">
               <div className="flex">
-                {job.Company_name} <img src={New} width="40" height="20" />
+                {job.Company_name} <img src={New} alt="new" width="40" height="20" />
               </div>
               
             </h4>
-            <h3 className="text-1xl text-gray-800 font-bold">{job.Position}</h3>
+            <h3 className="text-xl text-black font-bold">{job.Position}</h3>
         </ NavLink>
         <div>
             <a className="flex justify-between py-3" href={job.url} target="_blank" rel="noopener noreferrer">
-              <h5 className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-lg">Apply</h5>
+              <h5 className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-lg rounded-lg">Apply</h5>
             </a>
         </div>
-      </div>   
+      </div>
+      <div className="flex">
         <p>${job.Min_salary}-${job.max_salary}</p>   
-        {/* {job.remote && (
-          <p className="text-gray-500">
-            {job.remote}
-          </p>
-        )} */}
-        {job.Location && (
-          <p className="text-gray-500">
-            {job.Location}
-          </p>
-        )}
+          {/* {job.remote && (
+            <p className="text-gray-500">
+              {job.remote}
+            </p>
+          )} */}
+          {job.Location && (
+            <p className="font-semibold ml-2">
+              {job.Location}
+            </p>
+          )}     
+      </div>   
+        
         <div className="text-gray-600 text-sm">
           {new Date(job.date_created).toDateString()}
         </div>     

@@ -29,11 +29,11 @@ return(
                         <h4 className="mt-1">
                             {job.Company_name}
                         </h4>
-                        <h3 className="text-2xl text-gray-800 font-bold">{job.Position}</h3>
+                        <h3 className="text-2xl text-black subpixel-antialiased font-bold">{job.Position}</h3>
                     </ NavLink>
                 <div>
                     <a className="flex justify-between py-3" href={job.url} target="_blank" rel="noopener noreferrer">
-                    <h5 className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-lg">Apply</h5>
+                    <h5 className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-lg rounded-lg">Apply</h5>
                     </a>
                 </div>
             </div>   
@@ -48,11 +48,11 @@ return(
                 </div> 
 
                 <div className="mt-5">
-                    <h3 className="text-1xl text-gray-800 font-bold">Job Description</h3>
+                    <h3 className="text-1xl text-black subpixel-antialiased font-semibold">Job Description</h3>
                         {job.Description} 
-                    <h3 className="text-1xl mt-2 text-gray-800 font-bold">Salary and compensation</h3>
+                    <h3 className="text-1xl mt-2 text-black subpixel-antialiased font-semibold">Salary and compensation</h3>
                         ${job.Min_salary}-${job.max_salary}/year
-                    <h3 className="text-1xl mt-2 text-gray-800 font-bold">Location</h3>
+                    <h3 className="text-1xl mt-2 text-black subpixel-antialiased font-semibold">Location</h3>
                         {job.Location && (
                         <p className="text-gray-500">
                             {job.Location}
@@ -67,10 +67,10 @@ return(
             <h4>{job.Skills_tag}</h4> */}
             <div className="flex items-center mt-2">
             <NavLink to={`/jobs/${id}/update`}>
-                    <h5 className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md">Update</h5>
+                    <h5 className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md rounded-lg">Update</h5>
             </NavLink>
             <NavLink to={`/jobs/${id}/delete`}>
-                <h5 className="ml-2 bg-red-700 hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md">Delete</h5>
+                <h5 className="ml-2 bg-red-700 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-lg shadow-md">Delete</h5>
             </NavLink>
             </div>
             

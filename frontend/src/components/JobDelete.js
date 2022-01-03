@@ -57,7 +57,7 @@ export default function JobDelete(){
             {job &&(
             <form onSubmit={handleSubmit}>
                     <h3 className="font-semibold">Are you sure you want to delete?</h3>
-                    <button className='mt-2 bg-red-700 hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md' type="submit">Delete</button>  
+                    <button className='mt-2 bg-red-700 hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md rounded-lg' type="submit">Delete</button>  
             </form>
             )}     
         </div>

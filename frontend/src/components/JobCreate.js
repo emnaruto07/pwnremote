@@ -51,7 +51,7 @@ export default function JobCreate(){
                     user: '',
                     url: '',
                     email: '',
-                    show_logo: false,
+                    show_logo: true,
                     Highlight: false,
                     sticky_day: false,
                     sticky_week: false,
@@ -543,6 +543,7 @@ export default function JobCreate(){
                                 <input
                                 {...field}
                                 type="checkbox"
+                                checked={field.value}
                                 className="
                                     rounded
                                     bg-gray-200
@@ -552,7 +553,7 @@ export default function JobCreate(){
                                     focus:ring-1 focus:ring-offset-2 focus:ring-gray-500
                                 "
                                 />
-                                    <span className="ml-2">Show Logo</span>
+                                    <span className="ml-2">Show Company Logo (+$25)</span>
                                 </label>
                             </div>
                         )}
@@ -568,6 +569,7 @@ export default function JobCreate(){
                                 <input
                                 {...field}
                                 type="checkbox"
+                                checked={field.value}
                                 className="
                                     rounded
                                     bg-gray-200
@@ -591,6 +593,7 @@ export default function JobCreate(){
                                 <input
                                 {...field}
                                 type="checkbox"
+                                checked={field.value}
                                 className="
                                     rounded
                                     bg-gray-200
@@ -616,6 +619,7 @@ export default function JobCreate(){
                                 <input
                                 {...field}
                                 type="checkbox"
+                                checked={field.value}
                                 className="
                                     rounded
                                     bg-gray-200
@@ -643,6 +647,7 @@ export default function JobCreate(){
                                 <input
                                 {...field}
                                 type="checkbox"
+                                checked={field.value}
                                 className="
                                     rounded
                                     bg-gray-200

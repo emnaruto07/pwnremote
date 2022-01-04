@@ -132,7 +132,7 @@ export default function JobUpdate(){
                             <span className="text-gray-700">Employment Type</span>
                             <select 
                             {...field}
-                            class="
+                            className="
                                 block
                                 w-full
                                 mt-1
@@ -156,10 +156,10 @@ export default function JobUpdate(){
                     <Field name="Primary_Skills">
                         {({ field, form }) => (
                             <label className="block">
-                            <span class="text-gray-700">Primary Skill</span>
+                            <span className="text-gray-700">Primary Skill</span>
                             <select
                             {...field}
-                            class="
+                            className="
                                 block
                                 w-full
                                 mt-1
@@ -235,10 +235,10 @@ export default function JobUpdate(){
                     <Field name="Min_salary">
                         {({ field, form }) => (
                             <label className="block">
-                            <span class="text-gray-700">Minimum Salary</span>
+                            <span className="text-gray-700">Minimum Salary</span>
                             <select
                             {...field}
-                            class="
+                            className="
                                 block
                                 w-full
                                 mt-1
@@ -297,10 +297,10 @@ export default function JobUpdate(){
                     <Field name="max_salary">
                         {({ field, form }) => (
                             <label className="block">
-                            <span class="text-gray-700">Maximum Salary</span>
+                            <span className="text-gray-700">Maximum Salary</span>
                             <select
                             {...field}
-                            class="
+                            className="
                                 block
                                 w-full
                                 mt-1
@@ -422,26 +422,27 @@ export default function JobUpdate(){
                  
                     <h3 className='font-bold mx-auto text-center mt-2'>DESIGN YOUR POST</h3>
                 
-                     <Field name="show_logo">
+                    <Field name="show_logo">
                         {({ field, form }) => (
                             <div className="block">
                                 <div className="mt-2">
+                                    <label className="inline-flex items-center">
+                                        <input
+                                        {...field}
+                                        type="checkbox"
+                                        checked={field.value}
+                                        className="
+                                            rounded
+                                            bg-gray-200
+                                            border-transparent
+                                            focus:border-transparent focus:bg-gray-200
+                                            text-gray-700
+                                            focus:ring-1 focus:ring-offset-2 focus:ring-gray-500
+                                        "
+                                        />
+                                        <span className="ml-2">Show Logo</span>
+                                    </label>
                                 </div>
-                                <label className="inline-flex items-center">
-                                <input
-                                {...field}
-                                type="checkbox"
-                                className="
-                                    rounded
-                                    bg-gray-200
-                                    border-transparent
-                                    focus:border-transparent focus:bg-gray-200
-                                    text-gray-700
-                                    focus:ring-1 focus:ring-offset-2 focus:ring-gray-500
-                                "
-                                />
-                                    <span className="ml-2">Show Logo</span>
-                                </label>
                             </div>
                         )}
                     </Field>
@@ -450,22 +451,23 @@ export default function JobUpdate(){
                         {({ field, form }) => (
                             <div className="block">
                                 <div className="mt-2">
+                                    <label className="inline-flex items-center">
+                                        <input
+                                        {...field}
+                                        type="checkbox"
+                                        checked={field.value}
+                                        className="
+                                            rounded
+                                            bg-gray-200
+                                            border-transparent
+                                            focus:border-transparent focus:bg-gray-200
+                                            text-gray-700
+                                            focus:ring-1 focus:ring-offset-2 focus:ring-gray-500
+                                        "
+                                        />
+                                        <span className="ml-2">Highlight your post with yellow (+$25) </span>
+                                    </label>
                                 </div>
-                                <label className="inline-flex items-center">
-                                <input
-                                {...field}
-                                type="checkbox"
-                                className="
-                                    rounded
-                                    bg-gray-200
-                                    border-transparent
-                                    focus:border-transparent focus:bg-gray-200
-                                    text-gray-700
-                                    focus:ring-1 focus:ring-offset-2 focus:ring-gray-500
-                                "
-                                />
-                                    <span className="ml-2">Highlight your post with yellow (+$25) </span>
-                                </label>
                             </div>
                         )}
                     </Field>
@@ -473,22 +475,23 @@ export default function JobUpdate(){
                         {({ field, form }) => (
                             <div className="block">
                                 <div className="mt-2">
+                                    <label className="inline-flex items-center">
+                                        <input
+                                        {...field}
+                                        type="checkbox"
+                                        checked={field.value}
+                                        className="
+                                            rounded
+                                            bg-gray-200
+                                            border-transparent
+                                            focus:border-transparent focus:bg-gray-200
+                                            text-gray-700
+                                            focus:ring-1 focus:ring-offset-2 focus:ring-gray-500
+                                        "
+                                        />
+                                        <span className="ml-2">📌 Sticky post for a day</span>
+                                    </label>
                                 </div>
-                                <label className="inline-flex items-center">
-                                <input
-                                {...field}
-                                type="checkbox"
-                                className="
-                                    rounded
-                                    bg-gray-200
-                                    border-transparent
-                                    focus:border-transparent focus:bg-gray-200
-                                    text-gray-700
-                                    focus:ring-1 focus:ring-offset-2 focus:ring-gray-500
-                                "
-                                />
-                                    <span className="ml-2">📌 Sticky post for a day</span>
-                                </label>
                             </div>
                         )}
                     </Field>
@@ -502,6 +505,7 @@ export default function JobUpdate(){
                                 <input
                                 {...field}
                                 type="checkbox"
+                                checked={field.value}
                                 className="
                                     rounded
                                     bg-gray-200
@@ -525,6 +529,7 @@ export default function JobUpdate(){
                                 <input
                                 {...field}
                                 type="checkbox"
+                                checked={field.value}
                                 className="
                                     rounded
                                     bg-gray-200
@@ -539,7 +544,7 @@ export default function JobUpdate(){
                             </div>
                         )}
                     </Field> 
-                    <button className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md mt-4 "type="submit">Update</button>
+                    <button className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md mt-4 "type="submit">Update Post</button>
                 </Form>
                 )}    
             </Formik>

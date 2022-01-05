@@ -16,6 +16,7 @@ import Navbar from "./components/Navbar";
 import JobUpdate from "./components/JobUpdate";
 import JobDelete from "./components/JobDelete";
 import Signup from "./components/Signup";
+// import Homeheader from "./components/Homeheader";
 
 function PrivateRoute({ children }){
   const { user } = useContext(AuthContext)
@@ -27,8 +28,8 @@ export default function App() {
     <Router>
       <AuthContextProvider>
         <div>
+          {/* <Homeheader /> */}
           <Navbar />
-
           {/* A <Router> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
               <div className='max-w-6xl mx-auto py-5 px-4'>

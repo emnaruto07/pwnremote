@@ -5,8 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { useContext } from 'react';
 import { API } from '../api';
-// import React from 'react'
-// import { SketchPicker } from 'react-color'
 
 export default function JobCreate(){
     const [loading, setLoading] = useState(false)
@@ -468,16 +466,16 @@ export default function JobCreate(){
                             <label className="block">
                             <span className="text-gray-700">Job Description</span>
                             <textarea
-                            {...field}
-                              className="
-                                mt-1
-                                block
-                                w-full
-                                rounded-md
-                                bg-gray-100
-                                border-transparent
-                                focus:border-gray-500 focus:bg-white focus:ring-0
-                              "
+                            {...field}   
+                            className="
+                            mt-1
+                            block
+                            w-full
+                            rounded-md
+                            bg-gray-100
+                            border-transparent
+                            focus:border-gray-500 focus:bg-white focus:ring-0
+                        "      
                             ></textarea>
                           </label>
                         )}

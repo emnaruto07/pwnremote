@@ -1,9 +1,18 @@
-from typing import List
 from rest_framework import permissions
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from .models import Job
 from .serializers import JobListSerializer
 from rest_framework.permissions import IsAuthenticated
+from django.conf import settings
+
+
+import stripe
+
+# This is your test secret API key.
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 class JobListView(ListAPIView):
     serializer_class = JobListSerializer
@@ -37,3 +46,21 @@ class JobDeleteView(DestroyAPIView):
 
     def get_queryset(self):
         return Job.objects.all()
+
+class CreatePaymentView(APIView):
+    def post(self, request, *args, **kwargs):
+        try:
+            data = request.data
+            # Create a PaymentIntent with the order amount and currency
+            intent = stripe.PaymentIntent.create(
+                amount=1000,
+                currency='usd',
+                automatic_payment_methods={
+                    'enabled': True,
+                },
+            )
+            return Response({
+                'clientSecret': intent['client_secret']
+            })
+        except Exception as e:
+            return Response({"error": str(e)}, status=403)

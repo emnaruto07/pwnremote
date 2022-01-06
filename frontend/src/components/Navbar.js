@@ -26,6 +26,9 @@ export default function Navbar(){
                         <Link className='hover:text-blue-600' to="/">Jobs</Link>
                     </li>
                     <li className='ml-3 text-gray-600'>
+                        <Link className='hover:text-blue-600' to="/payment">Payment</Link>
+                    </li>
+                    <li className='ml-3 text-gray-600'>
                         <Link className='hover:text-blue-600' to="/create-job">Post a Job</Link>
                     </li>
                 </div>

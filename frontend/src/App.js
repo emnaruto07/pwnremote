@@ -5,7 +5,6 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-// import { Elements } from '@stripe/react-stripe-js'
 import JobList from "./components/JobList";
 import JobDetail from "./components/JobDetail";
 import JobCreate from "./components/JobCreate";
@@ -17,6 +16,7 @@ import JobUpdate from "./components/JobUpdate";
 import JobDelete from "./components/JobDelete";
 import Signup from "./components/Signup";
 // import Homeheader from "./components/Homeheader";
+import { Payment} from "./components/Payment";
 
 function PrivateRoute({ children }){
   const { user } = useContext(AuthContext)
@@ -24,18 +24,20 @@ function PrivateRoute({ children }){
 }
 
 export default function App() {
+
   return (
     <Router>
       <AuthContextProvider>
-        <div>
-          {/* <Homeheader /> */}
-          <Navbar />
-          {/* A <Router> looks through its children <Route>s and
-              renders the first one that matches the current URL. */}
+          <div>
+            {/* <Homeheader /> */}
+            <Navbar />
+            {/* A <Router> looks through its children <Route>s and
+                renders the first one that matches the current URL. */}
               <div className='max-w-6xl mx-auto py-5 px-4'>
                 <Routes>
                   <Route path="/create-job" element={<PrivateRoute><JobCreate /></PrivateRoute>} exact />
                   <Route path="/login" element={<Login />} exact />
+                  <Route path="/payment" element={<PrivateRoute><Payment /></PrivateRoute>} exact />
                   <Route path="/signup" element={<Signup />} exact />
                   <Route path="/accounts/confirm-email/:key" element={<ConfirmEmail />} exact />
                   <Route path="/jobs/:id" element={<JobDetail />} exact/>

@@ -7,6 +7,7 @@ export default function JobDetail(){
     const [job, setJob] = useState(null)
     const { id } = useParams()
 
+
     useEffect(() => {
         function fetchJobList(){
             axios.get(API.jobs.retrieve(id))

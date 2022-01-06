@@ -3,9 +3,7 @@
 function login(key) {
 
     const user = {
-        // email: "test@test.com",
-        token: key,
-        // userId: 1
+        token: key,     
     }
     
     localStorage.setItem('user', JSON.stringify(user))

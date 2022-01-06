@@ -19,6 +19,7 @@ export function AuthContextProvider({children}) {
         const user = authService.login(key)
         setUser(user)
     }
+    
     return (
         <AuthContext.Provider value={{
             logout,

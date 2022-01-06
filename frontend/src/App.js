@@ -4,8 +4,8 @@ import {
   Routes,
   Route,
   Navigate,
-
 } from "react-router-dom";
+// import { Elements } from '@stripe/react-stripe-js'
 import JobList from "./components/JobList";
 import JobDetail from "./components/JobDetail";
 import JobCreate from "./components/JobCreate";

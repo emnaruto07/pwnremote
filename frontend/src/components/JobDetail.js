@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { NavLink, useParams } from "react-router-dom"
+import { NavLink } from "react-router-dom"
+import { useParams } from "react-router"
 import { API } from "../api"
 
 export default function JobDetail(){
@@ -70,6 +71,12 @@ return(
             <NavLink to={`/jobs/${id}/update`}>
                     <h5 className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md rounded-lg">Update</h5>
             </NavLink>
+            {!job.sponsored && (
+                <NavLink to={`/jobs/${id}/sponsor`}>
+                    <h5 className="ml-2 bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 shadow-md rounded-lg">Sponsor</h5>
+                </NavLink>
+            )
+            }      
             <NavLink to={`/jobs/${id}/delete`}>
                 <h5 className="ml-2 bg-red-700 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-lg shadow-md">Delete</h5>
             </NavLink>

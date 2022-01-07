@@ -4,6 +4,7 @@ import { Elements } from '@stripe/react-stripe-js'
 import axios from "axios";
 import { API } from "../api";
 import { AuthContext } from "../contexts/AuthContext";
+import { useParams } from "react-router";
 import { CheckoutForm } from "./CheckoutForm";
 
 const stripePromise = loadStripe(
@@ -13,18 +14,19 @@ const stripePromise = loadStripe(
 
 export function Payment() {
     const { user: { token } } = useContext(AuthContext)
+    const { id } = useParams()
     const [clientSecret, setClientSecret] = useState("");
     console.log(clientSecret)
 
     useEffect(() => {
       // Create PaymentIntent as soon as the page loads
-      axios.post(API.payment.createPayment, {}, {
+      axios.post(API.payment.createPayment, {job_id: id }, {
         headers: {
           "Authorization": `Token ${token}`
         }
       })
         .then(res => setClientSecret(res.data.clientSecret))
-  }, [token]);
+  }, [token, id]);
   
     const appearance = {
       theme: 'stripe',

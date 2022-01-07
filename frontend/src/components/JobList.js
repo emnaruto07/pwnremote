@@ -59,6 +59,7 @@ export default function JobList() {
         })
   }
   fetchJobs()
+  return () => null
 },[])
 
   return (

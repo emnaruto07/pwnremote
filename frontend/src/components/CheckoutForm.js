@@ -79,7 +79,7 @@ export function CheckoutForm() {
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
       <PaymentElement id="payment-element" />
-      <button className="bg-black mt-2 hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md rounded-lg" disabled={isLoading || !stripe || !elements} id="submit">
+      <button className="bg-black mt-2 hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-md rounded-lg" disabled={isLoading || !stripe || !elements} id="submit">
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
         </span>

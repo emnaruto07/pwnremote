@@ -51,6 +51,7 @@ class Job(models.Model):
     sticky_day = models.BooleanField(default=False)
     sticky_week = models.BooleanField(default=False)
     sticky_month = models.BooleanField(default=False)
+    sponsored = models.BooleanField(default=False)
 
     def __str__(self):
         return self.Company_name
@@ -70,6 +71,12 @@ class Job(models.Model):
 #     sticky_day = models.BooleanField(default=False)
 #     sticky_week = models.BooleanField(default=False)
 #     sticky_month = models.BooleanField(default=False)
+class SponsoredJobPost(models.Model):
+    job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name='sponsored_post')
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_until = models.DateTimeField()
+    stripe_payment_intent_id = models.CharField(max_length=150)
+
 
 class CompanyDetail(models.Model):
     company_twitter = models.CharField(max_length=15, blank=True, default='')

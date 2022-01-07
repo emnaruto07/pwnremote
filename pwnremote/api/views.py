@@ -18,8 +18,7 @@ class JobListView(ListAPIView):
     serializer_class = JobListSerializer
 
     def get_queryset(self):
-        # return Job.objects.filter(available=True)
-        return Job.objects.order_by("-date_created")
+        return Job.objects.filter(available=True).order_by("-date_created")
 
 class JobCreateView(CreateAPIView):
     permission_classes = [IsAuthenticated]
@@ -53,11 +52,14 @@ class CreatePaymentView(APIView):
             data = request.data
             # Create a PaymentIntent with the order amount and currency
             intent = stripe.PaymentIntent.create(
-                amount=1000,
+                amount=10000,
                 currency='usd',
                 automatic_payment_methods={
                     'enabled': True,
                 },
+                metadata={
+                    "job_id": request.data["job_id"]
+                }
             )
             return Response({
                 'clientSecret': intent['client_secret']

@@ -33,11 +33,11 @@ return(
                         </h4>
                         <h3 className="text-2xl text-black subpixel-antialiased font-bold">{job.Position}</h3>
                     </ div>
-                <div>
+                {/* <div>
                     <a className="flex justify-between py-3" href={job.url} target="_blank" rel="noopener noreferrer">
                     <h5 className="border-solid border-2 border-black bg-black hover:text-black hover:bg-white text-white font-bold py-2 px-4 shadow-lg rounded-lg">Apply</h5>
                     </a>
-                </div>
+                </div> */}
             </div>   
                 
                 <div className="text-gray-600 text-sm">
@@ -55,6 +55,13 @@ return(
                             {job.Location}
                         </p>
                         )}
+                    <div className="mt-4">
+                        <a className="mx-auto text-center py-3" href={job.url} target="_blank" rel="noopener noreferrer">
+                            <h5 className="border-solid border-2 border-black bg-black hover:text-black hover:bg-white text-white font-bold py-2 px-4 shadow-lg rounded-lg">Apply for the job</h5>
+                        </a>
+                    </div>
+                    {/* <h3 className="text-1xl text-black text-center m-2 subpixel-antialiased font-semibold">OR</h3>
+                    <h3 className="text-1xl text-black text-center subpixel-antialiased font-semibold">Email: <span className="font-">{job.email}</span></h3> */}
                 </div>
                     
         </div>
@@ -62,12 +69,12 @@ return(
             <NavLink to={`/jobs/${id}/update`}>
                     <h5 className="border-solid border-2 border-black bg-black hover:text-black hover:bg-white text-white font-bold py-2 px-4 shadow-md rounded-lg">Update</h5>
             </NavLink>
-            {!job.sponsored && (
+            {/* {!job.sponsored && (
                 <NavLink to={`/jobs/${id}/sponsor`}>
                     <h5 className="border-solid border-2 border-orange-600 ml-2 bg-orange-600 hover:bg-white hover:text-orange-600 text-white font-bold py-2 px-4 shadow-md rounded-lg">Boost Post</h5>
                 </NavLink>
             )
-            }      
+            }       */}
             <NavLink to={`/jobs/${id}/delete`}>
                 <h5 className="ml-2 bg-red-700 hover:bg-white hover:text-red-700 text-white font-bold py-2 px-4 rounded-lg border-solid border-2 border-red-700 shadow-md">Delete</h5>
             </NavLink>

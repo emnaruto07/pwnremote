@@ -32,21 +32,7 @@ class Job(models.Model):
     def __str__(self):
         return self.Company_name
 
-# class JobDetail(models.Model):
-#     Job_id = models.OneToOneField('Job', on_delete=models.CASCADE)
-#     Min_salary = models.PositiveIntegerField()
-#     max_salary = models.PositiveIntegerField()
-#     Description = models.TextField()
-#     url = models.URLField(max_length=200)
-#     email = models.EmailField()
 
-# class DesignPost(models.Model):
-#     Job_id = models.OneToOneField('Job', on_delete=models.CASCADE)
-#     show_logo = models.BooleanField(default=True)
-#     Highlight = models.BooleanField(default=False)
-#     sticky_day = models.BooleanField(default=False)
-#     sticky_week = models.BooleanField(default=False)
-#     sticky_month = models.BooleanField(default=False)
 class SponsoredJobPost(models.Model):
     job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name='sponsored_post')
     date_created = models.DateTimeField(auto_now_add=True)

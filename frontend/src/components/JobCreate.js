@@ -1,15 +1,17 @@
 import { Formik, Field, Form } from 'formik';
 import { useState } from 'react';
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { useContext } from 'react';
+import { useParams } from "react-router"
 import { API } from '../api';
 
 export default function JobCreate(){
     const [loading, setLoading] = useState(false)
     const { user: { token } } = useContext(AuthContext)
     const navigate = useNavigate()
+    const { id } = useParams()
 
     function handleSubmit(values) {
         setLoading(true)
@@ -58,7 +60,7 @@ export default function JobCreate(){
                 onSubmit={handleSubmit}>
                 {({ values }) => (
                 <Form>
-                    <h3 className='font-bold mx-auto text-center mt-2'>JOB DETAILS</h3>
+                    <h3 className='border-solid border-2 border-black font-bold py-2 px-4 text-center mt-2 mb-2 rounded-lg'>JOB DETAILS</h3>
                     <Field name="Company_name">
                         {({ field, form }) => (
                             <label className="block">
@@ -343,6 +345,7 @@ export default function JobCreate(){
                             mt-1
                             block
                             w-full
+                            h-32
                             rounded-md
                             bg-gray-100
                             border-transparent
@@ -396,7 +399,7 @@ export default function JobCreate(){
                           </label>
                         )}
                     </Field>
-                        <h3 className='font-bold mx-auto text-center mt-2'>DESIGN YOUR POST</h3>
+                        <h3 className='border-solid border-2 border-black font-bold py-2 px-4 text-center mt-4 rounded-lg'>DESIGN YOUR POST</h3>
                      <Field name="show_logo">
                         {({ field, form }) => (
                             <div className="block">
@@ -416,7 +419,7 @@ export default function JobCreate(){
                                     focus:ring-1 focus:ring-offset-2 focus:ring-gray-500
                                 "
                                 />
-                                    <span className="ml-2">Show Company Logo (+$25)</span>
+                                    <span className="ml-2">Show Your Company Logo (+$25)</span>
                                 </label>
                             </div>
                         )}
@@ -520,7 +523,7 @@ export default function JobCreate(){
                             </div>
                         )}
                     </Field>
-                    <h3 className='font-bold mx-auto text-center mt-2'>FEEDBACK ABOUT US</h3>
+                    <h3 className='border-solid border-2 border-black font-bold py-2 px-4 text-center mt-2 mb-2 rounded-lg'>FEEDBACK ABOUT US</h3>
                     <Field name="feedback">
                         {({ field, form }) => (
                             <label className="block">
@@ -531,6 +534,7 @@ export default function JobCreate(){
                             mt-1
                             block
                             w-full
+                            h-32
                             rounded-md
                             bg-gray-100
                             border-transparent
@@ -540,8 +544,9 @@ export default function JobCreate(){
                           </label>
                         )}
                     </Field>
-                    
-                    <button className="bg-black border-solid border-2 border-black hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-md mt-4 rounded-lg "type="submit">Post Job</button>
+                    {/* <NavLink to={`/jobs/${id}/sponsor`}> */}
+                        <button className="bg-black border-solid border-2 border-black hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-md mt-4 rounded-lg"type="submit">Post Job</button>
+                    {/* </NavLink> */}
                 </Form>
                 )}    
             </Formik>

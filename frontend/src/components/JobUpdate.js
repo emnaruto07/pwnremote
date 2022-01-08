@@ -1,7 +1,7 @@
 import { Formik, Field, Form } from 'formik';
 import { useState, useEffect } from 'react';
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { useParams } from "react-router-dom"
 import { useContext } from 'react';
@@ -80,7 +80,7 @@ export default function JobUpdate(){
                 onSubmit={handleSubmit}>
                 {({ values }) => (
                     <Form>
-                    <h3 className='font-bold mx-auto text-center mt-2'>JOB DETAILS</h3>
+                    <h3 className='border-solid border-2 border-black font-bold py-2 px-4 text-center mt-2 mb-2 rounded-lg'>JOB DETAILS</h3>
                     <Field name="Company_name">
                         {({ field, form }) => (
                             <label className="block">
@@ -420,8 +420,9 @@ export default function JobUpdate(){
                         )}
                     </Field>
                  
-                    <h3 className='font-bold mx-auto text-center mt-2'>DESIGN YOUR POST</h3>
-                
+                    <h3 className='border-solid border-2 border-black font-bold py-2 px-4 text-center mt-2 rounded-lg'>DESIGN YOUR POST</h3>
+                    
+                    {!job.show_logo && ( 
                     <Field name="show_logo">
                         {({ field, form }) => (
                             <div className="block">
@@ -440,37 +441,41 @@ export default function JobUpdate(){
                                             focus:ring-1 focus:ring-offset-2 focus:ring-gray-500
                                         "
                                         />
-                                        <span className="ml-2">Show Logo</span>
+                                        <span className="ml-2">Show Your Company Logo (+$25)</span>
                                     </label>
                                 </div>
                             </div>
                         )}
                     </Field>
-                  
-                    <Field name="Highlight">
-                        {({ field, form }) => (
-                            <div className="block">
-                                <div className="mt-2">
-                                    <label className="inline-flex items-center">
-                                        <input
-                                        {...field}
-                                        type="checkbox"
-                                        checked={field.value}
-                                        className="
-                                            rounded
-                                            bg-gray-200
-                                            border-transparent
-                                            focus:border-transparent focus:bg-gray-200
-                                            text-gray-700
-                                            focus:ring-1 focus:ring-offset-2 focus:ring-gray-500
-                                        "
-                                        />
-                                        <span className="ml-2">Highlight your post with yellow (+$25) </span>
-                                    </label>
+                    )}
+
+                    {!job.Highlight && (
+                        <Field name="Highlight">
+                            {({ field, form }) => (
+                                <div className="block">
+                                    <div className="mt-2">
+                                        <label className="inline-flex items-center">
+                                            <input
+                                            {...field}
+                                            type="checkbox"
+                                            checked={field.value}
+                                            className="
+                                                rounded
+                                                bg-gray-200
+                                                border-transparent
+                                                focus:border-transparent focus:bg-gray-200
+                                                text-gray-700
+                                                focus:ring-1 focus:ring-offset-2 focus:ring-gray-500
+                                            "
+                                            />
+                                            <span className="ml-2">Highlight your post with yellow (+$25) </span>
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                        )}
-                    </Field>
+                            )}
+                        </Field>
+                        )
+                        }
                     <Field name="sticky_day">
                         {({ field, form }) => (
                             <div className="block">
@@ -544,7 +549,10 @@ export default function JobUpdate(){
                             </div>
                         )}
                     </Field> 
-                    <button className="bg-black border-solid border-2 border-black hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-md mt-4 rounded-lg"type="submit">Update Post</button>
+                    {/* <NavLink to={`/jobs/${id}/sponsor`}> */}
+                        <button className="bg-black border-solid border-2 border-black hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-md mt-4 rounded-lg"type="submit">Update Post</button>
+                    {/* </NavLink> */}
+
                 </Form>
                 )}    
             </Formik>

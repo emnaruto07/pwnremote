@@ -54,6 +54,7 @@ export default function JobCreate(){
                     sticky_day: false,
                     sticky_week: false,
                     sticky_month: false,
+                    feedback: ''
                 }}
                 onSubmit={handleSubmit}>
                 {({ values }) => (
@@ -660,8 +661,28 @@ export default function JobCreate(){
                             </div>
                         )}
                     </Field>
+                    <h3 className='font-bold mx-auto text-center mt-2'>FEEDBACK ABOUT US</h3>
+                    <Field name="feedback">
+                        {({ field, form }) => (
+                            <label className="block">
+                            <span className="text-gray-700">Feedback box</span>
+                            <textarea
+                            {...field}   
+                            className="
+                            mt-1
+                            block
+                            w-full
+                            rounded-md
+                            bg-gray-100
+                            border-transparent
+                            focus:border-gray-500 focus:bg-white focus:ring-0
+                        "      
+                            ></textarea>
+                          </label>
+                        )}
+                    </Field>
                     
-                    <button className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md mt-4 "type="submit">Post Job</button>
+                    <button className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md mt-4 rounded-lg "type="submit">Post Job</button>
                 </Form>
                 )}    
             </Formik>

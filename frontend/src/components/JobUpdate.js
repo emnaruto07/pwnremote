@@ -544,7 +544,7 @@ export default function JobUpdate(){
                             </div>
                         )}
                     </Field> 
-                    <button className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md mt-4 "type="submit">Update Post</button>
+                    <button className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md mt-4 rounded-lg"type="submit">Update Post</button>
                 </Form>
                 )}    
             </Formik>

@@ -6,30 +6,6 @@ class User(AbstractUser):
 
 class Job(models.Model):
 
-    # Employment_type = (
-    #     ('Full-time', 'Full-time',),
-    #     ('Part-time', 'Part-time'),
-    #     ('Contract', 'Contract'),
-    #     ('Temporary', 'Temporary'),
-    #     ('Internship', 'Internship')
-    # )
-    # Primary_Skills = (
-    #     ('Web-Security', 'Web-Security'),
-    #     ('Researcher', 'Researcher'),
-    #     ('SOC/SIEM','SOC/SIEM'),
-    #     ('VA/PT', 'VA/PT'),
-    #     ('Quality Assurance', 'Quality Assurance'),
-    #     ('Consulting', 'Consulting'),
-    #     ('Forensics/IR', 'Forensics/IR'),
-    #     ('Mobile Security', 'Mobile Security'),
-    #     ('Cloud Security', 'Cloud Security'),
-    #     ('Infrastructure Security', 'Infrastructure Security'),
-    #     ('Code Source Review', 'Code Source Review'),
-    #     ('Hardware/IOT', 'Hardware/IOT'),
-    #     ('DevOps/DevSecOps', 'DevOps/DevSecOps'),
-    #     ('Sales/Marketing', 'Sales/Marketing'),
-
-    # )
     Company_name = models.CharField(max_length=50)
     Position = models.CharField(max_length=100)
     Employment_type = models.CharField(max_length=15)
@@ -52,6 +28,7 @@ class Job(models.Model):
     sticky_week = models.BooleanField(default=False)
     sticky_month = models.BooleanField(default=False)
     sponsored = models.BooleanField(default=False)
+    feedback = models.BooleanField(default=False)
 
     def __str__(self):
         return self.Company_name
@@ -84,10 +61,9 @@ class CompanyDetail(models.Model):
     invoice_email = models.EmailField()
     invoice_address = models.TextField()
 
-class Feedback(models.Model):
-    email = models.EmailField()
-    message = models.TextField()
-    answer = models.CharField(max_length=20)
+class FeedbackBox(models.Model):
+    Job_id = models.OneToOneField('Job', on_delete=models.CASCADE)
+    feedback = models.TextField()
 
 class emailList(models.Model):
     First_name = models.CharField(max_length=15)

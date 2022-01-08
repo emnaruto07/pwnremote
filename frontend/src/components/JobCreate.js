@@ -58,8 +58,6 @@ export default function JobCreate(){
                 onSubmit={handleSubmit}>
                 {({ values }) => (
                 <Form>
-                    {/* <label htmlFor="Company_name">Company Name</label>
-                    <Field id="Company_name" name="Company_name" placeholder="Facebook"/> */}
                     <h3 className='font-bold mx-auto text-center mt-2'>JOB DETAILS</h3>
                     <Field name="Company_name">
                         {({ field, form }) => (
@@ -82,8 +80,7 @@ export default function JobCreate(){
                           </label>
                         )}
                     </Field>
-                    {/* <label htmlFor="Position">Position</label>
-                    <Field id="Position" name="Position" placeholder="Security Analyst" /> */}
+                  
                     <Field name="Position">
                         {({ field, form }) => (
                             <label className="block">
@@ -210,55 +207,7 @@ export default function JobCreate(){
                           </label>
                         )}
                     </Field>
-                    {/* <label htmlFor="Location">Location</label>
-                    <Field id="Location" name="Location"/> */}
-                    {/* <label htmlFor="Min_salary">Minimum Salary</label>
-                    <Field component="select"
-                    id="Min_salary"
-                    name="Min_salary">
-                        <option value="">Minimum per year</option>
-                        <option value="0">USD 0 per year</option>
-                        <option value="10000">USD 10,000 per year</option>
-                        <option value="20000">USD 20,000 per year</option>
-                        <option value="30000">USD 30,000 per year</option>
-                        <option value="40000">USD 40,000 per year</option>
-                        <option value="50000">USD 50,000 per year</option>
-                        <option value="60000">USD 60,000 per year</option>
-                        <option value="70000">USD 70,000 per year</option>
-                        <option value="80000">USD 80,000 per year</option>
-                        <option value="90000">USD 90,000 per year</option>
-                        <option value="100000">USD 100,000 per year</option>
-                        <option value="110000">USD 110,000 per year</option>
-                        <option value="120000">USD 120,000 per year</option>
-                        <option value="130000">USD 130,000 per year</option>
-                        <option value="140000">USD 140,000 per year</option>
-                        <option value="150000">USD 150,000 per year</option>
-                        <option value="160000">USD 160,000 per year</option>
-                        <option value="170000">USD 170,000 per year</option>
-                        <option value="180000">USD 180,000 per year</option>
-                        <option value="190000">USD 190,000 per year</option>
-                        <option value="200000">USD 200,000 per year</option>
-                        <option value="210000">USD 210,000 per year</option>
-                        <option value="220000">USD 220,000 per year</option>
-                        <option value="230000">USD 230,000 per year</option>
-                        <option value="240000">USD 240,000 per year</option>
-                        <option value="250000">USD 250,000 per year</option>
-                        <option value="260000">USD 260,000 per year</option>
-                        <option value="270000">USD 270,000 per year</option>
-                        <option value="280000">USD 280,000 per year</option>
-                        <option value="290000">USD 290,000 per year</option>
-                        <option value="300000">USD 300,000 per year</option>
-                        <option value="310000">USD 310,000 per year</option>
-                        <option value="320000">USD 320,000 per year</option>
-                        <option value="330000">USD 330,000 per year</option>
-                        <option value="340000">USD 340,000 per year</option>
-                        <option value="350000">USD 350,000 per year</option>
-                        <option value="360000">USD 360,000 per year</option>
-                        <option value="370000">USD 370,000 per year</option>
-                        <option value="380000">USD 380,000 per year</option>
-                        <option value="390000">USD 390,000 per year</option>
-                        <option value="400000">USD 400,000 per year</option>
-                    </Field> */}
+                    
                     <Field name="Min_salary">
                         {({ field, form }) => (
                             <label className="block">
@@ -321,53 +270,7 @@ export default function JobCreate(){
                           </label>
                         )}
                     </Field>
-                    {/* <label htmlFor="max_salary">Maximum Salary</label>
-                    <Field component="select"
-                    id="max_salary"
-                    name="max_salary">
-                        <option value="">Minimum per year</option>
-                        <option value="0">USD 0 per year</option>
-                        <option value="10000">USD 10,000 per year</option>
-                        <option value="20000">USD 20,000 per year</option>
-                        <option value="30000">USD 30,000 per year</option>
-                        <option value="40000">USD 40,000 per year</option>
-                        <option value="50000">USD 50,000 per year</option>
-                        <option value="60000">USD 60,000 per year</option>
-                        <option value="70000">USD 70,000 per year</option>
-                        <option value="80000">USD 80,000 per year</option>
-                        <option value="90000">USD 90,000 per year</option>
-                        <option value="100000">USD 100,000 per year</option>
-                        <option value="110000">USD 110,000 per year</option>
-                        <option value="120000">USD 120,000 per year</option>
-                        <option value="130000">USD 130,000 per year</option>
-                        <option value="140000">USD 140,000 per year</option>
-                        <option value="150000">USD 150,000 per year</option>
-                        <option value="160000">USD 160,000 per year</option>
-                        <option value="170000">USD 170,000 per year</option>
-                        <option value="180000">USD 180,000 per year</option>
-                        <option value="190000">USD 190,000 per year</option>
-                        <option value="200000">USD 200,000 per year</option>
-                        <option value="210000">USD 210,000 per year</option>
-                        <option value="220000">USD 220,000 per year</option>
-                        <option value="230000">USD 230,000 per year</option>
-                        <option value="240000">USD 240,000 per year</option>
-                        <option value="250000">USD 250,000 per year</option>
-                        <option value="260000">USD 260,000 per year</option>
-                        <option value="270000">USD 270,000 per year</option>
-                        <option value="280000">USD 280,000 per year</option>
-                        <option value="290000">USD 290,000 per year</option>
-                        <option value="300000">USD 300,000 per year</option>
-                        <option value="310000">USD 310,000 per year</option>
-                        <option value="320000">USD 320,000 per year</option>
-                        <option value="330000">USD 330,000 per year</option>
-                        <option value="340000">USD 340,000 per year</option>
-                        <option value="350000">USD 350,000 per year</option>
-                        <option value="360000">USD 360,000 per year</option>
-                        <option value="370000">USD 370,000 per year</option>
-                        <option value="380000">USD 380,000 per year</option>
-                        <option value="390000">USD 390,000 per year</option>
-                        <option value="400000">USD 400,000 per year</option>
-                    </Field> */}
+                    
                     <Field name="max_salary">
                         {({ field, form }) => (
                             <label className="block">
@@ -449,8 +352,7 @@ export default function JobCreate(){
                           </label>
                         )}
                     </Field>
-                    {/* <label htmlFor="Description">Job Description</label>
-                    <Field as='textarea' id="Description" name="Description"/> */}
+                    
                     <Field name="url">
                         {({ field, form }) => (
                             <label className="block">
@@ -472,8 +374,7 @@ export default function JobCreate(){
                           </label>
                         )}
                     </Field>
-                    {/* <label htmlFor="url">Apply Url</label>
-                    <Field name="url" type="url" /> */}
+                   
                     <Field name="email">
                         {({ field, form }) => (
                             <label className="block">
@@ -495,12 +396,7 @@ export default function JobCreate(){
                           </label>
                         )}
                     </Field>
-                    {/* <label htmlFor="email">Apply Email</label>
-                    <Field name="email" type="email" /> */}
-                    <h3 className='font-bold mx-auto text-center mt-2'>DESIGN YOUR POST</h3>
-                    {/* <SketchPicker /> */}
-                    {/* <Field type="checkbox" name="show_logo" />
-                    <label htmlFor="show_logo">Show Logo</label> */}
+                        <h3 className='font-bold mx-auto text-center mt-2'>DESIGN YOUR POST</h3>
                      <Field name="show_logo">
                         {({ field, form }) => (
                             <div className="block">
@@ -525,8 +421,7 @@ export default function JobCreate(){
                             </div>
                         )}
                     </Field>
-                    {/* <Field type="checkbox" name="Highlight" />
-                    <label htmlFor="Highlight">Highlight</label> */}
+ 
                     <Field name="Highlight">
                         {({ field, form }) => (
                             <div className="block">
@@ -575,8 +470,7 @@ export default function JobCreate(){
                             </div>
                         )}
                     </Field>
-                    {/* <Field type="checkbox" name="sticky_day" />
-                    <label htmlFor="sticky_day">Sticky for a day</label> */}
+
                     <Field name="sticky_week">
                         {({ field, form }) => (
                             <div className="block">
@@ -601,10 +495,7 @@ export default function JobCreate(){
                             </div>
                         )}
                     </Field>
-                    {/* <Field type="checkbox" name="sticky_week" />
-                    <label htmlFor="sticky_week">Sticky for a week</label> */}
-                    {/* <Field type="checkbox" name="sticky_month" />
-                    <label htmlFor="sticky_month">Sticky for a month</label> */}
+                  
                     <Field name="sticky_month">
                         {({ field, form }) => (
                             <div className="block">
@@ -650,7 +541,7 @@ export default function JobCreate(){
                         )}
                     </Field>
                     
-                    <button className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md mt-4 rounded-lg "type="submit">Post Job</button>
+                    <button className="bg-black border-solid border-2 border-black hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-md mt-4 rounded-lg "type="submit">Post Job</button>
                 </Form>
                 )}    
             </Formik>

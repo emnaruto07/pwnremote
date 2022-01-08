@@ -53,12 +53,8 @@ export default function Login(){
                                 </label>
                                 )}
                             </Field>
-                            {/* <label htmlFor="username">Username</label>
-                            <Field id="username" name="username" placeholder="username" /> */}
                             {touched.username && errors.username && <div>{errors.username}</div>}
 
-                            {/* <label htmlFor="password">Password</label>
-                            <Field id="password" name="password" type="password" /> */}
                             <Field name="password">
                                 {({ field, form }) => (
                                     <label className="block">
@@ -81,7 +77,7 @@ export default function Login(){
                             </Field>
                             {touched.password && errors.password && <div>{errors.password}</div>}
                             
-                            <button className="mt-2 bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md rounded-lg" type="submit">Login</button>
+                            <button className="mt-2 bg-black border-solid border-2 border-black hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-md rounded-lg" type="submit">Login</button>
                         </Form>
                     </div>
                 

@@ -1,17 +1,18 @@
 import { Formik, Field, Form } from 'formik';
 import { useState } from 'react';
 import axios from "axios";
-import { useNavigate, NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { useContext } from 'react';
-import { useParams } from "react-router"
+// import { useParams } from "react-router"
 import { API } from '../api';
+import {CompanyDetails} from '../components/CompanyDetails'
 
 export default function JobCreate(){
     const [loading, setLoading] = useState(false)
     const { user: { token } } = useContext(AuthContext)
     const navigate = useNavigate()
-    const { id } = useParams()
+    // const { id } = useParams()
 
     function handleSubmit(values) {
         setLoading(true)
@@ -55,7 +56,10 @@ export default function JobCreate(){
                     sticky_day: false,
                     sticky_week: false,
                     sticky_month: false,
-                    feedback: ''
+                    feedback: '',
+
+
+
                 }}
                 onSubmit={handleSubmit}>
                 {({ values }) => (
@@ -523,6 +527,7 @@ export default function JobCreate(){
                             </div>
                         )}
                     </Field>
+                    <CompanyDetails />
                     <h3 className='border-solid border-2 border-black font-bold py-2 px-4 text-center mt-2 mb-2 rounded-lg'>FEEDBACK ABOUT US</h3>
                     <Field name="feedback">
                         {({ field, form }) => (

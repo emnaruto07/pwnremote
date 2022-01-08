@@ -2,7 +2,7 @@ from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, D
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Job
-from .serializers import JobListSerializer
+from .serializers import JobListSerializer, CompanyDetailSerializer
 from rest_framework.permissions import IsAuthenticated
 from django.conf import settings
 
@@ -44,6 +44,20 @@ class JobDeleteView(DestroyAPIView):
 
     def get_queryset(self):
         return Job.objects.all()
+
+
+class CompanyDetailView(ListAPIView):
+    serializer_class = CompanyDetailSerializer
+
+    def get_queryset(self):
+        return Job.objects.all()
+
+class CompanyCreateView(CreateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = CompanyDetailSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 class CreatePaymentView(APIView):
     def post(self, request, *args, **kwargs):

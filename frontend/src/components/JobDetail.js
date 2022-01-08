@@ -3,10 +3,13 @@ import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
 import { useParams } from "react-router"
 import { API } from "../api"
+// import { AuthContext } from '../contexts/AuthContext';
+// import { useContext } from 'react';
 
 export default function JobDetail(){
     const [job, setJob] = useState(null)
     const { id } = useParams()
+    // const { user: { token } } = useContext(AuthContext)
 
 
     useEffect(() => {
@@ -19,6 +22,8 @@ export default function JobDetail(){
     }
     fetchJobList()
 }, [id])
+
+// console.log(token)
 
 return(
     <div>
@@ -67,21 +72,23 @@ return(
                     <h3 className="text-1xl text-black text-center subpixel-antialiased font-semibold">Email: <span className="font-">{job.email}</span></h3> */}
                 </div>
                     
-        </div>
+                </div>
+        {/* {token && ( */}
             <div className="flex items-center mt-2">
-            <NavLink to={`/jobs/${id}/update`}>
-                    <h5 className="border-solid border-2 border-black bg-black hover:text-black hover:bg-white text-white font-bold py-2 px-4 shadow-md rounded-lg">Update</h5>
-            </NavLink>
-            {/* {!job.sponsored && (
-                <NavLink to={`/jobs/${id}/sponsor`}>
-                    <h5 className="border-solid border-2 border-orange-600 ml-2 bg-orange-600 hover:bg-white hover:text-orange-600 text-white font-bold py-2 px-4 shadow-md rounded-lg">Boost Post</h5>
+                <NavLink to={`/jobs/${id}/update`}>
+                        <h5 className="border-solid border-2 border-black bg-black hover:text-black hover:bg-white text-white font-bold py-2 px-4 shadow-md rounded-lg">Update</h5>
                 </NavLink>
-            )
-            }       */}
-            <NavLink to={`/jobs/${id}/delete`}>
-                <h5 className="ml-2 bg-red-700 hover:bg-white hover:text-red-700 text-white font-bold py-2 px-4 rounded-lg border-solid border-2 border-red-700 shadow-md">Delete</h5>
-            </NavLink>
+                {/* {!job.sponsored && (
+                    <NavLink to={`/jobs/${id}/sponsor`}>
+                        <h5 className="border-solid border-2 border-orange-600 ml-2 bg-orange-600 hover:bg-white hover:text-orange-600 text-white font-bold py-2 px-4 shadow-md rounded-lg">Boost Post</h5>
+                    </NavLink>
+                )
+                }       */}
+                <NavLink to={`/jobs/${id}/delete`}>
+                    <h5 className="ml-2 bg-red-700 hover:bg-white hover:text-red-700 text-white font-bold py-2 px-4 rounded-lg border-solid border-2 border-red-700 shadow-md">Delete</h5>
+                </NavLink>
             </div>
+           {/* )} */}
             
         </div>        
         )}

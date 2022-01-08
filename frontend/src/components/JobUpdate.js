@@ -1,7 +1,7 @@
 import { Formik, Field, Form } from 'formik';
 import { useState, useEffect } from 'react';
 import axios from "axios";
-import { useNavigate, NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { useParams } from "react-router-dom"
 import { useContext } from 'react';

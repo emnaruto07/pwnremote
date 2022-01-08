@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from .models import Job
+from .models import CompanyDetail, Job
 
 class JobListSerializer(ModelSerializer):
     
@@ -31,3 +31,14 @@ class JobListSerializer(ModelSerializer):
             "feedback",
         )
         read_only_fields = ("date_created", "user")
+
+class CompanyDetailSerializer(ModelSerializer):
+
+    class Meta:
+        model = CompanyDetail
+        fields = (
+                'company_twitter',
+                'company_email',
+                'invoice_email',
+                'invoice_address'
+        )

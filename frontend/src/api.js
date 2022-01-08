@@ -23,5 +23,10 @@ export const API = {
         delete: id => `${apiURL}/job/${id}/delete`,
         retrieve: id => `${apiURL}/job/${id}/`,
 
+    },
+
+    company: {
+        companySave: `${apiURL}/create-company-details/`,
+        companyList: `${apiURL}/company-details/`,
     }
 }

@@ -55,10 +55,13 @@ return(
                             {job.Location}
                         </p>
                         )}
-                    <div className="mt-4">
-                        <a className="mx-auto text-center py-3" href={job.url} target="_blank" rel="noopener noreferrer">
-                            <h5 className="border-solid border-2 border-black bg-black hover:text-black hover:bg-white text-white font-bold py-2 px-4 shadow-lg rounded-lg">Apply for the job</h5>
-                        </a>
+                    <div className="mt-4 flex">
+                        <div className="m-auto w-5/6">
+                            <a className=" text-center py-3" href={job.url} target="_blank" rel="noopener noreferrer">
+                                <h5 className="border-solid border-2 border-black bg-black hover:text-black hover:bg-white text-white font-bold py-2 shadow-lg rounded-lg">Apply for the job</h5>
+                            </a>
+                        </div>
+                       
                     </div>
                     {/* <h3 className="text-1xl text-black text-center m-2 subpixel-antialiased font-semibold">OR</h3>
                     <h3 className="text-1xl text-black text-center subpixel-antialiased font-semibold">Email: <span className="font-">{job.email}</span></h3> */}

@@ -27,6 +27,7 @@ class JobListSerializer(ModelSerializer):
             "sticky_day",
             "sticky_week",
             "sticky_month",
-            "sponsored"
+            "sponsored",
+            "feedback",
         )
         read_only_fields = ("date_created", "user")

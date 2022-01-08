@@ -73,7 +73,7 @@ return(
             </NavLink>
             {!job.sponsored && (
                 <NavLink to={`/jobs/${id}/sponsor`}>
-                    <h5 className="ml-2 bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 shadow-md rounded-lg">Boost</h5>
+                    <h5 className="ml-2 bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 shadow-md rounded-lg">Boost Post</h5>
                 </NavLink>
             )
             }      
@@ -87,7 +87,6 @@ return(
         
     </div>
 )
-
 
 
 

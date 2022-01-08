@@ -11,7 +11,6 @@ class Job(models.Model):
     Employment_type = models.CharField(max_length=15)
     Primary_Skills = models.CharField(max_length=50)
     Skills_tag = models.CharField(max_length=100)
-    remote = models.BooleanField(default=True)
     Location = models.CharField(max_length=50)
     date_created = models.DateTimeField(auto_now_add=True)
     available = models.BooleanField(default=True)
@@ -28,7 +27,7 @@ class Job(models.Model):
     sticky_week = models.BooleanField(default=False)
     sticky_month = models.BooleanField(default=False)
     sponsored = models.BooleanField(default=False)
-    feedback = models.BooleanField(default=False)
+    feedback = models.TextField(default="")
 
     def __str__(self):
         return self.Company_name
@@ -54,16 +53,11 @@ class SponsoredJobPost(models.Model):
     date_until = models.DateTimeField()
     stripe_payment_intent_id = models.CharField(max_length=150)
 
-
 class CompanyDetail(models.Model):
     company_twitter = models.CharField(max_length=15, blank=True, default='')
     company_email = models.EmailField()
     invoice_email = models.EmailField()
     invoice_address = models.TextField()
-
-class FeedbackBox(models.Model):
-    Job_id = models.OneToOneField('Job', on_delete=models.CASCADE)
-    feedback = models.TextField()
 
 class emailList(models.Model):
     First_name = models.CharField(max_length=15)

@@ -40,7 +40,6 @@ export default function JobCreate(){
                     Primary_Skills: '',
                     Skills_tag: '',
                     Location: '',
-                    // remote: true,
                     available: true,
                     Min_salary: '',
                     max_salary: '',
@@ -106,16 +105,7 @@ export default function JobCreate(){
                           </label>
                         )}
                     </Field>
-                    {/* <Field component="select"
-                    id="Employment_type"
-                    name="Employment_type">
-                        <option value="full-time">Full-time</option>
-                        <option value="part-time">Part-time</option>
-                        <option value="Contract">Contract</option>
-                        <option value="Temporary">Temporary</option>
-                        <option value="Internship">Internship</option>
-                    </Field>
-                    <label htmlFor="Primary_Skills">Primary Skill</label> */}
+                  
                     <Field name="Employment_type">
                         {({ field, form }) => (
                             <label className="block">
@@ -142,25 +132,7 @@ export default function JobCreate(){
                           </label>
                         )}
                     </Field>
-                    {/* <Field component="select"
-                    id="Primary_Skills"
-                    name="Primary_Skills">
-                        <option value="">Select a Primary Skill</option>
-                        <option value="Web-Security">Web-Security</option>
-                        <option value="Researcher">Researcher</option>
-                        <option value="SOC/SIEM">SOC/SIEM</option>
-                        <option value="VA/PT">VA/PT</option>
-                        <option value="Consulting">Consulting</option>
-                        <option value="Quality Assurance">Quality Assurance</option>
-                        <option value="Forensics/IR">Forensics/IR</option>
-                        <option value="Mobile Security">Mobile Security</option>
-                        <option value="Cloud Security">Cloud Security</option>
-                        <option value="Infrastructure Security">Infrastructure Security</option>
-                        <option value="Code Source Review">Code Source Review</option>
-                        <option value="Hardware/IOT">Hardware/IOT</option>
-                        <option value="DevOps/DevSecOps">DevOps/DevSecOps</option>
-                        <option value="Sales/Marketing">Sales/Marketing</option>
-                    </Field> */}
+                
                     <Field name="Primary_Skills">
                         {({ field, form }) => (
                             <label className="block">
@@ -217,10 +189,6 @@ export default function JobCreate(){
                           </label>
                         )}
                     </Field>
-                    {/* <label htmlFor="Skills_tag">Skills Tag</label>
-                    <Field id="Skills_tag" name="Skills_tag" placeholder="burp, scripting" /> */}
-                    {/* <Field type="checkbox" name="remote" />
-                    <label htmlFor="remote">remote</label> */}
                     <Field name="Location">
                         {({ field, form }) => (
                             <label className="block">

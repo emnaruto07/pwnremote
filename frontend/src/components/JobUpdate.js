@@ -63,7 +63,6 @@ export default function JobUpdate(){
                     Primary_Skills: job.Primary_Skills,
                     Skills_tag: job.Skills_tag,
                     Location: job.Location,
-                    remote: true,
                     available: true,
                     Min_salary: job.Min_salary,
                     max_salary: job.max_salary,
@@ -76,7 +75,7 @@ export default function JobUpdate(){
                     Highlight: job.Highlight,
                     sticky_day: job.sticky_day,
                     sticky_week: job.sticky_week,
-                    sticky_month: job.sticky_month
+                    sticky_month: job.sticky_month,
                 }}
                 onSubmit={handleSubmit}>
                 {({ values }) => (
@@ -366,6 +365,7 @@ export default function JobUpdate(){
                                 mt-1
                                 block
                                 w-full
+                                h-24
                                 rounded-md
                                 bg-gray-100
                                 border-transparent
@@ -544,6 +544,27 @@ export default function JobUpdate(){
                             </div>
                         )}
                     </Field> 
+                    {/* <h3 className='font-bold mx-auto text-center mt-2'>FEEDBACK ABOUT US</h3>
+                    <Field name="feedback">
+                        {({ field, form }) => (
+                            <label className="block">
+                            <span className="text-gray-700">Feedback box</span>
+                            <textarea
+                            {...field}   
+                            className="
+                            mt-1
+                            block
+                            w-full
+                            h-32
+                            rounded-md
+                            bg-gray-100
+                            border-transparent
+                            focus:border-gray-500 focus:bg-white focus:ring-0
+                        "      
+                            ></textarea>
+                          </label>
+                        )}
+                    </Field> */}
                     <button className="bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md mt-4 rounded-lg"type="submit">Update Post</button>
                 </Form>
                 )}    

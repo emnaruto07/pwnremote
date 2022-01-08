@@ -18,7 +18,6 @@ import Signup from "./components/Signup";
 // import Homeheader from "./components/Homeheader";
 import { Payment} from "./components/Payment";
 import Success from "./components/Success";
-import { CompanyDetails } from "./components/CompanyDetails";
 
 
 function PrivateRoute({ children }){
@@ -40,7 +39,6 @@ export default function App() {
                 <Routes>
                   <Route path="/create-job" element={<PrivateRoute><JobCreate /></PrivateRoute>} exact />
                   <Route path="/login" element={<Login />} exact />
-                  <Route path="/company" element={<CompanyDetails />} exact />
                   <Route path="/jobs/:id/sponsor" element={<PrivateRoute><Payment /></PrivateRoute>} exact />
                   <Route path="/signup" element={<Signup />} exact />
                   <Route path="/accounts/confirm-email/:key" element={<ConfirmEmail />} exact />

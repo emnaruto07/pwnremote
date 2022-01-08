@@ -76,6 +76,10 @@ export default function JobUpdate(){
                     sticky_day: job.sticky_day,
                     sticky_week: job.sticky_week,
                     sticky_month: job.sticky_month,
+                    company_twitter: job.company_twitter,
+                    company_email: job.company_email,
+                    invoice_email: job.invoice_email,
+                    invoice_address: job.invoice_email,
                 }}
                 onSubmit={handleSubmit}>
                 {({ values }) => (
@@ -548,7 +552,94 @@ export default function JobUpdate(){
                                 </label>
                             </div>
                         )}
-                    </Field> 
+                    </Field>
+                    <h3 className='border-solid border-2 border-black font-bold py-2 px-4 text-center mt-4 mb-2 rounded-lg'>COMPANY DETAILS</h3>
+                    <Field name="company_twitter">
+                        {({ field, form }) => (
+                            <label className="block">
+                            <span className="text-gray-700">Company twitter</span>
+                            <input
+                            {...field}
+                              type="text"
+                              className="
+                                mt-1
+                                block
+                                w-full
+                                rounded-md
+                                bg-gray-100
+                                border-transparent
+                                focus:border-gray-500 focus:bg-white focus:ring-0
+                              "
+                              placeholder="@twitter"
+                            />
+                          </label>
+                        )}
+                    </Field>
+                    <Field name="company_email">
+                        {({ field, form }) => (
+                            <label className="block">
+                            <span className="text-gray-700">Company Email</span>
+                            <input
+                            {...field}
+                              type="text"
+                              className="
+                                mt-1
+                                block
+                                w-full
+                                rounded-md
+                                bg-gray-100
+                                border-transparent
+                                focus:border-gray-500 focus:bg-white focus:ring-0
+                              "
+                              placeholder="This email address is for custom Links"
+                            />
+                          </label>
+                        )}
+                    </Field>
+                    <Field name="invoice_email">
+                        {({ field, form }) => (
+                            <label className="block">
+                            <span className="text-gray-700">Invoice Email</span>
+                            <input
+                            {...field}
+                              type="text"
+                              className="
+                                mt-1
+                                block
+                                w-full
+                                rounded-md
+                                bg-gray-100
+                                border-transparent
+                                focus:border-gray-500 focus:bg-white focus:ring-0
+                              "
+                              placeholder="To send the copy of the invoice."
+                            />
+                          </label>
+                        )}
+                    </Field>
+
+                    <Field name="invoice_address">
+                        {({ field, form }) => (
+                            <label className="block">
+                            <span className="text-gray-700">Invoice Address</span>
+                            <textarea
+                            {...field}
+                              className="
+                                mt-1
+                                mb-4
+                                block
+                                w-full
+                                h-32
+                                rounded-md
+                                bg-gray-100
+                                border-transparent
+                                focus:border-gray-500 focus:bg-white focus:ring-0
+                              "
+                              placeholder="To put it on your invoice."
+                            />
+                          </label>
+                        )}
+                    </Field>
                     {/* <NavLink to={`/jobs/${id}/sponsor`}> */}
                         <button className="bg-black border-solid border-2 border-black hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-md mt-4 rounded-lg"type="submit">Update Post</button>
                     {/* </NavLink> */}

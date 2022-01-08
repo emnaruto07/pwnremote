@@ -25,7 +25,7 @@ export default function ConfirmEmail(){
             {success && "Your email has been verified! You can now login"}
             {loading && "Loading..."}
             <form onSubmit={handleSubmit}>
-                <button className="mt-2 bg-black hover:bg-gray-500 text-white font-bold py-2 px-4 shadow-md" type="submit">Verify Email</button>  
+                <button className="border-solid border-2 border-black bg-black hover:text-black hover:bg-white text-white font-bold py-2 px-4 shadow-md rounded-lg" type="submit">Verify Email</button>  
             </form>
         </div>
     )

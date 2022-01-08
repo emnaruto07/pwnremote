@@ -28,6 +28,10 @@ class Job(models.Model):
     sticky_month = models.BooleanField(default=False)
     sponsored = models.BooleanField(default=False)
     feedback = models.TextField(default="")
+    company_twitter = models.CharField(max_length=15, blank=True, default='')
+    company_email = models.EmailField(default="")
+    invoice_email = models.EmailField(default="")
+    invoice_address = models.TextField(default="")
 
     def __str__(self):
         return self.Company_name
@@ -39,12 +43,9 @@ class SponsoredJobPost(models.Model):
     date_until = models.DateTimeField()
     stripe_payment_intent_id = models.CharField(max_length=150)
 
-class CompanyDetail(models.Model):
-    job = models.OneToOneField('Job', on_delete=models.CASCADE, related_name='Companydetails')
-    company_twitter = models.CharField(max_length=15, blank=True, default='')
-    company_email = models.EmailField()
-    invoice_email = models.EmailField()
-    invoice_address = models.TextField()
+# class CompanyDetail(models.Model):
+#     job = models.OneToOneField('Job', on_delete=models.CASCADE, related_name='Companydetails')
+    
 
 class emailList(models.Model):
     First_name = models.CharField(max_length=15)

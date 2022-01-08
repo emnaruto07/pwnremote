@@ -6,7 +6,6 @@ import { AuthContext } from '../contexts/AuthContext';
 import { useContext } from 'react';
 // import { useParams } from "react-router"
 import { API } from '../api';
-import {CompanyDetails} from '../components/CompanyDetails'
 
 export default function JobCreate(){
     const [loading, setLoading] = useState(false)
@@ -57,6 +56,10 @@ export default function JobCreate(){
                     sticky_week: false,
                     sticky_month: false,
                     feedback: '',
+                    company_twitter: '',
+                    company_email: '',
+                    invoice_email: '',
+                    invoice_address: '',
 
                 }}
                 onSubmit={handleSubmit}>
@@ -525,7 +528,93 @@ export default function JobCreate(){
                             </div>
                         )}
                     </Field>
-                    <CompanyDetails />
+                    <h3 className='border-solid border-2 border-black font-bold py-2 px-4 text-center mt-4 mb-2 rounded-lg'>COMPANY DETAILS</h3>
+                    <Field name="company_twitter">
+                        {({ field, form }) => (
+                            <label className="block">
+                            <span className="text-gray-700">Company twitter</span>
+                            <input
+                            {...field}
+                              type="text"
+                              className="
+                                mt-1
+                                block
+                                w-full
+                                rounded-md
+                                bg-gray-100
+                                border-transparent
+                                focus:border-gray-500 focus:bg-white focus:ring-0
+                              "
+                              placeholder="@twitter"
+                            />
+                          </label>
+                        )}
+                    </Field>
+                    <Field name="company_email">
+                        {({ field, form }) => (
+                            <label className="block">
+                            <span className="text-gray-700">Company Email</span>
+                            <input
+                            {...field}
+                              type="text"
+                              className="
+                                mt-1
+                                block
+                                w-full
+                                rounded-md
+                                bg-gray-100
+                                border-transparent
+                                focus:border-gray-500 focus:bg-white focus:ring-0
+                              "
+                              placeholder="This email address is for custom Links"
+                            />
+                          </label>
+                        )}
+                    </Field>
+                    <Field name="invoice_email">
+                        {({ field, form }) => (
+                            <label className="block">
+                            <span className="text-gray-700">Invoice Email</span>
+                            <input
+                            {...field}
+                              type="text"
+                              className="
+                                mt-1
+                                block
+                                w-full
+                                rounded-md
+                                bg-gray-100
+                                border-transparent
+                                focus:border-gray-500 focus:bg-white focus:ring-0
+                              "
+                              placeholder="To send the copy of the invoice."
+                            />
+                          </label>
+                        )}
+                    </Field>
+
+                    <Field name="invoice_address">
+                        {({ field, form }) => (
+                            <label className="block">
+                            <span className="text-gray-700">Invoice Address</span>
+                            <textarea
+                            {...field}
+                              className="
+                                mt-1
+                                mb-4
+                                block
+                                w-full
+                                h-32
+                                rounded-md
+                                bg-gray-100
+                                border-transparent
+                                focus:border-gray-500 focus:bg-white focus:ring-0
+                              "
+                              placeholder="To put it on your invoice."
+                            />
+                          </label>
+                        )}
+                    </Field>
                     <h3 className='border-solid border-2 border-black font-bold py-2 px-4 text-center mt-2 mb-2 rounded-lg'>FEEDBACK ABOUT US</h3>
                     <Field name="feedback">
                         {({ field, form }) => (
@@ -542,7 +631,9 @@ export default function JobCreate(){
                             bg-gray-100
                             border-transparent
                             focus:border-gray-500 focus:bg-white focus:ring-0
+                            
                         "      
+                            placeholder="Please be nice and provide us with your valuable feedback. You can give us any kind of feedback about anything or maybe you can suggest some useful features for this website."
                             ></textarea>
                           </label>
                         )}

@@ -1,15 +1,29 @@
 import { Formik, Field, Form } from 'formik';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from "axios";
 import { AuthContext } from '../contexts/AuthContext';
 import { useContext } from 'react';
-// import { useParams } from "react-router"
+import { useParams } from "react-router"
 import { API } from '../api';
 
 export function CompanyDetails(){
     const [loading, setLoading] = useState(false)
     const { user: { token } } = useContext(AuthContext)
-    // const { id } = useParams()
+
+    const [job, setJob] = useState(null)
+    const { id } = useParams()
+
+
+    useEffect(() => {
+        function fetchJobList(){
+            axios.get(API.jobs.retrieve(id))
+            .then(res => {
+            console.log(res.data)
+            setJob(res.data)
+        })
+    }
+    fetchJobList()
+}, [id])
 
     function handleSubmit(values) {
         setLoading(true)
@@ -33,6 +47,7 @@ export function CompanyDetails(){
             {loading && "Loading..."}
             <Formik
                 initialValues={{
+                    job: id,
                     company_twitter: '',
                     company_email: '',
                     invoice_email: '',
@@ -58,7 +73,7 @@ export function CompanyDetails(){
                                 border-transparent
                                 focus:border-gray-500 focus:bg-white focus:ring-0
                               "
-                              placeholder="https://www.twitter.com/example"
+                              placeholder="@twitter"
                             />
                           </label>
                         )}
@@ -128,6 +143,7 @@ export function CompanyDetails(){
                           </label>
                         )}
                     </Field>
+                    {/* <button className="bg-black border-solid border-2 border-black hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-md mt-4 rounded-lg"type="submit">Post Job</button> */}
                     </Form>
                 )} 
             </Formik>

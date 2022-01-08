@@ -58,8 +58,6 @@ export default function JobCreate(){
                     sticky_month: false,
                     feedback: '',
 
-
-
                 }}
                 onSubmit={handleSubmit}>
                 {({ values }) => (

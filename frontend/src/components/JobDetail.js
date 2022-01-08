@@ -23,7 +23,7 @@ export default function JobDetail(){
     fetchJobList()
 }, [id])
 
-// console.log(token)
+ console.log(id)
 
 return(
     <div>
@@ -73,6 +73,7 @@ return(
                 </div>
                     
                 </div>
+
         {/* {token && ( */}
             <div className="flex items-center mt-2">
                 <NavLink to={`/jobs/${id}/update`}>

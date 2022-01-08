@@ -40,6 +40,7 @@ class SponsoredJobPost(models.Model):
     stripe_payment_intent_id = models.CharField(max_length=150)
 
 class CompanyDetail(models.Model):
+    job = models.OneToOneField('Job', on_delete=models.CASCADE, related_name='Companydetails')
     company_twitter = models.CharField(max_length=15, blank=True, default='')
     company_email = models.EmailField()
     invoice_email = models.EmailField()

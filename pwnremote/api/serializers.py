@@ -1,6 +1,8 @@
 from rest_framework.serializers import ModelSerializer
 from .models import CompanyDetail, Job
 
+
+
 class JobListSerializer(ModelSerializer):
     
     class Meta:   
@@ -34,9 +36,12 @@ class JobListSerializer(ModelSerializer):
 
 class CompanyDetailSerializer(ModelSerializer):
 
+    Job = JobListSerializer(required=True)
+
     class Meta:
         model = CompanyDetail
         fields = (
+                'Job',
                 'company_twitter',
                 'company_email',
                 'invoice_email',

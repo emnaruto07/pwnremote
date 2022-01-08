@@ -53,11 +53,11 @@ class CompanyDetailView(ListAPIView):
         return Job.objects.all()
 
 class CompanyCreateView(CreateAPIView):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     serializer_class = CompanyDetailSerializer
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        serializer.save()
 
 class CreatePaymentView(APIView):
     def post(self, request, *args, **kwargs):

@@ -28,5 +28,9 @@ export const API = {
     company: {
         companySave: `${apiURL}/create-company-details/`,
         companyList: `${apiURL}/company-details/`,
+    },
+
+    user: {
+        users: `${apiURL}/users/`
     }
 }

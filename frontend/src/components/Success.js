@@ -1,9 +1,10 @@
 import React from 'react'
 
+
 function Success() {
     return (
         <div>
-            Success!
+            Success! Redirecting you to the main page.
         </div>
     )
 }

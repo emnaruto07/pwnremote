@@ -30,6 +30,9 @@ export default function Navbar(){
                         <Link className='hover:text-blue-600' to="/create-job">Post a Job</Link>
                     </li>
                 </div>
+                <div className='text-center text-4xl font-bold text-red-600'>
+                    uid=0(pwnremote)
+                </div>
                 <div className='flex items-center'>
                     {user ? (
                         <div className='flex items-center'>

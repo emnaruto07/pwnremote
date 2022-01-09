@@ -9,7 +9,7 @@ function JobListItem({job}){
 
   return(  
     <NavLink to={`/jobs/${job.id}`}>
-      <div {...condition ? 'true': "false" } style={{ backgroundColor: condition ? "#FAF884" : "white" }} className="border-solid border-2 border-black px-2 py-3 shadow-lg rounded-2xl mb-3">
+      <div {...condition ? 'true': "false" } style={{ backgroundColor: condition ? "#FAF884" : "white" }} className="border-solid border-2 px-2 py-3 shadow-lg rounded-2xl mb-3">
         <div  className="flex justify-between">
               <h4 className="mt-1">
                 <div className="inline">

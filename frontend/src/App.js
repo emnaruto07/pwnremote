@@ -19,6 +19,7 @@ import Signup from "./components/Signup";
 import Homeheader from "./components/Homeheader";
 import { Payment} from "./components/Payment";
 import Success from "./components/Success";
+import Footer from "./components/Footer";
 
 
 function PrivateRoute({ children }){
@@ -50,6 +51,7 @@ export default function App() {
                   <Route path="/" element={<JobList />} exact />
                 </Routes>
               </div> 
+              <Footer />
         </div>
       </AuthContextProvider>
     </Router>

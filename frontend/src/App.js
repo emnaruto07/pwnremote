@@ -5,6 +5,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+
 import JobList from "./components/JobList";
 import JobDetail from "./components/JobDetail";
 import JobCreate from "./components/JobCreate";
@@ -15,7 +16,7 @@ import Navbar from "./components/Navbar";
 import JobUpdate from "./components/JobUpdate";
 import JobDelete from "./components/JobDelete";
 import Signup from "./components/Signup";
-// import Homeheader from "./components/Homeheader";
+import Homeheader from "./components/Homeheader";
 import { Payment} from "./components/Payment";
 import Success from "./components/Success";
 
@@ -31,8 +32,8 @@ export default function App() {
     <Router>
       <AuthContextProvider>
           <div>
-            {/* <Homeheader /> */}
             <Navbar />
+            <Homeheader />
             {/* A <Router> looks through its children <Route>s and
                 renders the first one that matches the current URL. */}
               <div className='max-w-6xl mx-auto py-5 px-4'>

@@ -41,7 +41,7 @@ return(
         {!job && "Loading.."}
         {job && (    
             <div>
-                <div className="border border-gray-200 px-2 py-3 shadow-lg rounded-2xl">
+                <div className="border-solid border-black border-2 px-2 py-3 shadow-lg rounded-2xl">
                 <div className="flex justify-between">
                     <div>
                         <h4 className="mt-1">
@@ -74,7 +74,7 @@ return(
                     <div className="mt-4 flex">
                         <div className="m-auto w-5/6">
                             <a className=" text-center py-3" href={job.url} target="_blank" rel="noopener noreferrer">
-                                <h5 className="border-solid border-2 border-black bg-black hover:text-black hover:bg-white text-white font-bold py-2 shadow-lg rounded-lg">Apply for the job</h5>
+                                <h5 className="border-solid border-2 border-amber-700 bg-amber-700 hover:text-amber-700 hover:bg-white text-white font-bold py-2 shadow-lg rounded-lg">Apply for the job</h5>
                             </a>
                         </div>
                        

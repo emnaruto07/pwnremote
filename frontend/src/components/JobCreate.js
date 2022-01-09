@@ -154,7 +154,7 @@ export default function JobCreate(){
                             "
                             >
                                 <option value="">Select a Primary Skill</option>
-                                <option value="Web-Security">Web-Security</option>
+                                <option value="Web-Security">WebApp-Security</option>
                                 <option value="Researcher">Researcher</option>
                                 <option value="SOC/SIEM">SOC/SIEM</option>
                                 <option value="VA/PT">VA/PT</option>

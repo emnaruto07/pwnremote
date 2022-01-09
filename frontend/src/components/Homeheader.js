@@ -29,7 +29,7 @@ function Homeheader() {
                     .deleteAll()
                     .typeString("Quality Assurance")
                     .deleteAll()
-                    .typeString("Forensics/IR")
+                    .typeString("Forensics")
                     .deleteAll()
                     .typeString("Mobile Security")
                     .deleteAll()

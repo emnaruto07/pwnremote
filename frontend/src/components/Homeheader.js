@@ -17,13 +17,13 @@ function Homeheader() {
                 <p className='text-amber-700 mx-1 text-4xl underline'>Find Remote Jobs</p><Typewriter
                     onInit={(typewriter)=> {
                     typewriter
-                    .typeString("WebApp-Security")
+                    .typeString("WebApp Security")
                     .deleteAll()
                     .typeString("Researcher")
                     .deleteAll()
                     .typeString("SOC/SIEM")
                     .deleteAll()
-                    .typeString("VA/PT")
+                    .typeString("Pentesting")
                     .deleteAll()
                     .typeString("Consulting")
                     .deleteAll()

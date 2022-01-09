@@ -1,29 +1,40 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { useParams } from "react-router"
 import { API } from "../api"
-// import { AuthContext } from '../contexts/AuthContext';
-// import { useContext } from 'react';
+import { AuthContext } from '../contexts/AuthContext';
+import { useContext } from 'react';
 
 export default function JobDetail(){
     const [job, setJob] = useState(null)
     const { id } = useParams()
-    // const { user: { token } } = useContext(AuthContext)
+    const { user: { token } } = useContext(AuthContext)
+    // const navigate = useNavigate()
+
+    // useEffect(() => {
+    //     if (job && !job.is_owner){
+    //         navigate("/")
+    //     }
+    //     return () => null
+    // })
 
 
     useEffect(() => {
         function fetchJobList(){
-            axios.get(API.jobs.retrieve(id))
+            axios.get(API.jobs.retrieve(id), {
+                headers: {
+                    "Authorization": `Token ${token}`
+                }
+            })
             .then(res => {
             console.log(res.data)
             setJob(res.data)
         })
     }
     fetchJobList()
-}, [id])
+}, [id, token])
 
- console.log(id)
 
 return(
     <div>
@@ -74,7 +85,7 @@ return(
                     
                 </div>
 
-        {/* {token && ( */}
+        {job.is_owner && (
             <div className="flex items-center mt-2">
                 <NavLink to={`/jobs/${id}/update`}>
                         <h5 className="border-solid border-2 border-black bg-black hover:text-black hover:bg-white text-white font-bold py-2 px-4 shadow-md rounded-lg">Update</h5>
@@ -89,7 +100,7 @@ return(
                     <h5 className="ml-2 bg-red-700 hover:bg-white hover:text-red-700 text-white font-bold py-2 px-4 rounded-lg border-solid border-2 border-red-700 shadow-md">Delete</h5>
                 </NavLink>
             </div>
-           {/* )} */}
+           )} 
             
         </div>        
         )}

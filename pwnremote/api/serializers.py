@@ -1,9 +1,10 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 from .models import Job
 
 
 
-class JobListSerializer(ModelSerializer):
+class JobListSerializer(serializers.ModelSerializer):
+    is_owner = serializers.SerializerMethodField()
     
     class Meta:   
         model = Job
@@ -34,9 +35,14 @@ class JobListSerializer(ModelSerializer):
             'company_twitter',
             'company_email',
             'invoice_email',
-            'invoice_address'
+            'invoice_address',
+            "is_owner"
         )
         read_only_fields = ("date_created", "user")
+
+    def get_is_owner(self, obj):
+        user = self.context["request"].user
+        return obj.user == user
 
 # class CompanyDetailSerializer(ModelSerializer):
 

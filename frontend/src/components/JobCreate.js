@@ -454,7 +454,7 @@ export default function JobCreate(){
                             </div>
                         )}
                     </Field>
-                    <Field name="sticky_day">
+                    {/* <Field name="sticky_day">
                         {({ field, form }) => (
                             <div className="block">
                                 <div className="mt-2">
@@ -527,7 +527,7 @@ export default function JobCreate(){
                                 </label>
                             </div>
                         )}
-                    </Field>
+                    </Field> */}
                     <h3 className='border-solid border-2 border-black font-bold py-2 px-4 text-center mt-4 mb-2 rounded-lg'>COMPANY DETAILS</h3>
                     <Field name="company_twitter">
                         {({ field, form }) => (

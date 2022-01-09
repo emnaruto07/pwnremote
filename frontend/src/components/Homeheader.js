@@ -1,5 +1,4 @@
 import React from 'react'
-import { useEffect } from "react"
 // import cover from "../assets/cover11.jpg";
 import Typewriter from 'typewriter-effect';
 

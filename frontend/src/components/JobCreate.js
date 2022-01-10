@@ -1,5 +1,5 @@
 import { Formik, Field, Form } from 'formik';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
@@ -7,15 +7,37 @@ import { useContext } from 'react';
 // import { useParams } from "react-router"
 import { API } from '../api';
 
+function ImagePreview({ file }) {
+  const [imageSrc, setImageSrc] = useState(null)
+
+  useEffect (() => {
+    const reader = new FileReader()
+    reader.onloadend = () => {
+      setImageSrc(reader.result)
+    }
+    reader.readAsDataURL(file)
+  })
+  return (
+    <div>
+      {!imageSrc && "Loading..."}
+      {imageSrc && (
+        <img src={imageSrc} className='h-20 w-20 ml-3 rounded-full border-2' alt={file.name} />
+      )}
+    </div>
+  )
+}
+
 export default function JobCreate(){
     const [loading, setLoading] = useState(false)
+    const [file, setFile] = useState(null)
+    const [price, setPrice] = useState(200)
     const { user: { token } } = useContext(AuthContext)
     const navigate = useNavigate()
     // const { id } = useParams()
 
     function handleSubmit(values) {
         setLoading(true)
-        axios.post(API.jobs.create, values, {
+        axios.post(API.jobs.create, {...values, company_logo: file}, {
             headers: {
                 "Authorization": `Token ${token}`
             }
@@ -46,7 +68,7 @@ export default function JobCreate(){
                     Min_salary: '',
                     max_salary: '',
                     Description: '',
-                    // company_logo: '',
+                    company_logo: "",
                     user: '',
                     url: '',
                     email: '',
@@ -405,6 +427,28 @@ export default function JobCreate(){
                         )}
                     </Field>
                         <h3 className='border-solid border-2 border-black font-bold py-2 px-4 text-center mt-4 rounded-lg'>DESIGN YOUR POST</h3>
+                        <div className='flex mt-2'>
+                          <label className="block">
+                              <span className="text-gray-700">Company Logo</span>
+                              <input
+                              onChange={e => setFile(e.target.files[0])}
+                                type="file"
+                                className="
+                                  mt-1
+                                  block
+                                  rounded-md
+                                  bg-gray-200
+                                  border-transparent
+                                  focus:border-transparent focus:bg-gray-200
+
+                                "
+                              />
+                          </label>
+                            {file && (
+                                  <ImagePreview file={file}/>
+                            )}
+                        </div>
+                            
                      <Field name="show_logo">
                         {({ field, form }) => (
                             <div className="block">

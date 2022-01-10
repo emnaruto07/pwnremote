@@ -7,6 +7,7 @@ import { useContext } from 'react';
 // import { useParams } from "react-router"
 import { API } from '../api';
 
+
 function ImagePreview({ file }) {
   const [imageSrc, setImageSrc] = useState(null)
 
@@ -33,7 +34,6 @@ export default function JobCreate(){
     const [price, setPrice] = useState(200)
     const { user: { token } } = useContext(AuthContext)
     const navigate = useNavigate()
-    // const { id } = useParams()
 
     function handleSubmit(values) {
         setLoading(true)
@@ -105,7 +105,6 @@ export default function JobCreate(){
                     company_email: '',
                     invoice_email: '',
                     invoice_address: '',
-
                 }}
                 onSubmit={handleSubmit}>
                 {({ values }) => (
@@ -497,6 +496,7 @@ export default function JobCreate(){
                         )}
                     </Field>
                     {/* {(job.Highlight) => setPrice(price + 25) */}
+                      {/* <div {...Highlight ? 'true': "false" } {...price ? onchange=setPrice(price + 25) : setPrice(0) } className="border-solid border-2 px-2 py-3 shadow-lg rounded-2xl mb-3"> */}
                         <Field name="Highlight">
                             {({ field, form }) => (
                                 <div className="block">
@@ -521,6 +521,7 @@ export default function JobCreate(){
                                 </div>
                             )}
                         </Field>
+                      {/* </div> */}
                     {/* <Field name="sticky_day">
                         {({ field, form }) => (
                             <div className="block">

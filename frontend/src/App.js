@@ -20,6 +20,10 @@ import Homeheader from "./components/Homeheader";
 import { Payment} from "./components/Payment";
 import Success from "./components/Success";
 import Footer from "./components/Footer";
+import Faqs from "./components/Faqs";
+import About from "./components/About";
+import Terms from "./components/Terms";
+import Privacy from "./components/Privacy";
 
 
 function PrivateRoute({ children }){
@@ -46,6 +50,10 @@ export default function App() {
                   <Route path="/accounts/confirm-email/:key" element={<ConfirmEmail />} exact />
                   <Route path="/jobs/:id" element={<PrivateRoute><JobDetail /></PrivateRoute>} exact/>
                   <Route path="/payment/success" element={<Success />} exact/>
+                  <Route path="/faqs" element={<Faqs />} exact/>
+                  <Route path="/about" element={<About />} exact/>
+                  <Route path="/terms" element={<Terms />} exact/>
+                  <Route path="/privacy" element={<Privacy />} exact/>
                   <Route path="/jobs/:id/update" element={<PrivateRoute><JobUpdate /></PrivateRoute>} />
                   <Route path="/jobs/:id/delete" element={<PrivateRoute><JobDelete /></PrivateRoute>} />
                   <Route path="/" element={<JobList />} exact />

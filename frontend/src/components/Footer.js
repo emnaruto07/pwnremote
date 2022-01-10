@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
         
-        <footer className="border-t border-gray-200">
+        <footer className="mb-auto border-t border-gray-200">
         <div
             className="
             container
@@ -23,7 +24,7 @@ function Footer() {
             <td className="py-5 px-3">
                 <img src="" className="h-20 w-20 border-2" alt="" />
             </td> 
-            <a
+            <h2
                 className="
                 flex
                 items-center
@@ -35,64 +36,52 @@ function Footer() {
                 "
             >
                 pwnremote
-            </a>
+            </h2>
+                <span>by <a className="border-2 border-solid border-amber-600 font-bold bg-amber-600 text-white" href="https://twitter.com/emnaruto07">@emnaruto07</a></span>
             </div>
             <div className="justify-between w-full mt-4 text-center lg:flex">
             <div className="w-full px-4 lg:w-1/3 md:w-1/2">
-                <h2 className="mb-2 font-bold tracking-widest text-gray-900">
-                Useful Links
+                <h2 className="mb-2 font-bold underline text-gray-900">
+                Support
                 </h2>
                 <ul className="mb-8 space-y-2 text-sm list-none">
                 <li>
-                    <a className="text-gray-600 hover:text-gray-800">Home</a>
+                    <Link to="/" className="text-gray-600 hover:text-gray-800">Home</Link>
                 </li>
                 <li>
-                    <a className="text-gray-600 hover:text-gray-800">About Us</a>
+                    <Link to="/faqs" className="text-gray-600 hover:text-gray-800">Questions?</Link>
                 </li>
                 <li>
-                    <a className="text-gray-600 hover:text-gray-800">Blogs</a>
+                    <Link to="/about" className="text-gray-600 hover:text-gray-800">About Us</Link>
                 </li>
-                <li>
-                    <a className="text-gray-600 hover:text-gray-800">Contact Us</a>
-                </li>
+                
                 </ul>
             </div>
             <div className="w-full px-4 lg:w-1/3 md:w-1/2">
-                <h2 className="mb-2 font-bold tracking-widest text-gray-900">
-                Useful Links
+                <h2 className="mb-2 font-bold underline text-gray-900">
+                Legal
                 </h2>
                 <ul className="mb-8 space-y-2 text-sm list-none">
                 <li>
-                    <a className="text-gray-600 hover:text-gray-800">Home</a>
+                    <Link to="/terms" className="text-gray-600 hover:text-gray-800">Terms Of Service</Link>
                 </li>
                 <li>
-                    <a className="text-gray-600 hover:text-gray-800">About Us</a>
+                    <Link to="/privacy" className="text-gray-600 hover:text-gray-800">Privacy Policy</Link>
                 </li>
                 <li>
-                    <a className="text-gray-600 hover:text-gray-800">Blogs</a>
+                    <Link to="#" className="text-gray-600 hover:text-gray-800">Blogs</Link>
                 </li>
-                <li>
-                    <a className="text-gray-600 hover:text-gray-800">Contact Us</a>
-                </li>
+                
                 </ul>
             </div>
             <div className="w-full px-4 lg:w-1/3 md:w-1/2">
-                <h2 className="mb-2 font-bold tracking-widest text-gray-900">
-                Useful Links
+                <h2 className="mb-2 font-bold underline text-gray-900">
+                Contact Us
                 </h2>
                 <ul className="mb-8 space-y-2 text-sm list-none">
-                <li>
-                    <a className="text-gray-600 hover:text-gray-800">Home</a>
-                </li>
-                <li>
-                    <a className="text-gray-600 hover:text-gray-800">About Us</a>
-                </li>
-                <li>
-                    <a className="text-gray-600 hover:text-gray-800">Blogs</a>
-                </li>
-                <li>
-                    <a className="text-gray-600 hover:text-gray-800">Contact Us</a>
-                </li>
+                    <li>
+                        <h2 className="text-black font-semibold">Email: </h2><p>info@pwnremote.com</p>
+                    </li>
                 </ul>
             </div>
             </div>

@@ -36,9 +36,9 @@ export default function Navbar(){
                 <div className='flex items-center'>
                     {user ? (
                         <div className='flex items-center'>
-                            <li className='px-3 text-gray-600'>
+                            {/* <li className='px-3 text-gray-600'>
                                 <Link className='hover:text-blue-600' to="#">Hi {user.id},</Link>
-                            </li>
+                            </li> */}
                             <li className='px-3 text-gray-600'>
                                 <button className='hover:text-blue-600' onClick={handleSubmit}>Logout</button>
                             </li>

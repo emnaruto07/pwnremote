@@ -45,6 +45,7 @@ export default function JobCreate(){
         data.append('Primary_Skills', values.Primary_Skills)
         data.append('Skills_tag', values.Skills_tag)
         data.append('Location', values.Location)
+        data.append('available', values.available)
         data.append('Min_salary', values.Min_salary)
         data.append('max_salary', values.max_salary)
         data.append('Description', values.Description)
@@ -495,31 +496,31 @@ export default function JobCreate(){
                             </div>
                         )}
                     </Field>
- 
-                    <Field name="Highlight">
-                        {({ field, form }) => (
-                            <div className="block">
-                                <div className="mt-2">
+                    {/* {(job.Highlight) => setPrice(price + 25) */}
+                        <Field name="Highlight">
+                            {({ field, form }) => (
+                                <div className="block">
+                                    <div className="mt-2">
+                                    </div>
+                                    <label className="inline-flex items-center">
+                                    <input
+                                    {...field}
+                                    type="checkbox"
+                                    checked={field.value}
+                                    className="
+                                        rounded
+                                        bg-gray-200
+                                        border-transparent
+                                        focus:border-transparent focus:bg-gray-200
+                                        text-gray-700
+                                        focus:ring-1 focus:ring-offset-2 focus:ring-gray-500
+                                    "
+                                    />
+                                        <span className="ml-2">Highlight your post with yellow (+$25) </span>
+                                    </label>
                                 </div>
-                                <label className="inline-flex items-center">
-                                <input
-                                {...field}
-                                type="checkbox"
-                                checked={field.value}
-                                className="
-                                    rounded
-                                    bg-gray-200
-                                    border-transparent
-                                    focus:border-transparent focus:bg-gray-200
-                                    text-gray-700
-                                    focus:ring-1 focus:ring-offset-2 focus:ring-gray-500
-                                "
-                                />
-                                    <span className="ml-2">Highlight your post with yellow (+$25) </span>
-                                </label>
-                            </div>
-                        )}
-                    </Field>
+                            )}
+                        </Field>
                     {/* <Field name="sticky_day">
                         {({ field, form }) => (
                             <div className="block">
@@ -705,7 +706,7 @@ export default function JobCreate(){
                         )}
                     </Field>
                     {/* <NavLink to={`/jobs/${id}/sponsor`}> */}
-                        <button className="bg-black border-solid border-2 border-black hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-md mt-4 rounded-lg"type="submit">Post Job</button>
+                        <button className="bg-black border-solid border-2 border-black hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-md mt-4 rounded-lg"type="submit">Post Job - ${price}</button>
                     {/* </NavLink> */}
                 </Form>
                 )}    

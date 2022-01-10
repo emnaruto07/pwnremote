@@ -11,32 +11,35 @@ function JobListItem({job}){
 
     <NavLink to={`/jobs/${job.id}`}>
       <div {...condition ? 'true': "false" } style={{ backgroundColor: condition ? "#FAF884" : "white" }} className="border-solid border-2 px-2 py-3 shadow-lg rounded-2xl mb-3">
-          {job.company_logo && (
-              <img src={job.company_logo} className="h-20 w-20 rounded-full border-2" alt={job.company_logo} />
-          )}
-          <td className="p-2 object-center">
-            <div  className="flex justify-between">
-                  <div className="mt-1">
-                    <div className="inline">     
-                      <div className="flex">   
-                      {job.Company_name} <img src={New} alt="new" width="40" height="20" />
-                      </div> 
-                      <h3 className="text-xl text-black font-bold">{job.Position}</h3>
-                    </div>     
-                  </div>
-            </div>
-            <div className="flex">
-              <p>${job.Min_salary}-${job.max_salary}</p>   
-                {job.Location && (
-                  <p className="font-semibold ml-2">
-                    {job.Location}
-                  </p>
-                )}     
-            </div>      
-              <div className="text-gray-600 text-sm">
-                {new Date(job.date_created).toDateString()}
-              </div> 
-          </td>               
+          <td className="flex">
+            <td className="py-5 px-3">
+                <img src={job.company_logo} className="h-20 w-20 rounded-full border-2" alt={job.company_logo} />
+            </td>   
+              <td className="p-2">
+              <div  className="flex justify-between">
+                    <div className="mt-1">
+                      <div className="inline">     
+                        <h3 className="flex">   
+                          {job.Company_name} <img src={New} alt="new" width="40" height="20" />
+                        </h3> 
+                        <h3 className="text-xl text-black font-bold">{job.Position}</h3>
+                      </div>     
+                    </div>
+              </div>
+              <div className="flex">
+                <p>${job.Min_salary}-${job.max_salary}</p>   
+                  {job.Location && (
+                    <p className="font-semibold ml-2">
+                      {job.Location}
+                    </p>
+                  )}     
+              </div>      
+                <div className="text-gray-600 text-sm">
+                  {new Date(job.date_created).toDateString()}
+                </div> 
+            </td>
+          </td>
+                        
       </div>
     </ NavLink>
 

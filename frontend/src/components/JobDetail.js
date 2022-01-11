@@ -40,17 +40,17 @@ return(
                 <div className="border-solid border-black border-2 px-2 py-3 shadow-lg rounded-2xl">
                 <div className="flex justify-between">
                     <div>
-                        <h4 className="mt-1">
-                            {job.Company_name}
-                        </h4>
                         <h3 className="text-2xl text-black subpixel-antialiased font-bold">{job.Position}</h3>
                     </ div>
                     
                 </div>   
-                <td className="float-right">
+                <td className="float-right items-center">
                     <td className="py-5 px-3">
                         <img src={job.company_logo} className=" h-40 w-40 mr-4 rounded-full border-2" alt={job.company_logo} />
-                    </td>  
+                    </td>
+                    <h1 className="text-center ml-1 text-3xl font-bold">
+                        {job.Company_name}
+                    </h1>
                 </td>
                 
                 <div className="text-gray-600 text-sm">

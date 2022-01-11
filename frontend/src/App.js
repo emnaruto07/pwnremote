@@ -48,7 +48,7 @@ export default function App() {
                   <Route path="/jobs/:id/sponsor" element={<PrivateRoute><Payment /></PrivateRoute>} exact />
                   <Route path="/signup" element={<Signup />} exact />
                   <Route path="/accounts/confirm-email/:key" element={<ConfirmEmail />} exact />
-                  <Route path="/jobs/:id" element={<PrivateRoute><JobDetail /></PrivateRoute>} exact/>
+                  <Route path="/jobs/:id" element={<JobDetail />} exact/>
                   <Route path="/payment/success" element={<Success />} exact/>
                   <Route path="/faqs" element={<Faqs />} exact/>
                   <Route path="/about" element={<About />} exact/>

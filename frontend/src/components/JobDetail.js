@@ -3,13 +3,13 @@ import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
 import { useParams } from "react-router"
 import { API } from "../api"
-import { AuthContext } from '../contexts/AuthContext';
-import { useContext } from 'react';
+// import { AuthContext } from '../contexts/AuthContext';
+// import { useContext } from 'react';
 
 export default function JobDetail(){
     const [job, setJob] = useState(null)
     const { id } = useParams()
-    const { user: { token } } = useContext(AuthContext)
+    // const { user: { token } } = useContext(AuthContext)
     // const navigate = useNavigate()
 
     // useEffect(() => {
@@ -22,18 +22,14 @@ export default function JobDetail(){
 
     useEffect(() => {
         function fetchJobList(){
-            axios.get(API.jobs.retrieve(id), {
-                headers: {
-                    "Authorization": `Token ${token}`
-                }
-            })
+            axios.get(API.jobs.retrieve(id))
             .then(res => {
             console.log(res.data)
             setJob(res.data)
         })
     }
     fetchJobList()
-}, [id, token])
+}, [id])
 
 
 return(
@@ -49,12 +45,13 @@ return(
                         </h4>
                         <h3 className="text-2xl text-black subpixel-antialiased font-bold">{job.Position}</h3>
                     </ div>
-                {/* <div>
-                    <a className="flex justify-between py-3" href={job.url} target="_blank" rel="noopener noreferrer">
-                    <h5 className="border-solid border-2 border-black bg-black hover:text-black hover:bg-white text-white font-bold py-2 px-4 shadow-lg rounded-lg">Apply</h5>
-                    </a>
-                </div> */}
-            </div>   
+                    
+                </div>   
+                <td className="float-right">
+                    <td className="py-5 px-3">
+                        <img src={job.company_logo} className=" h-40 w-40 mr-4 rounded-full border-2" alt={job.company_logo} />
+                    </td>  
+                </td>
                 
                 <div className="text-gray-600 text-sm">
                     {new Date(job.date_created).toDateString()}📌

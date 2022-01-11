@@ -24,7 +24,13 @@ function JobListItem({job}){
                         </h3> 
                         <h3 className="text-xl text-black font-bold">{job.Position}</h3>
                       </div>     
+                      {/* <div className="float-right">
+                          <a className="flex justify-between py-3" href={job.url} target="_blank" rel="noopener noreferrer">
+                            <h5 className="border-solid border-2 border-black bg-black hover:text-black hover:bg-white text-white font-bold py-2 px-4 shadow-lg rounded-lg">Apply</h5>
+                          </a>
+                      </div> */}
                     </div>
+                     
               </div>
               <div className="flex">
                 <p>${job.Min_salary}-${job.max_salary}</p>   

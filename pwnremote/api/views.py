@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Job
 from .serializers import JobListSerializer
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.conf import settings
 
 
@@ -34,6 +34,7 @@ class JobUpdateView(UpdateAPIView):
         return Job.objects.filter(available=True)
 
 class JobDetailView(RetrieveAPIView):
+    permission_classes = [AllowAny]
     serializer_class = JobListSerializer
 
     def get_queryset(self):

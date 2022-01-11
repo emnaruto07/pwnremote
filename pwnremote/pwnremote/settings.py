@@ -1,5 +1,6 @@
 from pathlib import Path
 import environ
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     "corsheaders",
     'rest_framework',
     'rest_framework.authtoken',
+    'storages',
     
 
 
@@ -158,6 +160,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'api.User'
 
+# DEFAULT_FILE_STORAGE=env('DEFAULT_FILE_STORAGE')
+# STATICFILES_STORAGE=env('STATICFILES_STORAGE')
+# AWS_ACCESS_KEY_ID=env('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY=env('AWS_SECRET_ACCESS_KEY')
+# AWS_STORAGE_BUCKET_NAME=env('AWS_STORAGE_BUCKET_NAME')
+
+# AWS_S3_REGION_NAME=env('AWS_S3_REGION_NAME')
+# AWS_S3_ENDPOINT_URL=env('AWS_S3_ENDPOINT_URL')
+
 # CORS_ORIGIN_ALLOW_ALL = True
 
 # CORS_ALLOW_CREDENTIALS = True
@@ -173,3 +184,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://192.168.0.113:3000",
 ]
+
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

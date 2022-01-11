@@ -18,7 +18,7 @@ class Job(models.Model):
     max_salary = models.PositiveIntegerField()
     Description = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="api")
-    company_logo = models.ImageField(blank=True, null=True)
+    company_logo = models.ImageField(blank=True, null=True, upload_to='logo/')
     url = models.URLField(max_length=200)
     email = models.EmailField()
     show_logo = models.BooleanField(default=True)

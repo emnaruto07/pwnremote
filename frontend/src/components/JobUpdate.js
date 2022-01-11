@@ -7,10 +7,32 @@ import { useParams } from "react-router-dom"
 import { useContext } from 'react';
 import { API } from '../api';
 
+
+function ImagePreview({ file }) {
+    const [imageSrc, setImageSrc] = useState(null)
+  
+    useEffect (() => {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setImageSrc(reader.result)
+      }
+      reader.readAsDataURL(file)
+    })
+    return (
+      <div>
+        {!imageSrc && "Loading..."}
+        {imageSrc && (
+          <img src={imageSrc} className='h-20 w-20 ml-3 rounded-full border-2' alt={file.name} />
+        )}
+      </div>
+    )
+  }
+
 export default function JobUpdate(){
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
     const [loadingJob, setLoadingJob] = useState(false)
+    const [file, setFile] = useState(null)
     const [job, setJob] = useState(null)
     const { id } = useParams()
     const { user: { token } } = useContext(AuthContext)
@@ -35,7 +57,30 @@ export default function JobUpdate(){
 
     function handleSubmit(values) {
         setLoading(true)
-        axios.put(API.jobs.update(id), values, {
+        const data = new FormData()
+        data.append('company_logo', file)
+        data.append('Company_name', values.Company_name)
+        data.append('Position', values.Position)
+        data.append('Employment_type', values.Employment_type)
+        data.append('Primary_Skills', values.Primary_Skills)
+        data.append('Skills_tag', values.Skills_tag)
+        data.append('Location', values.Location)
+        data.append('available', values.available)
+        data.append('Min_salary', values.Min_salary)
+        data.append('max_salary', values.max_salary)
+        data.append('Description', values.Description)
+        data.append('user', values.user)
+        data.append('url', values.url)
+        data.append('email', values.email)
+        data.append('show_logo', values.show_logo)
+        data.append('Highlight', values.Highlight)
+        data.append('feedback', values.feedback)
+        data.append('company_twitter', values.company_twitter)
+        data.append('company_email', values.company_email)
+        data.append('invoice_email', values.invoice_email)
+        data.append('invoice_address', values.invoice_address)
+
+        axios.put(API.jobs.update(id), data, {
             headers: {
                 "Authorization": `Token ${token}`
             }
@@ -67,7 +112,7 @@ export default function JobUpdate(){
                     Min_salary: job.Min_salary,
                     max_salary: job.max_salary,
                     Description: job.Description,
-                    // company_logo: '',
+                    company_logo: job.company_logo,
                     user: '',
                     url: job.url,
                     email: job.email,
@@ -425,7 +470,28 @@ export default function JobUpdate(){
                     </Field>
                  
                     <h3 className='border-solid border-2 border-black font-bold py-2 px-4 text-center mt-2 rounded-lg'>DESIGN YOUR POST</h3>
-                    
+                        <h3 className='border-solid border-2 border-black font-bold py-2 px-4 text-center mt-4 rounded-lg'>DESIGN YOUR POST</h3>
+                        <div className='flex mt-2'>
+                          <label className="block">
+                              <span className="text-gray-700">Company Logo</span>
+                              <input
+                              onChange={e => setFile(e.target.files[0])}
+                                type="file"
+                                className="
+                                  mt-1
+                                  block
+                                  rounded-md
+                                  bg-gray-200
+                                  border-transparent
+                                  focus:border-transparent focus:bg-gray-200
+
+                                "
+                              />
+                          </label>
+                            {file && (
+                                  <ImagePreview file={file}/>
+                            )}
+                        </div>
                     {!job.show_logo && ( 
                     <Field name="show_logo">
                         {({ field, form }) => (

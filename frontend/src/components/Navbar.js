@@ -23,11 +23,11 @@ export default function Navbar(){
             <ul className='flex items-center justify-between'>
                 <div className='flex items-center'>
                     <li className='ml-3 text-gray-600'>
-                        <Link className='hover:text-blue-600' to="/">Jobs</Link>
+                        <Link className='hover:text-green-600 hover:bg-white border-solid border-2 border-green-600 shadow-xl px-4 py-2 bg-green-600 text-white rounded-lg font-semibold' to="/">Jobs</Link>
                     </li>
                     
                     <li className='ml-3 text-gray-600'>
-                        <Link className='hover:text-blue-600' to="/create-job">Post a Job</Link>
+                        <Link className='hover:text-red-500 hover:bg-white border-solid border-2 border-red-500 shadow-xl px-4 py-2 bg-red-500 text-white rounded-lg font-semibold' to="/create-job">Post a Job</Link>
                     </li>
                 </div>
                 <div className='text-center text-4xl font-bold text-red-600'>
@@ -40,16 +40,16 @@ export default function Navbar(){
                                 <Link className='hover:text-blue-600' to="#">Hi {user.id},</Link>
                             </li> */}
                             <li className='px-3 text-gray-600'>
-                                <button className='hover:text-blue-600' onClick={handleSubmit}>Logout</button>
+                                <button className='bg-black border-solid border-2 border-black hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-xl rounded-lg' onClick={handleSubmit}>Logout</button>
                             </li>
                         </div>
                     ):  (
                         <div className='flex items-center'>
                         <li className='px-3 text-gray-600'>
-                            <Link className='hover:text-blue-600' to="/login">Login</Link>
+                            <Link className='bg-black border-solid border-2 border-black hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-xl rounded-lg' to="/login">Login</Link>
                         </li>
                         <li className='px-3 text-gray-600'>
-                            <Link className='hover:text-blue-600' to="/signup">Signup</Link>
+                            <Link className='hover:text-white hover:bg-green-600 border-solid border-2 border-green-600 px-4 py-2 shadow-xl bg-white text-green-600 rounded-lg font-semibold ml-0' to="/signup">Signup</Link>
                         </li>
                         </div>
                        

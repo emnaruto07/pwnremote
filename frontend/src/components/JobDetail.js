@@ -63,6 +63,10 @@ return(
                 <div className="mt-5">
                     <h3 className="text-1xl text-black subpixel-antialiased font-semibold">Job Description</h3>
                         {job.Description} 
+                    <h3 className="text-1xl text-black subpixel-antialiased font-semibold">Employment Type</h3>
+                        {job.Employment_type} 
+                    <h3 className="text-1xl text-black subpixel-antialiased font-semibold">Required Skills</h3>
+                        {job.Skills_tag}
                     <h3 className="text-1xl mt-2 text-black subpixel-antialiased font-semibold">Salary and compensation</h3>
                         ${job.Min_salary}-${job.max_salary}/year
                     <h3 className="text-1xl mt-2 text-black subpixel-antialiased font-semibold">Location</h3>
@@ -88,7 +92,7 @@ return(
         {job.is_owner && (
             <div className="flex items-center mt-2">
                 <NavLink to={`/jobs/${id}/update`}>
-                        <h5 className="border-solid border-2 border-black bg-black hover:text-black hover:bg-white text-white font-bold py-2 px-4 shadow-md rounded-lg">Update</h5>
+                        <h5 className="border-solid border-2 border-black bg-black hover:text-black hover:bg-white text-white font-bold py-2 px-4 shadow-md rounded-xl">Update</h5>
                 </NavLink>
                 {/* {!job.sponsored && (
                     <NavLink to={`/jobs/${id}/sponsor`}>
@@ -97,7 +101,7 @@ return(
                 )
                 }       */}
                 <NavLink to={`/jobs/${id}/delete`}>
-                    <h5 className="ml-2 bg-red-700 hover:bg-white hover:text-red-700 text-white font-bold py-2 px-4 rounded-lg border-solid border-2 border-red-700 shadow-md">Delete</h5>
+                    <h5 className="ml-2 bg-red-700 hover:bg-white hover:text-red-700 text-white font-bold py-2 px-4 rounded-lg border-solid border-2 border-red-700 shadow-xl">Delete</h5>
                 </NavLink>
             </div>
            )} 

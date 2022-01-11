@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import pwn from '../assets/PwnRemote.png';
 
 function Footer() {
     return (
@@ -22,7 +23,7 @@ function Footer() {
             className="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left"
             >
             <td className="py-5 px-3">
-                <img src="" className="h-20 w-20 border-2" alt="" />
+                <img src={pwn} className="h-40 w-40 border-2" alt="" />
             </td> 
             <h2
                 className="
@@ -31,7 +32,7 @@ function Footer() {
                 justify-center
                 text-4xl
                 font-bold
-                text-blue-700
+                text-red-500
                 md:justify-start
                 "
             >

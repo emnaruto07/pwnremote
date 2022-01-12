@@ -24,6 +24,7 @@ import Faqs from "./components/Faqs";
 import About from "./components/About";
 import Terms from "./components/Terms";
 import Privacy from "./components/Privacy";
+import Resources from "./components/Resources";
 
 
 function PrivateRoute({ children }){
@@ -51,6 +52,7 @@ export default function App() {
                   <Route path="/jobs/:id" element={<JobDetail />} exact/>
                   <Route path="/payment/success" element={<Success />} exact/>
                   <Route path="/faqs" element={<Faqs />} exact/>
+                  <Route path="/learn-hacking" element={<Resources />} exact/>
                   <Route path="/about" element={<About />} exact/>
                   <Route path="/terms" element={<Terms />} exact/>
                   <Route path="/privacy" element={<Privacy />} exact/>

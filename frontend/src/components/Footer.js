@@ -70,7 +70,7 @@ function Footer() {
                     <Link to="/privacy" className="text-gray-600 hover:text-gray-800">Privacy Policy</Link>
                 </li>
                 <li>
-                    <Link to="#" className="text-gray-600 hover:text-gray-800">Blogs</Link>
+                    <Link to="/learn-hacking" className="text-gray-600 hover:text-gray-800">Learn Hacking?</Link>
                 </li>
                 
                 </ul>

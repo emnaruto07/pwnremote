@@ -28,14 +28,11 @@ function ImagePreview({ file }) {
   )
 }
 
-function onChangefunc(){
-  onChange()
-}
-
 export default function JobCreate(){
     const [loading, setLoading] = useState(false)
     const [file, setFile] = useState(null)
     const [price, setPrice] = useState(200)
+
     const { user: { token } } = useContext(AuthContext)
     const navigate = useNavigate()
 
@@ -78,6 +75,10 @@ export default function JobCreate(){
                 setLoading(false)
             })
 
+    }
+
+    function IncreasePrice() {
+      setPrice(250)
     }
 
     return(
@@ -485,7 +486,7 @@ export default function JobCreate(){
                                 {...field}
                                 type="checkbox"
                                 checked={field.value}
-                                // onChange={() => setPrice(price + 25)}
+                                // onPress={IncreasePrice()}
                                 className="
                                     rounded
                                     bg-gray-200

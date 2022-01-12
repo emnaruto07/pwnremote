@@ -1,5 +1,6 @@
+from django.core.mail import message
 from rest_framework import serializers
-from .models import Job
+from .models import Job, GeneralFeedback
 
 
 
@@ -44,16 +45,8 @@ class JobListSerializer(serializers.ModelSerializer):
         user = self.context["request"].user
         return obj.user == user
 
-# class CompanyDetailSerializer(ModelSerializer):
+class GeneralFeedbackSerializer(serializers.Serializer):
 
-#     Job = JobListSerializer(required=True)
-
-#     class Meta:
-#         model = CompanyDetail
-#         fields = (
-#                 'Job',
-#                 'company_twitter',
-#                 'company_email',
-#                 'invoice_email',
-#                 'invoice_address'
-#         )
+    name = serializers.CharField()
+    subject = serializers.CharField()
+    message = serializers.CharField()

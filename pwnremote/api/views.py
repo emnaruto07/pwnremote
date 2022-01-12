@@ -1,12 +1,12 @@
+from rest_framework import status
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Job
-from .serializers import JobListSerializer
+from .serializers import JobListSerializer, GeneralFeedbackSerializer
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.conf import settings
-
-
+from django.core.mail import send_mail
 import stripe
 
 # This is your test secret API key.
@@ -45,6 +45,33 @@ class JobDeleteView(DestroyAPIView):
 
     def get_queryset(self):
         return Job.objects.all()
+
+#Feedback Direct email
+
+class GeneralFeedbackCreateView(APIView):
+
+    def post(self, request, *args, **kwargs):
+        serializer = GeneralFeedbackSerializer(request.data)
+        if serializer.is_valid():
+            data = serializer.validated_data
+            name = data.get('name')
+            subject = data.get('subject')
+            message = data.get('message')
+            # email = data.get('email')
+            send_mail(
+                'Sent email from {}'.format(name),
+                'Subject: {}'.format(subject),
+                'Here is the feedback: {}'.format(message),
+                # settings.EMAIL_HOST_USER,
+                'test@gmail.com'
+                ['info@pwnremote.com'],
+                fail_silently=False,
+            )
+            return Response({"success":"Sent"})
+        return Response({'success':"Failed"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+
 
 
 # class CompanyDetailView(ListAPIView):

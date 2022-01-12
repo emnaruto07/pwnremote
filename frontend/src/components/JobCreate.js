@@ -28,10 +28,14 @@ function ImagePreview({ file }) {
   )
 }
 
+function onChangefunc(){
+  onChange()
+}
+
 export default function JobCreate(){
     const [loading, setLoading] = useState(false)
     const [file, setFile] = useState(null)
-    // const [price, setPrice] = useState(200)
+    const [price, setPrice] = useState(200)
     const { user: { token } } = useContext(AuthContext)
     const navigate = useNavigate()
 
@@ -481,6 +485,7 @@ export default function JobCreate(){
                                 {...field}
                                 type="checkbox"
                                 checked={field.value}
+                                // onChange={() => setPrice(price + 25)}
                                 className="
                                     rounded
                                     bg-gray-200
@@ -497,7 +502,7 @@ export default function JobCreate(){
                     </Field>
                     {/* {(job.Highlight) => setPrice(price + 25) */}
                       {/* <div {...Highlight ? 'true': "false" } {...price ? onchange=setPrice(price + 25) : setPrice(0) } className="border-solid border-2 px-2 py-3 shadow-lg rounded-2xl mb-3"> */}
-                        <Field name="Highlight">
+                        {/* <Field name="Highlight">
                             {({ field, form }) => (
                                 <div className="block">
                                     <div className="mt-2">
@@ -520,7 +525,7 @@ export default function JobCreate(){
                                     </label>
                                 </div>
                             )}
-                        </Field>
+                        </Field> */}
                       {/* </div> */}
                     {/* <Field name="sticky_day">
                         {({ field, form }) => (
@@ -707,7 +712,7 @@ export default function JobCreate(){
                         )}
                     </Field>
                     {/* <NavLink to={`/jobs/${id}/sponsor`}> */}
-                        <button className="bg-black border-solid border-2 border-black hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-xl mt-4 rounded-lg"type="submit">Post Job</button>
+                        <button className="bg-black border-solid border-2 border-black hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-xl mt-4 rounded-lg"type="submit">Post Job - {price}</button>
                     {/* </NavLink> */}
                 </Form>
                 )}    

@@ -97,7 +97,16 @@ ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_EMAIL_METHOD='mandatory'
 ACCOUNT_ADAPTER = "api.adapters.AccountAdapter"
 SOCIALACCOUNT_ADAPTER = "api.adapters.SocialAccountAdapter"
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# if DEBUG:
+#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# else:
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+EMAIL_PORT = env('EMAIL_PORT')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

@@ -51,7 +51,7 @@ class emailList(models.Model):
     email = models.EmailField()
     send_time = models.CharField(max_length=10)
 
-class GeneralFeedback(models.Model):
-    name = models.CharField(max_length=50)
-    subject = models.CharField(max_length=100)
-    message = models.TextField()
+# class GeneralFeedback(models.Model):
+#     name = models.CharField(max_length=50)
+#     subject = models.CharField(max_length=100)
+#     message = models.TextField()

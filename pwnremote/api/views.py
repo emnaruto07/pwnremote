@@ -6,6 +6,7 @@ from .models import Job
 from .serializers import JobListSerializer, GeneralFeedbackSerializer
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.conf import settings
+from django.contrib import messages
 from django.core.mail import send_mail
 import stripe
 
@@ -51,22 +52,21 @@ class JobDeleteView(DestroyAPIView):
 class GeneralFeedbackCreateView(APIView):
 
     def post(self, request, *args, **kwargs):
-        serializer = GeneralFeedbackSerializer(request.data)
-        if serializer.is_valid():
+        serializer = GeneralFeedbackSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
             data = serializer.validated_data
             name = data.get('name')
-            subject = data.get('subject')
+            # subject = data.get('subject')
             message = data.get('message')
-            # email = data.get('email')
+            email = data.get('email')
             send_mail(
-                'Sent email from {}'.format(name),
-                'Subject: {}'.format(subject),
-                'Here is the feedback: {}'.format(message),
-                # settings.EMAIL_HOST_USER,
-                'test@gmail.com'
-                ['info@pwnremote.com'],
+                'Sent Feedback from {}'.format(name),
+                'Here is the message. {}'.format(message),
+                email,
+                ['shazebvps@gmail.com'],
                 fail_silently=False,
             )
+
             return Response({"success":"Sent"})
         return Response({'success':"Failed"}, status=status.HTTP_400_BAD_REQUEST)
 

@@ -60,8 +60,8 @@ class GeneralFeedbackCreateView(APIView):
             message = data.get('message')
             email = data.get('email')
             send_mail(
-                'Sent Feedback from {}'.format(name),
-                'Here is the message. {}'.format(message),
+                'Feedback from {}'.format(name),
+                message,
                 email,
                 ['shazebvps@gmail.com'],
                 fail_silently=False,

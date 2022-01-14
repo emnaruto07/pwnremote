@@ -10,7 +10,7 @@ function JobListItem({job}){
   return(  
 
     <NavLink to={`/jobs/${job.id}`}>
-      <div {...condition ? 'true': "false" } style={{ backgroundColor: condition ? "#FAF884" : "white" }} className="border-solid border-2 px-2 py-3 shadow-lg rounded-2xl mb-3">
+      <div {...condition ? 'true': "false" } style={{ backgroundColor: condition ? "#FAF884" : "white" }} className="border-solid border-2 md:px-2 md:py-3 shadow-lg rounded-2xl mb-3">
           <td className="flex justify-between">
             <td className="flex">
               <td className="py-5 px-3">
@@ -42,7 +42,7 @@ function JobListItem({job}){
                   </div> 
               </td>
             </td>
-            <td className="items-center px-4 py-2 my-auto">
+            <td className="items-center md:px-4 md:py-2 md:my-5 my-auto">
                 <a className="flex justify-between py-3" href={job.url} target="_blank" rel="noopener noreferrer">
                   <h5 className="border-solid border-2 border-black bg-black hover:text-black hover:bg-white text-white font-bold py-2 px-4 shadow-lg rounded-lg">Apply</h5>
                 </a>

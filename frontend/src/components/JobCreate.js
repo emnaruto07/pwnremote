@@ -486,7 +486,7 @@ export default function JobCreate(){
                                 {...field}
                                 type="checkbox"
                                 checked={field.value}
-                                // onPress={IncreasePrice()}
+                                // onChange={() => setPrice(price + 25)}
                                 className="
                                     rounded
                                     bg-gray-200

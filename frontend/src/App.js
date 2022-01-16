@@ -67,7 +67,7 @@ export default function App() {
               </div>
               <FeedBack 
               style={{zIndex:'2', marginLeft:'10px', position:'fixed'}}
-              position="left"
+              position="right"
               numberOfStars={5}
               handleClose={() => console.log("handleclose")}
               handleSubmit={(data) => 

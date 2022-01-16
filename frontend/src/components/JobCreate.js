@@ -32,6 +32,7 @@ export default function JobCreate(){
     const [loading, setLoading] = useState(false)
     const [file, setFile] = useState(null)
     const [price, setPrice] = useState(200)
+    
 
     const { user: { token } } = useContext(AuthContext)
     const navigate = useNavigate()
@@ -77,9 +78,15 @@ export default function JobCreate(){
 
     }
 
-    function IncreasePrice() {
-      setPrice(250)
+
+  function IncreasePrice() { 
+    if (price === 200) {
+      setPrice(price + 25)
+    }else {
+      setPrice(price - 25)
     }
+    console.log(price)
+  }
 
     return(
         <div>
@@ -475,18 +482,17 @@ export default function JobCreate(){
                                   <ImagePreview file={file}/>
                             )}
                         </div>
-                            
-                     <Field name="show_logo">
+                               
+                     {/* <Field name="show_logo" id="show_logo">
                         {({ field, form }) => (
                             <div className="block">
                                 <div className="mt-2">
                                 </div>
                                 <label className="inline-flex items-center">
                                 <input
-                                {...field}
                                 type="checkbox"
-                                checked={field.value}
-                                // onChange={() => setPrice(price + 25)}
+                                // checked={field.value}
+                                onChange={() => IncreasePrice()}
                                 className="
                                     rounded
                                     bg-gray-200
@@ -500,10 +506,9 @@ export default function JobCreate(){
                                 </label>
                             </div>
                         )}
-                    </Field>
-                    {/* {(job.Highlight) => setPrice(price + 25) */}
-                      {/* <div {...Highlight ? 'true': "false" } {...price ? onchange=setPrice(price + 25) : setPrice(0) } className="border-solid border-2 px-2 py-3 shadow-lg rounded-2xl mb-3"> */}
-                        {/* <Field name="Highlight">
+                    </Field> */}
+
+                        <Field name="Highlight">
                             {({ field, form }) => (
                                 <div className="block">
                                     <div className="mt-2">
@@ -512,7 +517,8 @@ export default function JobCreate(){
                                     <input
                                     {...field}
                                     type="checkbox"
-                                    checked={field.value}
+                                    // checked={field.value}
+                                    onChange={() => IncreasePrice()}
                                     className="
                                         rounded
                                         bg-gray-200
@@ -526,8 +532,7 @@ export default function JobCreate(){
                                     </label>
                                 </div>
                             )}
-                        </Field> */}
-                      {/* </div> */}
+                        </Field>
                     {/* <Field name="sticky_day">
                         {({ field, form }) => (
                             <div className="block">
@@ -713,7 +718,7 @@ export default function JobCreate(){
                         )}
                     </Field>
                     {/* <NavLink to={`/jobs/${id}/sponsor`}> */}
-                        <button className="bg-black border-solid border-2 border-black hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-xl mt-4 rounded-lg"type="submit">Post Job - {price}</button>
+                        <button id="total" className="bg-black border-solid border-2 border-black hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-xl mt-4 rounded-lg"type="submit">Post Job - ${price}</button>
                     {/* </NavLink> */}
                 </Form>
                 )}    

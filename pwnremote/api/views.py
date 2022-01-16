@@ -62,7 +62,7 @@ class GeneralFeedbackCreateView(APIView):
                 'Feedback from {}'.format(name),
                 'Here is the email of the user: {} And this is the message: {}'.format(email, message),
                 settings.EMAIL_HOST_USER,
-                settings.FEEDBACK_EMAIL,
+                [settings.FEEDBACK_EMAIL],
                 fail_silently=False,
             )
             return Response({"success":"Sent"})

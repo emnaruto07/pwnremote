@@ -85,7 +85,7 @@ export default function JobCreate(){
     }else {
       setPrice(price - 25)
     }
-    console.log(price)
+    // console.log(price)
   }
 
     return(

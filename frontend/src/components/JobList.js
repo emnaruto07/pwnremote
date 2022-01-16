@@ -6,6 +6,7 @@ import New from "../assets/new.gif";
 
 function JobListItem({job}){
   const condition = job.Highlight;
+  const showlogo = job.show_logo
 
   return(  
 
@@ -14,7 +15,9 @@ function JobListItem({job}){
           <td className="flex justify-between">
             <td className="flex">
               <td className="py-5 px-3">
-                  <img src={job.company_logo} className="h-20 w-20 rounded-full border-2" alt={job.company_logo} />
+                  <div {...showlogo ? 'true':"false" } style={{visibility: showlogo ? "visible" : "hidden"}}className="h-20 w-20 rounded-full border-2">
+                    <img src={job.company_logo}  alt={job.company_logo} />
+                  </div>
               </td>   
                 <td className="p-2">
                 <div  className="flex">

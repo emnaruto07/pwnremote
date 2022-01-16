@@ -46,6 +46,11 @@ function JobListItem({job}){
               </td>
             </td>
             <td className="items-center md:px-4 md:py-2 md:my-5 my-auto">
+                <div className="flex justify-between py-3">
+                  <h5 className="border-solid border-2 font-bold py-2 px-4 shadow-lg rounded-lg">{job.Skills_tag}</h5>
+                </div>
+            </td>
+            <td className="items-center md:px-4 md:py-2 md:my-5 my-auto">
                 <a className="flex justify-between py-3" href={job.url} target="_blank" rel="noopener noreferrer">
                   <h5 className="border-solid border-2 border-black bg-black hover:text-black hover:bg-white text-white font-bold py-2 px-4 shadow-lg rounded-lg">Apply</h5>
                 </a>

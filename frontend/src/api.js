@@ -25,6 +25,10 @@ export const API = {
 
     },
 
+    userfeedback: {
+        feedback: `${apiURL}/feedback/`
+    },
+
     user: {
         users: `${apiURL}/users/`
     }

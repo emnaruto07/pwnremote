@@ -81,7 +81,7 @@ function Footer() {
                 </h2>
                 <ul className="mb-8 space-y-2 text-sm list-none">
                     <li>
-                        <h2 className="text-black font-semibold">Email: </h2><p>info@pwnremote.com</p>
+                        <h2 className="text-black font-semibold">Email: </h2><p>support@pwnremote.com</p>
                     </li>
                 </ul>
             </div>

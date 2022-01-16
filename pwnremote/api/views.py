@@ -6,7 +6,6 @@ from .models import Job
 from .serializers import JobListSerializer, GeneralFeedbackSerializer
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.conf import settings
-from django.contrib import messages
 from django.core.mail import send_mail
 import stripe
 
@@ -61,12 +60,11 @@ class GeneralFeedbackCreateView(APIView):
             email = data.get('email')
             send_mail(
                 'Feedback from {}'.format(name),
-                message,
-                email,
-                ['shazebvps@gmail.com'],
+                'Here is the email of the user: {} And this is the message: {}'.format(email, message),
+                settings.EMAIL_HOST_USER,
+                settings.FEEDBACK_EMAIL,
                 fail_silently=False,
             )
-
             return Response({"success":"Sent"})
         return Response({'success':"Failed"}, status=status.HTTP_400_BAD_REQUEST)
 

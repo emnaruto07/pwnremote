@@ -25,6 +25,10 @@ import About from "./components/About";
 import Terms from "./components/Terms";
 import Privacy from "./components/Privacy";
 import Resources from "./components/Resources";
+import FeedBack from 'react-feedback-popup';
+import { API } from './api'
+// import axios from "axios";
+
 
 
 function PrivateRoute({ children }){
@@ -60,7 +64,34 @@ export default function App() {
                   <Route path="/jobs/:id/delete" element={<PrivateRoute><JobDelete /></PrivateRoute>} />
                   <Route path="/" element={<JobList />} exact />
                 </Routes>
-              </div> 
+              </div>
+              <FeedBack 
+              style={{zIndex:'2', marginLeft:'10px', position:'fixed'}}
+              position="left"
+              numberOfStars={5}
+              handleClose={() => console.log("handleclose")}
+              handleSubmit={(data) => 
+                fetch(API.userfeedback.feedback, {
+                  headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                  },
+                  method: 'POST', // or 'PUT'
+                  body: JSON.stringify(data),
+                }).then((response) => { 
+                  if (!response.ok) {
+                    return Promise.reject('Our servers are having issues! We couldn\'t send your feedback!');
+                  }
+                  response.json()
+                }).then(() => {
+                  alert('Success! Thanks for the feedback. :)');
+                }).catch((error) => {
+                  alert('Our servers are having issues! We couldn\'t send your feedback!', error);
+                })
+              }
+              handleButtonClick={() => console.log("handleButtonClick")}
+              
+              /> 
               <Footer />
         </div>
       </AuthContextProvider>

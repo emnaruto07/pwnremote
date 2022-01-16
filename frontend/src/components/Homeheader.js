@@ -51,8 +51,7 @@ function Homeheader() {
                     }}
                     />
             </span>
-            </div>
-            
+            </div>           
         </div>
         
     )

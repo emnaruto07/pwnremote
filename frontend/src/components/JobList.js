@@ -11,11 +11,11 @@ function JobListItem({job}){
   return(  
 
     <NavLink to={`/jobs/${job.id}`}>
-      <div {...condition ? 'true': "false" } style={{ backgroundColor: condition ? "#FAF884" : "white" }} className="border-solid border-2 md:px-2 md:py-2 rounded-xl mb-2">
+      <div {...condition ? 'true': "false" } style={{ backgroundColor: condition ? "#FAF884" : "white" }} className="border-solid border-2 md:px-2 md:py-2 rounded-2xl mb-2">
           <td className="flex justify-between">
             <td className="flex">
-              <td className="py-5 px-3">
-                  <div {...showlogo ? 'true':"false" } style={{visibility: showlogo ? "visible" : "hidden"}}className="h-20 w-20 rounded-full border-2">
+              <td className="py-5 px-3 m-auto">
+                  <div {...showlogo ? 'true':"false" } style={{visibility: showlogo ? "visible" : "hidden"}}className="h-16 w-16 rounded-full border-2">
                     <img src={job.company_logo}  alt={job.company_logo} />
                   </div>
               </td>   
@@ -35,7 +35,7 @@ function JobListItem({job}){
                 <div className="flex text-sm">
                   <p>${job.Min_salary}-${job.max_salary}</p>   
                     {job.Location && (
-                      <p className="font-medium ml-2 text-sm">
+                      <p className="font-medium ml-2 text-sm border-2 border rounded-xl px-1 bg-slate-300">
                         {job.Location}
                       </p>
                     )}     

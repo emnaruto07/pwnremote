@@ -13,5 +13,4 @@ urlpatterns = [
     path('feedback/', GeneralFeedbackCreateView.as_view()),
     path("payments/create-payment/", CreatePaymentView.as_view()),
 
-
 ]

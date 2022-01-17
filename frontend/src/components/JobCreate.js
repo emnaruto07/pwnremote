@@ -1,7 +1,7 @@
 import { Formik, Field, Form } from 'formik';
 import { useState, useEffect } from 'react';
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { useContext } from 'react';
 // import { useParams } from "react-router"
@@ -33,6 +33,7 @@ export default function JobCreate(){
     const [file, setFile] = useState(null)
     const [price, setPrice] = useState(200)
     
+    // const { id } = useParams()
 
     const { user: { token } } = useContext(AuthContext)
     const navigate = useNavigate()
@@ -717,9 +718,9 @@ export default function JobCreate(){
                           </label>
                         )}
                     </Field>
-                    {/* <NavLink to={`/jobs/${id}/sponsor`}> */}
+                    <NavLink to={`/payment/`}>
                         <button id="total" className="bg-black border-solid border-2 border-black hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-xl mt-4 rounded-lg"type="submit">Post Job - ${price}</button>
-                    {/* </NavLink> */}
+                    </NavLink>
                 </Form>
                 )}    
             </Formik>

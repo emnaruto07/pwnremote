@@ -129,7 +129,7 @@ export default function JobUpdate(){
                 onSubmit={handleSubmit}>
                 {({ values }) => (
                     <Form>
-                    <h3 className='border-solid border-2 border-black font-bold py-2 px-4 text-center mt-2 mb-2 rounded-lg'>JOB DETAILS</h3>
+                    <h3 className='border-solid border-2 font-bold py-2 px-4 text-center mt-2 mb-2 shadow-xl rounded-lg'>JOB DETAILS</h3>
                     <Field name="Company_name">
                         {({ field, form }) => (
                             <label className="block">
@@ -469,8 +469,7 @@ export default function JobUpdate(){
                         )}
                     </Field>
                  
-                    <h3 className='border-solid border-2 border-black font-bold py-2 px-4 text-center mt-2 rounded-lg'>DESIGN YOUR POST</h3>
-                        <h3 className='border-solid border-2 border-black font-bold py-2 px-4 text-center mt-4 rounded-lg'>DESIGN YOUR POST</h3>
+                    <h3 className='border-solid border-2 font-bold py-2 px-4 text-center mt-2 mb-2 shadow-xl rounded-lg'>DESIGN YOUR POST</h3>
                         <div className='flex mt-2'>
                           <label className="block">
                               <span className="text-gray-700">Company Logo</span>
@@ -618,7 +617,7 @@ export default function JobUpdate(){
                             </div>
                         )}
                     </Field> */}
-                    <h3 className='border-solid border-2 border-black font-bold py-2 px-4 text-center mt-4 mb-2 rounded-lg'>COMPANY DETAILS</h3>
+                    <h3 className='border-solid border-2 font-bold py-2 px-4 text-center mt-2 mb-2 shadow-xl rounded-lg'>COMPANY DETAILS</h3>
                     <Field name="company_twitter">
                         {({ field, form }) => (
                             <label className="block">

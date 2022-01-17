@@ -37,7 +37,7 @@ return(
         {!job && "Loading.."}
         {job && (    
             <div>
-                <div className="border-solid border-2 px-4 py-3 shadow-xl rounded-lg"> 
+                <div className="border-solid border-2 px-4 py-3 rounded-xl"> 
                 <div className="mt-4 flex justify-between">
                     <div>
                         <h3 className="text-2xl text-black subpixel-antialiased font-bold">{job.Position}</h3>

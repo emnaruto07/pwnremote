@@ -77,15 +77,72 @@ export function CheckoutForm() {
   };
 
   return (
-    <form id="payment-form" onSubmit={handleSubmit}>
-      <PaymentElement id="payment-element" />
-      <button className="border-solid border-2 border-black bg-black mt-2 hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-md rounded-lg" disabled={isLoading || !stripe || !elements} id="submit">
-        <span id="button-text">
-          {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
-        </span>
-      </button>
-      {/* Show any error or success messages */}
-      {message && <div id="payment-message">{message}</div>}
+    <div className="border-solid border-2 shadow-xl p-4 w-96 rounded-lg">
+      <form id="payment-form" onSubmit={handleSubmit}>
+        <PaymentElement id="payment-element" />
+        <button className="border-solid border-2 border-black bg-black mt-2 hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-md rounded-lg" disabled={isLoading || !stripe || !elements} id="submit">
+          <span id="button-text">
+            {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
+          </span>
+        </button>
+        {/* Show any error or success messages */}
+        {message && <div id="payment-message">{message}</div>}
     </form>
+    </div>
+    
   );
 }
+
+// import React, { useState, useEffect } from "react";
+// import "../CheckoutForm.css";
+
+// const ProductDisplay = () => (
+//   <section>
+//     <div className="product">
+//       <img
+//         // src="https://i.imgur.com/EHyR2nP.png"
+//         alt="The cover of Stubborn Attachments"
+//       />
+//       <div className="description">
+//       <h3>Stubborn Attachments</h3>
+//       <h5>$20.00</h5>
+//       </div>
+//     </div>
+//     <form action="/create-checkout-session" method="POST">
+//       <button type="submit">
+//         Checkout
+//       </button>
+//     </form>
+//   </section>
+// );
+
+// const Message = ({ message }) => (
+//   <section>
+//     <p>{message}</p>
+//   </section>
+// );
+
+// export function CheckoutForm() {
+//   const [message, setMessage] = useState("");
+
+//   useEffect(() => {
+//     // Check to see if this is a redirect back from Checkout
+//     const query = new URLSearchParams(window.location.search);
+
+//     if (query.get("success")) {
+//       setMessage("Order placed! You will receive an email confirmation.");
+//     }
+
+//     if (query.get("canceled")) {
+//       setMessage(
+//         "Order canceled -- continue to shop around and checkout when you're ready."
+//       );
+//     }
+//   }, []);
+
+//   return message ? (
+//     <Message message={message} />
+//   ) : (
+//     <ProductDisplay />
+//   );
+// }

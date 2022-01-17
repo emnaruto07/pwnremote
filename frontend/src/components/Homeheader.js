@@ -12,7 +12,7 @@ function Homeheader() {
     //  }, []);
 
     return (
-        <div className="py-20 aspect-w-4 aspect-h-8 bg-auto" style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(${Banner})`}}>
+        <div className="py-20 px-2 rounded-lg max-w-6xl mx-auto" style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(${Banner})`}}>
             <div className='flex justify-center items-center'>
             <p className='text-red-500 font-bold text-4xl'>Apply</p>
             <span className='items-center text-4xl ml-2 font-semibold text-white'>

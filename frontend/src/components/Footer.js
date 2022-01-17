@@ -4,11 +4,11 @@ import pwn from '../assets/PwnRemote.png';
 
 function Footer() {
     return (
-        <footer className="pt-40 px-4 divide">
+        <footer className="pt-40 px-4 divide max-w-6xl mx-auto">
             <div className="container flex flex-col justify-center mx-auto space-y-8 lg:flex-row lg:space-y-0">
                 <div>
                     <Link to="/" className="flex sm:justify-center" >
-                        <div className="flex w-12 h-12">
+                        <div className="flex h-12 w-12">
                             <img src={pwn} alt="logo" className="h-10 w-10 mr-2" />
                         </div>
                         <span className="font-semibold text-gray-500 text-2xl">

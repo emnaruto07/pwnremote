@@ -38,7 +38,7 @@ export function Payment() {
     };
 
     return (
-      <div>
+      <div className="flex justify-center">
           {clientSecret && (
             <Elements stripe={stripePromise} options={options}>
               <CheckoutForm />

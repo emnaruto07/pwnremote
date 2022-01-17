@@ -96,7 +96,7 @@ export default function JobUpdate(){
     }
 
     return(
-        <div>
+        <div className="border-solid border-2 shadow-xl p-4 rounded-lg">
             {loading && "Loading..."}
             {loadingJob && "Featching Job Data..."}
             {job &&(

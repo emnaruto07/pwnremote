@@ -11,7 +11,7 @@ function JobListItem({job}){
   return(  
 
     <NavLink to={`/jobs/${job.id}`}>
-      <div {...condition ? 'true': "false" } style={{ backgroundColor: condition ? "#FAF884" : "white" }} className="border-solid border-2 md:px-2 md:py-2 rounded-2xl mb-2">
+      <div {...condition ? 'true': "false" } style={{ backgroundColor: condition ? "#FAF884" : "white" }} className="border-solid border-2 md:px-2 md:py-1 rounded-3xl shadow-sm mb-2">
           <td className="flex justify-between">
             <td className="flex">
               <td className="py-5 px-3 m-auto">
@@ -65,13 +65,19 @@ function JobListItem({job}){
 
 export default function JobList() {
   const[jobs, setJobs] = useState(null)
+  const[highlightJobs, setHighlightJobs] = useState(null)
 
   useEffect(() => {
     function fetchJobs(){
       axios.get(API.jobs.list)
         .then(res => {
+
+          const highlightJobs = res.data.filter(job => job.Highlight)
+          const restOfJobs = res.data.filter(job => !job.Highlight)
+
           console.log(res.data)
-          setJobs(res.data)
+          setJobs(restOfJobs)
+          setHighlightJobs(highlightJobs)
         })
   }
   fetchJobs()
@@ -81,6 +87,12 @@ export default function JobList() {
   return (
     <div>
       {!jobs && "Loading.."}
+      {highlightJobs && highlightJobs.map(job =>
+        {
+          return (
+            <JobListItem key={job.id} job={job}/>
+          )
+        })}
       {jobs && jobs.map(job => {
         return (
           <JobListItem key={job.id} job={job}/>

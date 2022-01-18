@@ -1,3 +1,4 @@
+from locale import currency
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -31,25 +32,37 @@ class Job(models.Model):
     company_email = models.EmailField(default="")
     invoice_email = models.EmailField(default="")
     invoice_address = models.TextField(default="")
+    date_until = models.DateTimeField(null=True)
 
     def __str__(self):
         return self.Company_name
 
 
-class SponsoredJobPost(models.Model):
-    job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name='sponsored_post')
+class UpdateJobPost(models.Model):
+    job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name='update_post')
     date_created = models.DateTimeField(auto_now_add=True)
-    date_until = models.DateTimeField()
     stripe_payment_intent_id = models.CharField(max_length=150)
 
-# class CompanyDetail(models.Model):
-#     job = models.OneToOneField('Job', on_delete=models.CASCADE, related_name='Companydetails')
+class StripeSessionDetails(models.Model):
+    job = models.ForeignKey(Job, on_delete=models.DO_NOTHING, related_name='stripeDetails')
+    stripe_payment_intent_id = models.CharField(max_length=150)
+    amount = models.PositiveBigIntegerField()
+    metadata = models.CharField(max_length=150)
+    created = models.CharField(max_length=150)
+    currency = models.CharField(max_length=30)
+    customer = models.CharField(max_length=150)
+    payment_type = models.CharField(max_length=150)
+    mode = models.CharField(max_length=25)
+    payment_status = models.CharField(max_length=30)
+    receipt_email = models.EmailField()
+
+
     
 
 class emailList(models.Model):
     First_name = models.CharField(max_length=15)
     email = models.EmailField()
-    send_time = models.CharField(max_length=10)
+    # send_time = models.CharField(max_length=10)
 
 # class GeneralFeedback(models.Model):
 #     name = models.CharField(max_length=50)

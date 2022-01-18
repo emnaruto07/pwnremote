@@ -41,7 +41,7 @@ export default function App() {
   return (
     <Router>
       <AuthContextProvider>
-          <div className="border-solid border-2  max-w-6xl mx-auto justify-center rounded-lg shadow-xl px-4 pb-2">
+          <div className="border-solid border-2 max-w-6xl mx-auto justify-center rounded-lg shadow-sm px-8 pb-2">
             <Navbar />
             <Homeheader />
             {/* A <Router> looks through its children <Route>s and

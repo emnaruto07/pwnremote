@@ -77,7 +77,7 @@ export function CheckoutForm() {
   };
 
   return (
-    <div className="border-solid border-2 shadow-xl p-4 w-96 rounded-lg">
+    <div className="border-solid border-2 shadow-sm p-8 w-96 rounded-3xl">
       <form id="payment-form" onSubmit={handleSubmit}>
         <PaymentElement id="payment-element" />
         <button className="border-solid border-2 border-black bg-black mt-2 hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-md rounded-lg" disabled={isLoading || !stripe || !elements} id="submit">

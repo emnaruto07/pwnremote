@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import (
     JobListView, JobCreateView, JobUpdateView, JobDeleteView, JobDetailView, 
-    CreatePaymentView, GeneralFeedbackCreateView
+    CreatePaymentView, GeneralFeedbackCreateView, CreateUpdatePaymentView
 )
 
 urlpatterns = [
@@ -12,5 +12,6 @@ urlpatterns = [
     path('job/<pk>/', JobDetailView.as_view()),
     path('feedback/', GeneralFeedbackCreateView.as_view()),
     path("create-checkout-session/", CreatePaymentView.as_view()),
+    path("payments/create-payment/", CreateUpdatePaymentView.as_view()),
 
 ]

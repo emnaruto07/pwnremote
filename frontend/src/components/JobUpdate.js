@@ -1,7 +1,7 @@
 import { Formik, Field, Form } from 'formik';
 import { useState, useEffect } from 'react';
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { useParams } from "react-router-dom"
 import { useContext } from 'react';
@@ -96,7 +96,7 @@ export default function JobUpdate(){
     }
 
     return(
-        <div className="border-solid border-2 shadow-xl p-4 rounded-lg">
+        <div className="border-solid border-2 shadow-md p-4 rounded-lg">
             {loading && "Loading..."}
             {loadingJob && "Featching Job Data..."}
             {job &&(
@@ -704,9 +704,9 @@ export default function JobUpdate(){
                           </label>
                         )}
                     </Field>
-                    {/* <NavLink to={`/jobs/${id}/sponsor`}> */}
+                    <NavLink to={`/jobs/${id}/sponsor`}>
                         <button className="bg-black border-solid border-2 border-black hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-xl mt-4 rounded-lg"type="submit">Update Post</button>
-                    {/* </NavLink> */}
+                    </NavLink>
 
                 </Form>
                 )}    

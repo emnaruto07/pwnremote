@@ -37,7 +37,7 @@ return(
         {!job && "Loading.."}
         {job && (    
             <div>
-                <div className="border-solid border-2 px-4 py-3 rounded-xl"> 
+                <div className="border-solid border-2 px-4 py-3 rounded-xl shadow-sm"> 
                 <div className="mt-4 flex justify-between">
                     <div>
                         <h3 className="text-2xl text-black subpixel-antialiased font-bold">{job.Position}</h3>
@@ -83,7 +83,7 @@ return(
                     </div>      
             </div>
 
-        {job.is_owner && (
+        {!job.is_owner && (
             <div className="flex items-center mt-2">
                 <NavLink to={`/jobs/${id}/update`}>
                         <h5 className="border-solid border-2 border-black bg-black hover:text-black hover:bg-white text-white font-bold py-2 px-4 shadow-md rounded-xl">Update</h5>

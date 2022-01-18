@@ -13,7 +13,8 @@ export const API = {
 
     },
     payment: {
-        createPayment: `${apiURL}/create-checkout-session/`
+        createPayment: `${apiURL}/create-checkout-session/`,
+        updatePayment: `${apiURL}/payments/create-payment/`
     },
 
     jobs: {

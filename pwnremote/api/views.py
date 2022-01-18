@@ -3,6 +3,7 @@ from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, D
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Job
+from django.shortcuts import redirect
 from .serializers import JobListSerializer, GeneralFeedbackSerializer
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.conf import settings
@@ -72,23 +73,7 @@ class GeneralFeedbackCreateView(APIView):
         return Response({'success':"Failed"}, status=status.HTTP_400_BAD_REQUEST)
 
 
-# class CreatePaymentView(APIView):
-#     def post(self, request, *args, **kwargs):
-#         try:
-#             # data = request.data
-#             # Create a PaymentIntent with the order amount and currency
-#             intent = stripe.PaymentIntent.create(
-#                 amount=1000,
-#                 currency='usd',
-#                 automatic_payment_methods={
-#                     'enabled': True,
-#                 },
-#             )
-#             return Response({
-#                 'clientSecret': intent['client_secret']
-#             })
-#         except Exception as e:
-#             return Response({"error": str(e)}, status=403)
+
 
 
 class CreatePaymentView(APIView):
@@ -109,15 +94,45 @@ class CreatePaymentView(APIView):
         except Exception as e:
             return str(e)
 
-        return Response({"sessionUrl":checkout_session.url}, status=200)
+        return Response({"sessionUrl":checkout_session.url})
+        # return redirect(checkout_session.url)
 
     
     @csrf_exempt
     def my_webhook_view(request):
         payload = request.body
+        sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+        event = None
 
-        # For now, you only need to print out the webhook payload so you can see
-        # the structure.
-        print(payload)
+        try:
+            event = stripe.Webhook.construct_event(
+            payload, sig_header, endpoint_secret
+            )
+        except ValueError as e:
+            # Invalid payload
+            return HttpResponse(status=400)
+        except stripe.error.SignatureVerificationError as e:
+            # Invalid signature
+            return HttpResponse(status=400)
 
+        # Passed signature verification
         return HttpResponse(status=200)
+
+
+class CreateUpdatePaymentView(APIView):
+    def post(self, request, *args, **kwargs):
+        try:
+            # data = request.data
+            # Create a PaymentIntent with the order amount and currency
+            intent = stripe.PaymentIntent.create(
+                amount=1000,
+                currency='usd',
+                automatic_payment_methods={
+                    'enabled': True,
+                },
+            )
+            return Response({
+                'clientSecret': intent['client_secret']
+            })
+        except Exception as e:
+            return Response({"error": str(e)}, status=403)

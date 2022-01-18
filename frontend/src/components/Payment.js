@@ -20,7 +20,7 @@ export function Payment() {
 
     useEffect(() => {
       // Create PaymentIntent as soon as the page loads
-      axios.post(API.payment.createPayment, {job_id: id }, {
+      axios.post(API.payment.updatePayment, {job_id: id }, {
         headers: {
           "Authorization": `Token ${token}`
         }

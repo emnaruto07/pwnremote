@@ -35,7 +35,7 @@ function JobListItem({job}){
                 <div className="flex text-sm">
                   <p>${job.Min_salary}-${job.max_salary}</p>   
                     {job.Location && (
-                      <p className="font-medium ml-2 text-sm border-2 border rounded-xl px-1 bg-slate-300">
+                      <p className="font-medium ml-2 text-sm border-0 rounded-xl px-1 bg-slate-300">
                         {job.Location}
                       </p>
                     )}     

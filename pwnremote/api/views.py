@@ -1,4 +1,3 @@
-from urllib import response
 from rest_framework import status
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView
 from rest_framework.views import APIView
@@ -7,9 +6,10 @@ from .models import Job
 from .serializers import JobListSerializer, GeneralFeedbackSerializer
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
 from django.core.mail import send_mail
 import stripe
-
+from django.http import HttpResponse
 # This is your test secret API key.
 
 YOUR_DOMAIN = 'http://localhost:3000'
@@ -98,7 +98,7 @@ class CreatePaymentView(APIView):
                 line_items=[
                     {
                         # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                        'price': 'price_1KG5QhDaN18cbJKsqJcwgiRY',
+                        'price': 'price_1KJDWQDaN18cbJKsBh451B4C',
                         'quantity': 1,
                     },
                 ],
@@ -110,3 +110,14 @@ class CreatePaymentView(APIView):
             return str(e)
 
         return Response({"sessionUrl":checkout_session.url}, status=200)
+
+    
+    @csrf_exempt
+    def my_webhook_view(request):
+        payload = request.body
+
+        # For now, you only need to print out the webhook payload so you can see
+        # the structure.
+        print(payload)
+
+        return HttpResponse(status=200)

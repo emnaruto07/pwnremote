@@ -11,6 +11,6 @@ urlpatterns = [
     path('job/<pk>/delete', JobDeleteView.as_view()),
     path('job/<pk>/', JobDetailView.as_view()),
     path('feedback/', GeneralFeedbackCreateView.as_view()),
-    path("create-checkout-session/", CreatePaymentView.as_view()),
+    path("payments/create-payment/", CreatePaymentView.as_view()),
 
 ]

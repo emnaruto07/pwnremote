@@ -72,41 +72,22 @@ class GeneralFeedbackCreateView(APIView):
         return Response({'success':"Failed"}, status=status.HTTP_400_BAD_REQUEST)
 
 
-# class CreatePaymentView(APIView):
-#     def post(self, request, *args, **kwargs):
-#         try:
-#             # data = request.data
-#             # Create a PaymentIntent with the order amount and currency
-#             intent = stripe.PaymentIntent.create(
-#                 amount=1000,
-#                 currency='usd',
-#                 automatic_payment_methods={
-#                     'enabled': True,
-#                 },
-#             )
-#             return Response({
-#                 'clientSecret': intent['client_secret']
-#             })
-#         except Exception as e:
-#             return Response({"error": str(e)}, status=403)
-
-
 class CreatePaymentView(APIView):
     def post(self, request, *args, **kwargs):
         try:
-            checkout_session = stripe.checkout.Session.create(
-                line_items=[
-                    {
-                        # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                        'price': 'price_1KG5QhDaN18cbJKsqJcwgiRY',
-                        'quantity': 1,
-                    },
-                ],
-                mode='payment',
-                success_url=YOUR_DOMAIN + '?success=true',
-                cancel_url=YOUR_DOMAIN + '?canceled=true',
+            # data = request.data
+            # Create a PaymentIntent with the order amount and currency
+            intent = stripe.PaymentIntent.create(
+                amount=1000,
+                currency='usd',
+                automatic_payment_methods={
+                    'enabled': True,
+                },
             )
+            return Response({
+                'clientSecret': intent['client_secret']
+            })
         except Exception as e:
-            return str(e)
+            return Response({"error": str(e)}, status=403)
 
-        return redirect(checkout_session.url, code=303)
+

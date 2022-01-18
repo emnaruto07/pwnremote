@@ -1,9 +1,9 @@
+from urllib import response
 from rest_framework import status
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Job
-from django.shortcuts import redirect
 from .serializers import JobListSerializer, GeneralFeedbackSerializer
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.conf import settings
@@ -12,7 +12,7 @@ import stripe
 
 # This is your test secret API key.
 
-YOUR_DOMAIN = 'http://localhost:8000'
+YOUR_DOMAIN = 'http://localhost:3000'
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -72,22 +72,41 @@ class GeneralFeedbackCreateView(APIView):
         return Response({'success':"Failed"}, status=status.HTTP_400_BAD_REQUEST)
 
 
+# class CreatePaymentView(APIView):
+#     def post(self, request, *args, **kwargs):
+#         try:
+#             # data = request.data
+#             # Create a PaymentIntent with the order amount and currency
+#             intent = stripe.PaymentIntent.create(
+#                 amount=1000,
+#                 currency='usd',
+#                 automatic_payment_methods={
+#                     'enabled': True,
+#                 },
+#             )
+#             return Response({
+#                 'clientSecret': intent['client_secret']
+#             })
+#         except Exception as e:
+#             return Response({"error": str(e)}, status=403)
+
+
 class CreatePaymentView(APIView):
     def post(self, request, *args, **kwargs):
         try:
-            # data = request.data
-            # Create a PaymentIntent with the order amount and currency
-            intent = stripe.PaymentIntent.create(
-                amount=1000,
-                currency='usd',
-                automatic_payment_methods={
-                    'enabled': True,
-                },
+            checkout_session = stripe.checkout.Session.create(
+                line_items=[
+                    {
+                        # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+                        'price': 'price_1KG5QhDaN18cbJKsqJcwgiRY',
+                        'quantity': 1,
+                    },
+                ],
+                mode='payment',
+                success_url=YOUR_DOMAIN + '/payment/success',
+                cancel_url=YOUR_DOMAIN + '?canceled=true',
             )
-            return Response({
-                'clientSecret': intent['client_secret']
-            })
         except Exception as e:
-            return Response({"error": str(e)}, status=403)
+            return str(e)
 
-
+        return Response({"sessionUrl":checkout_session.url}, status=200)

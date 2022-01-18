@@ -1,7 +1,7 @@
 import { Formik, Field, Form } from 'formik';
 import { useState, useEffect } from 'react';
 import axios from "axios";
-import {useNavigate, NavLink } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { useContext } from 'react';
 // import { useParams } from "react-router"
@@ -40,42 +40,58 @@ export default function JobCreate(){
 
     function handleSubmit(values) {
         setLoading(true)
-        const data = new FormData()
-        data.append('company_logo', file)
-        data.append('Company_name', values.Company_name)
-        data.append('Position', values.Position)
-        data.append('Employment_type', values.Employment_type)
-        data.append('Primary_Skills', values.Primary_Skills)
-        data.append('Skills_tag', values.Skills_tag)
-        data.append('Location', values.Location)
-        data.append('available', values.available)
-        data.append('Min_salary', values.Min_salary)
-        data.append('max_salary', values.max_salary)
-        data.append('Description', values.Description)
-        data.append('user', values.user)
-        data.append('url', values.url)
-        data.append('email', values.email)
-        data.append('show_logo', values.show_logo)
-        data.append('Highlight', values.Highlight)
-        data.append('feedback', values.feedback)
-        data.append('company_twitter', values.company_twitter)
-        data.append('company_email', values.company_email)
-        data.append('invoice_email', values.invoice_email)
-        data.append('invoice_address', values.invoice_address)
+        // const data = new FormData()
+        // data.append('company_logo', file)
+        // data.append('Company_name', values.Company_name)
+        // data.append('Position', values.Position)
+        // data.append('Employment_type', values.Employment_type)
+        // data.append('Primary_Skills', values.Primary_Skills)
+        // data.append('Skills_tag', values.Skills_tag)
+        // data.append('Location', values.Location)
+        // data.append('available', values.available)
+        // data.append('Min_salary', values.Min_salary)
+        // data.append('max_salary', values.max_salary)
+        // data.append('Description', values.Description)
+        // data.append('user', values.user)
+        // data.append('url', values.url)
+        // data.append('email', values.email)
+        // data.append('show_logo', values.show_logo)
+        // data.append('Highlight', values.Highlight)
+        // data.append('feedback', values.feedback)
+        // data.append('company_twitter', values.company_twitter)
+        // data.append('company_email', values.company_email)
+        // data.append('invoice_email', values.invoice_email)
+        // data.append('invoice_address', values.invoice_address)
 
-        axios.post(API.jobs.create, data, {
-            headers: {
-                "Authorization": `Token ${token}`
-            }
-        })
-            .then(res => {
-                console.log(res.data)
-                navigate("/")
+        // axios.post(API.jobs.create, data, {
+        //     headers: {
+        //         "Authorization": `Token ${token}`
+        //     }
+        // })
+        //     .then(res => {
+        //         console.log(res.data)
+        //         navigate("/")
 
-            })
-            .finally(() => {
-                setLoading(false)
-            })
+        //     })
+        //     .finally(() => {
+        //         setLoading(false)
+        //     })
+
+        axios.post(API.payment.createPayment, {}, {
+          headers: {
+              "Authorization": `Token ${token}`
+          }
+      })
+          .then(res => {
+              console.log(res)
+              window.location.assign(res.data.sessionUrl);
+              // navigate("/")
+              console.log(res.data)
+
+          })
+          .finally(() => {
+              setLoading(false)
+          })
 
     }
 
@@ -718,9 +734,9 @@ export default function JobCreate(){
                           </label>
                         )}
                     </Field>
-                    <NavLink to="/payment/">
+                    {/* <NavLink to="/payments/create-payment/"> */}
                         <button id="total" className="bg-black border-solid border-2 border-black hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-xl mt-4 rounded-lg" type="submit">Post Job - ${price}</button>
-                    </NavLink>
+                    {/* </Nav> */}
                 </Form>
                 )}    
             </Formik>

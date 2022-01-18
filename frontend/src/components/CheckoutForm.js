@@ -4,6 +4,7 @@ import {
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
+import "../App.css"
 
 export function CheckoutForm() {
   const stripe = useStripe();
@@ -77,10 +78,14 @@ export function CheckoutForm() {
   };
 
   return (
+ 
     <div className="border-solid border-2 shadow-sm p-8 w-96 rounded-3xl">
       <form id="payment-form" onSubmit={handleSubmit}>
         <PaymentElement id="payment-element" />
         <button className="border-solid border-2 border-black bg-black mt-2 hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-md rounded-lg" disabled={isLoading || !stripe || !elements} id="submit">
+          <style>
+          
+          </style>
           <span id="button-text">
             {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
           </span>

@@ -74,19 +74,18 @@ class GeneralFeedbackCreateView(APIView):
 
 
 
-
-
 class CreatePaymentView(APIView):
     def post(self, request, *args, **kwargs):
+
         try:
             checkout_session = stripe.checkout.Session.create(
                  line_items=[
                 {
                     'price_data': {
                         'currency': 'usd',
-                        'unit_amount': 2000,
+                        'unit_amount': request.data['params']['price']*100,
                         'product_data': {
-                            'name': "Pushkar",
+                            'name': request.data['params']['Company_name'],
                             # 'images': ['https://i.imgur.com/EHyR2nP.png'],
                         },
                     },

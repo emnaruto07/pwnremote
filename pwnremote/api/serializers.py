@@ -2,7 +2,6 @@ from rest_framework import serializers
 from .models import Job
 
 
-
 class JobListSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     

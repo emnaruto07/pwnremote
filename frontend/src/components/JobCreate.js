@@ -62,8 +62,6 @@ export default function JobCreate(){
         data.append('company_email', values.company_email)
         data.append('invoice_email', values.invoice_email)
         data.append('invoice_address', values.invoice_address)
-        data.append('post_price', values.price)
-
         
         axios.post(API.jobs.create, data, {
           headers: {
@@ -81,7 +79,6 @@ export default function JobCreate(){
                 .then(res => {
                     console.log(res)
                     window.location.assign(res.data.sessionUrl);
-                    // navigate("/")
                     console.log(res.data)
       
                 })
@@ -93,9 +90,6 @@ export default function JobCreate(){
           .finally(() => {
               setLoading(false)
           })
-
-        
-
 
     }
 
@@ -539,7 +533,7 @@ export default function JobCreate(){
                                     <input
                                     {...field}
                                     type="checkbox"
-                                    // checked={field.value}
+                                    checked={field.value}
                                     onChange={() => IncreasePrice()}
                                     className="
                                         rounded
@@ -739,27 +733,7 @@ export default function JobCreate(){
                           </label>
                         )}
                     </Field>
-                    <Field name="post_price">
-                        {({ field, form }) => (
-                            <label className="block">
-                            <textarea
-                            {...field}   
-                            className="
-                            mt-1
-                            block
-                            w-full
-                            h-32
-                            rounded-md
-                            bg-gray-100
-                            border-transparent
-                            focus:border-gray-500 focus:bg-white focus:ring-0
-                            
-                        "      
-                            placeholder="Please be nice and provide us with your valuable feedback. You can give us any kind of feedback about anything or maybe you can suggest some useful features for this website."
-                            ></textarea>
-                          </label>
-                        )}
-                    </Field> 
+                    
                      {/* <NavLink to="/payments/create-payment/"> */}
                         <button id="total" className="bg-black border-solid border-2 border-black hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-xl mt-4 rounded-lg" type="submit">Post Job - ${price}</button>
                      {/* </NavLink>  */}

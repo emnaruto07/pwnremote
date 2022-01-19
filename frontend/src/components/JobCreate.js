@@ -64,36 +64,37 @@ export default function JobCreate(){
         data.append('invoice_address', values.invoice_address)
 
         
-
-        axios.post(API.payment.createPayment, {}, {
+        axios.post(API.jobs.create, data, {
           headers: {
               "Authorization": `Token ${token}`
           }
       })
           .then(res => {
-              console.log(res)
-              window.location.assign(res.data.sessionUrl);
-              // navigate("/")
               console.log(res.data)
-
+              // navigate("/")
+              axios.post(API.payment.createPayment, {}, {
+                headers: {
+                    "Authorization": `Token ${token}`
+                }
+            })
+                .then(res => {
+                    console.log(res)
+                    window.location.assign(res.data.sessionUrl);
+                    // navigate("/")
+                    console.log(res.data)
+      
+                })
+                .finally(() => {
+                    setLoading(false)
+                })
+  
           })
-          .finally(() => {
-              setLoading(false)
-          })
+          // .finally(() => {
+          //     setLoading(false)
+          // })
 
-        //   axios.post(API.jobs.create, data, {
-        //     headers: {
-        //         "Authorization": `Token ${token}`
-        //     }
-        // })
-        //     .then(res => {
-        //         console.log(res.data)
-        //         navigate("/")
+        
 
-        //     })
-        //     .finally(() => {
-        //         setLoading(false)
-        //     })
 
     }
 

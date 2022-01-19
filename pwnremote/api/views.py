@@ -80,13 +80,19 @@ class CreatePaymentView(APIView):
     def post(self, request, *args, **kwargs):
         try:
             checkout_session = stripe.checkout.Session.create(
-                line_items=[
-                    {
-                        # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                        'price': 'price_1KJDWQDaN18cbJKsBh451B4C',
-                        'quantity': 1,
+                 line_items=[
+                {
+                    'price_data': {
+                        'currency': 'usd',
+                        'unit_amount': 2000,
+                        'product_data': {
+                            'name': "Pushkar",
+                            # 'images': ['https://i.imgur.com/EHyR2nP.png'],
+                        },
                     },
-                ],
+                    'quantity': 1,
+                },
+            ],
                 mode='payment',
                 success_url=YOUR_DOMAIN + '/payment/success',
                 cancel_url=YOUR_DOMAIN + '?canceled=true',

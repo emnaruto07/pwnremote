@@ -79,6 +79,8 @@ export default function JobUpdate(){
         data.append('company_email', values.company_email)
         data.append('invoice_email', values.invoice_email)
         data.append('invoice_address', values.invoice_address)
+        data.append('paid', values.paid)
+
 
         axios.put(API.jobs.update(id), data, {
             headers: {
@@ -125,6 +127,7 @@ export default function JobUpdate(){
                     company_email: job.company_email,
                     invoice_email: job.invoice_email,
                     invoice_address: job.invoice_email,
+                    paid: false
                 }}
                 onSubmit={handleSubmit}>
                 {({ values }) => (

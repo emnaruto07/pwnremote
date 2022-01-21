@@ -32,7 +32,7 @@ export default function JobCreate(){
     const [loading, setLoading] = useState(false)
     const [file, setFile] = useState(null)
     const [price, setPrice] = useState(200)
-    
+    // const { id } = useParams()
     const { user: { token } } = useContext(AuthContext)
     // const navigate = useNavigate()
 
@@ -60,6 +60,7 @@ export default function JobCreate(){
         data.append('company_email', values.company_email)
         data.append('invoice_email', values.invoice_email)
         data.append('invoice_address', values.invoice_address)
+        data.append('paid', values.paid)
         
         axios.post(API.jobs.create, data, {
           headers: {
@@ -69,7 +70,8 @@ export default function JobCreate(){
           .then(res => {
               console.log(res.data)
               // navigate("/")
-              axios.post(API.payment.createPayment, {params:{'price': price, 'Company_name': values.Company_name}}, {
+              axios.post(API.payment.createPayment, {params:{'price': price, 'Company_name': values.Company_name}}, 
+              {
                 headers: {
                     "Authorization": `Token ${token}`
                 }
@@ -79,9 +81,6 @@ export default function JobCreate(){
                     window.location.assign(res.data.sessionUrl);
                     console.log(res.data)
       
-                })
-                .finally(() => {
-                    setLoading(false)
                 })
   
           })
@@ -130,7 +129,7 @@ export default function JobCreate(){
                     company_email: 'twitter@gmail.com',
                     invoice_email: 'twitter@gmail.com',
                     invoice_address: 'sadsadsalk',
-                    post_price: price
+                    paid: false
                 }}
                 onSubmit={handleSubmit}>
                 {({ values }) => (

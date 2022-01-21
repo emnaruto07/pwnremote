@@ -77,12 +77,12 @@ endpoint_secret = settings.STRIPE_WEBHOOK_SECRET
 
 class CreatePaymentView(APIView):
     def post(self, request, *args, **kwargs):
-        job_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+        # job_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
         # print(job_id)
         # job = Job.objects.get(id=job_id)
         # job = Job.objects.get('id')
-        print(job_id.value)
+        # print(job_id.value)
 
         try:
             checkout_session = stripe.checkout.Session.create(
@@ -99,9 +99,9 @@ class CreatePaymentView(APIView):
                     'quantity': 1,
                 },
             ],
-            metadata={
-                "job_id": Job.id
-            },
+            # metadata={
+            #     "job_id": request.data["job_id"]
+            # },
                 mode='payment',
                 success_url=YOUR_DOMAIN + '/payment/success',
                 cancel_url=YOUR_DOMAIN + '?canceled=true',
@@ -136,7 +136,7 @@ def stripe_webhook(request):
         print(session)
         receipt_email=session["customer_details"]["email"]
 
-        # job_id = session["metadata"]["job_id"]
+        job = Job.objects.get(paid=False)
 
         #Creating a successfull copy
         StripeSessionDetails.objects.create(
@@ -153,6 +153,8 @@ def stripe_webhook(request):
             receipt_email=session["customer_details"]["email"]
 
         )
+        job.paid=True
+        job.save()
 
         send_mail(
             subject="Here is your product",

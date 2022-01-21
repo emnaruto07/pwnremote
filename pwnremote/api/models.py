@@ -1,3 +1,4 @@
+from curses import flash
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 import uuid
@@ -33,6 +34,7 @@ class Job(models.Model):
     invoice_email = models.EmailField(default="")
     invoice_address = models.TextField(default="")
     date_until = models.DateTimeField(null=True)
+    paid = models.BooleanField(default=False)
 
     def __str__(self):
         return self.Company_name

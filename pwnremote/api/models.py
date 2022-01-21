@@ -28,7 +28,7 @@ class Job(models.Model):
     # sticky_week = models.BooleanField(default=False)
     # sticky_month = models.BooleanField(default=False)
     feedback = models.TextField(default="")
-    company_twitter = models.CharField(max_length=15, blank=True, default='')
+    company_twitter = models.CharField(max_length=15, blank=True, default="")
     company_email = models.EmailField(default="")
     invoice_email = models.EmailField(default="")
     invoice_address = models.TextField(default="")

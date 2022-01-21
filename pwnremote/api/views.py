@@ -1,4 +1,6 @@
+import uuid
 from rest_framework import status
+from django.db import models
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -75,7 +77,12 @@ endpoint_secret = settings.STRIPE_WEBHOOK_SECRET
 
 class CreatePaymentView(APIView):
     def post(self, request, *args, **kwargs):
-        job = Job.objects.all()
+        job_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
+        # print(job_id)
+        # job = Job.objects.get(id=job_id)
+        # job = Job.objects.get('id')
+        print(job_id.value)
 
         try:
             checkout_session = stripe.checkout.Session.create(
@@ -85,16 +92,16 @@ class CreatePaymentView(APIView):
                         'currency': 'usd',
                         'unit_amount': request.data['params']['price']*100,
                         'product_data': {
-                            'name': request.data['params']['Company_name'] + request.data['params']['Company_name'],
+                            'name': request.data['params']['Company_name'],
                             # 'images': ['https://i.imgur.com/EHyR2nP.png'],
                         },
                     },
                     'quantity': 1,
                 },
             ],
-            # metadata={
-            #     "job_id": job.id
-            # },
+            metadata={
+                "job_id": Job.id
+            },
                 mode='payment',
                 success_url=YOUR_DOMAIN + '/payment/success',
                 cancel_url=YOUR_DOMAIN + '?canceled=true',
@@ -130,11 +137,10 @@ def stripe_webhook(request):
         receipt_email=session["customer_details"]["email"]
 
         # job_id = session["metadata"]["job_id"]
-        # job = Job.objects.all()
 
         #Creating a successfull copy
         StripeSessionDetails.objects.create(
-            # job=job.
+            # job=job.id,
             stripe_payment_intent_id=session["payment_intent"],
             amount=session["amount_total"],
             metadata=session["metadata"],

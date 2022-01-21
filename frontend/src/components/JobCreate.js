@@ -1,10 +1,10 @@
 import { Formik, Field, Form } from 'formik';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import axios from "axios";
-import {useNavigate } from 'react-router-dom';
+// import {useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { useContext } from 'react';
-import { useParams } from "react-router"
+// import { useParams } from "react-router"
 import { API } from '../api';
 
 
@@ -33,10 +33,8 @@ export default function JobCreate(){
     const [file, setFile] = useState(null)
     const [price, setPrice] = useState(200)
     
-    const { id } = useParams()
-
     const { user: { token } } = useContext(AuthContext)
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     function handleSubmit(values) {
         setLoading(true)
@@ -71,7 +69,7 @@ export default function JobCreate(){
           .then(res => {
               console.log(res.data)
               // navigate("/")
-              axios.post(API.payment.createPayment, {params:{'price': price, 'Company_name': values.Company_name, 'job_id': id}}, {
+              axios.post(API.payment.createPayment, {params:{'price': price, 'Company_name': values.Company_name}}, {
                 headers: {
                     "Authorization": `Token ${token}`
                 }
@@ -108,30 +106,30 @@ export default function JobCreate(){
             {loading && "Loading..."}
             <Formik
                 initialValues={{
-                    Company_name: '',
-                    Position: '',
-                    Employment_type: '', 
-                    Primary_Skills: '',
-                    Skills_tag: '',
-                    Location: '',
+                    Company_name: 'Netflix',
+                    Position: 'Testing',
+                    Employment_type: 'Full-time', 
+                    Primary_Skills: 'Researcher',
+                    Skills_tag: 'dsadsa,dsadsa',
+                    Location: 'Remote',
                     available: true,
-                    Min_salary: '',
-                    max_salary: '',
-                    Description: '',
+                    Min_salary: '20000',
+                    max_salary: '30000',
+                    Description: 'ddadsadasad',
                     company_logo: "",
                     user: '',
-                    url: '',
-                    email: '',
+                    url: 'https://hellfiresecurity.com/',
+                    email: 'test@gmail.com',
                     show_logo: true,
                     Highlight: false,
                     // sticky_day: false,
                     // sticky_week: false,
                     // sticky_month: false,
-                    feedback: '',
-                    company_twitter: '',
-                    company_email: '',
-                    invoice_email: '',
-                    invoice_address: '',
+                    feedback: 'asdasdad',
+                    company_twitter: '@twitter',
+                    company_email: 'twitter@gmail.com',
+                    invoice_email: 'twitter@gmail.com',
+                    invoice_address: 'sadsadsalk',
                     post_price: price
                 }}
                 onSubmit={handleSubmit}>

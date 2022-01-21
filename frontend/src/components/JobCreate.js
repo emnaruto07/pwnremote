@@ -1,10 +1,10 @@
 import { Formik, Field, Form } from 'formik';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import axios from "axios";
 import {useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { useContext } from 'react';
-// import { useParams } from "react-router"
+import { useParams } from "react-router"
 import { API } from '../api';
 
 
@@ -33,7 +33,7 @@ export default function JobCreate(){
     const [file, setFile] = useState(null)
     const [price, setPrice] = useState(200)
     
-    // const { id } = useParams()
+    const { id } = useParams()
 
     const { user: { token } } = useContext(AuthContext)
     const navigate = useNavigate()
@@ -71,7 +71,7 @@ export default function JobCreate(){
           .then(res => {
               console.log(res.data)
               // navigate("/")
-              axios.post(API.payment.createPayment, {params:{'price': price, 'Company_name': values.Company_name}}, {
+              axios.post(API.payment.createPayment, {params:{'price': price, 'Company_name': values.Company_name, 'job_id': id}}, {
                 headers: {
                     "Authorization": `Token ${token}`
                 }
@@ -533,8 +533,8 @@ export default function JobCreate(){
                                     <input
                                     {...field}
                                     type="checkbox"
-                                    checked={field.value}
                                     onChange={() => IncreasePrice()}
+                                    checked={field.value}
                                     className="
                                         rounded
                                         bg-gray-200
@@ -549,6 +549,8 @@ export default function JobCreate(){
                                 </div>
                             )}
                         </Field>
+
+                       
                     {/* <Field name="sticky_day">
                         {({ field, form }) => (
                             <div className="block">

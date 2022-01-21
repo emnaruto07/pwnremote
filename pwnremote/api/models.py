@@ -44,7 +44,7 @@ class UpdateJobPost(models.Model):
     stripe_payment_intent_id = models.CharField(max_length=150)
 
 class StripeSessionDetails(models.Model):
-    job = models.ForeignKey(Job, on_delete=models.DO_NOTHING, related_name='stripeDetails')
+    # job = models.ForeignKey(Job, on_delete=models.DO_NOTHING, related_name='stripeDetails')
     stripe_payment_intent_id = models.CharField(max_length=150)
     amount = models.PositiveBigIntegerField()
     metadata = models.CharField(max_length=150)

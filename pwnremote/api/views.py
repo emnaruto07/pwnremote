@@ -2,8 +2,7 @@ from rest_framework import status
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Job
-from django.shortcuts import redirect
+from .models import Job, StripeSessionDetails
 from .serializers import JobListSerializer, GeneralFeedbackSerializer
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.conf import settings
@@ -72,10 +71,11 @@ class GeneralFeedbackCreateView(APIView):
             return Response({"success":"Sent"})
         return Response({'success':"Failed"}, status=status.HTTP_400_BAD_REQUEST)
 
-
+endpoint_secret = settings.STRIPE_WEBHOOK_SECRET
 
 class CreatePaymentView(APIView):
     def post(self, request, *args, **kwargs):
+        job = Job.objects.all()
 
         try:
             checkout_session = stripe.checkout.Session.create(
@@ -85,13 +85,16 @@ class CreatePaymentView(APIView):
                         'currency': 'usd',
                         'unit_amount': request.data['params']['price']*100,
                         'product_data': {
-                            'name': request.data['params']['Company_name'],
+                            'name': request.data['params']['Company_name'] + request.data['params']['Company_name'],
                             # 'images': ['https://i.imgur.com/EHyR2nP.png'],
                         },
                     },
                     'quantity': 1,
                 },
             ],
+            # metadata={
+            #     "job_id": job.id
+            # },
                 mode='payment',
                 success_url=YOUR_DOMAIN + '/payment/success',
                 cancel_url=YOUR_DOMAIN + '?canceled=true',
@@ -103,24 +106,56 @@ class CreatePaymentView(APIView):
         # return redirect(checkout_session.url)
 
     
-    @csrf_exempt
-    def my_webhook_view(request):
-        payload = request.body
-        sig_header = request.META['HTTP_STRIPE_SIGNATURE']
-        event = None
+@csrf_exempt
+def stripe_webhook(request):
+    payload = request.body
+    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    event = None
 
-        try:
-            event = stripe.Webhook.construct_event(
-            payload, sig_header, endpoint_secret
-            )
-        except ValueError as e:
-            # Invalid payload
-            return HttpResponse(status=400)
-        except stripe.error.SignatureVerificationError as e:
-            # Invalid signature
-            return HttpResponse(status=400)
+    try:
+        event = stripe.Webhook.construct_event(
+        payload, sig_header, endpoint_secret
+        )
+    except ValueError as e:
+        # Invalid payload
+        return HttpResponse(status=400)
+    except stripe.error.SignatureVerificationError as e:
+        # Invalid signature
+        return HttpResponse(status=400)
 
-        # Passed signature verification
+
+    if event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
+        print(session)
+        receipt_email=session["customer_details"]["email"]
+
+        # job_id = session["metadata"]["job_id"]
+        # job = Job.objects.all()
+
+        #Creating a successfull copy
+        StripeSessionDetails.objects.create(
+            # job=job.
+            stripe_payment_intent_id=session["payment_intent"],
+            amount=session["amount_total"],
+            metadata=session["metadata"],
+            created=session["status"],
+            currency=session["currency"],
+            customer=session["customer"],
+            payment_type=session["payment_method_types"],
+            mode=session["mode"],
+            payment_status=session["payment_status"],
+            receipt_email=session["customer_details"]["email"]
+
+        )
+
+        send_mail(
+            subject="Here is your product",
+            message=f"Thanks for your purchase. Here is the product you ordered. The URL is http://www.google.com",
+            recipient_list=[receipt_email],
+            from_email="shazeb@pwnremote.com"
+        )
+
+    # Passed signature verification
         return HttpResponse(status=200)
 
 

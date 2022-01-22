@@ -1,4 +1,5 @@
 import uuid
+from django.http import HttpResponse
 from rest_framework import status
 from django.db import models
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView
@@ -11,7 +12,6 @@ from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 from django.core.mail import send_mail
 import stripe
-from django.http import HttpResponse
 # This is your test secret API key.
 
 YOUR_DOMAIN = 'http://localhost:3000'
@@ -29,7 +29,12 @@ class JobCreateView(CreateAPIView):
     serializer_class = JobListSerializer
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        data = serializer.save(user=self.request.user)
+        self.request.user.id = data.id
+        return data
+         
+        # user.id = data.id
+        
 
 class JobUpdateView(UpdateAPIView):
     permission_classes = [IsAuthenticated]
@@ -81,8 +86,9 @@ class CreatePaymentView(APIView):
 
         # print(job_id)
         # job = Job.objects.get(id=job_id)
-        # job = Job.objects.get('id')
-        # print(job_id.value)
+        job = Job.objects.all()
+        job_id = job.id
+        
 
         try:
             checkout_session = stripe.checkout.Session.create(
@@ -99,9 +105,9 @@ class CreatePaymentView(APIView):
                     'quantity': 1,
                 },
             ],
-            # metadata={
-            #     "job_id": request.data["job_id"]
-            # },
+            metadata={
+                "job_id": job_id
+            },
                 mode='payment',
                 success_url=YOUR_DOMAIN + '/payment/success',
                 cancel_url=YOUR_DOMAIN + '?canceled=true',

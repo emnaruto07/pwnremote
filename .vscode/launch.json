@@ -1,0 +1,14 @@
+{
+    "configurations": [
+    {"name":"Python: Current File","type":"python","request":"launch","program":"${file}","console":"integratedTerminal"},    {
+            "name": "Python: Django",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/pwnremote/manage.py",
+            "args": [
+                "runserver",
+            ],
+            "django": true
+        },
+    ]
+}

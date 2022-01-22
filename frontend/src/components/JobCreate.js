@@ -35,10 +35,11 @@ export default function JobCreate(){
     // const { id } = useParams()
     const { user: { token } } = useContext(AuthContext)
     // const navigate = useNavigate()
-
+    // var job_id = '${job_id}';
     function handleSubmit(values) {
         setLoading(true)
         const data = new FormData()
+        data.append('id', values.id)
         data.append('company_logo', file)
         data.append('Company_name', values.Company_name)
         data.append('Position', values.Position)

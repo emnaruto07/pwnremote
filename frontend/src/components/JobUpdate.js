@@ -708,7 +708,7 @@ export default function JobUpdate(){
                         )}
                     </Field>
                     <NavLink to={`/jobs/${id}/sponsor`}>
-                        <button className="bg-black border-solid border-2 border-black hover:bg-white hover:text-black text-white font-bold py-2 px-4 shadow-xl mt-4 rounded-lg" type="submit">Update Post</button>
+                        <button className="border-solid border-2 flex justify-center m-auto my-2 w-5/6 border-black bg-black hover:text-black hover:bg-white text-white font-bold py-2 shadow-lg rounded-lg" type="submit">Update Post</button>
                     </NavLink>
 
                 </Form>

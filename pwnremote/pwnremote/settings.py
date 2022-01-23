@@ -26,7 +26,7 @@ STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
 STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
 STRIPE_WEBHOOK_SECRET = env('STRIPE_WEBHOOK_SECRET')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 FRONTEND_URL = "https://www.pwnremote.com"
 
@@ -99,16 +99,16 @@ ACCOUNT_EMAIL_METHOD='mandatory'
 ACCOUNT_ADAPTER = "api.adapters.AccountAdapter"
 SOCIALACCOUNT_ADAPTER = "api.adapters.SocialAccountAdapter"
 
-if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-else:
-    DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = env('EMAIL_HOST')
-    EMAIL_USE_TLS = env('EMAIL_USE_TLS')
-    EMAIL_PORT = env('EMAIL_PORT')
-    EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-    EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+# if DEBUG:
+#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# else:
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+EMAIL_PORT = env('EMAIL_PORT')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 FEEDBACK_EMAIL = env('FEEDBACK_EMAIL')
 
@@ -165,6 +165,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -173,14 +174,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'api.User'
 
-# DEFAULT_FILE_STORAGE=env('DEFAULT_FILE_STORAGE')
-# STATICFILES_STORAGE=env('STATICFILES_STORAGE')
-# AWS_ACCESS_KEY_ID=env('AWS_ACCESS_KEY_ID')
-# AWS_SECRET_ACCESS_KEY=env('AWS_SECRET_ACCESS_KEY')
-# AWS_STORAGE_BUCKET_NAME=env('AWS_STORAGE_BUCKET_NAME')
+DEFAULT_FILE_STORAGE=env('DEFAULT_FILE_STORAGE')
+STATICFILES_STORAGE=env('STATICFILES_STORAGE')
+AWS_ACCESS_KEY_ID=env('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY=env('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME=env('AWS_STORAGE_BUCKET_NAME')
 
-# AWS_S3_REGION_NAME=env('AWS_S3_REGION_NAME')
-# AWS_S3_ENDPOINT_URL=env('AWS_S3_ENDPOINT_URL')
+AWS_S3_REGION_NAME=env('AWS_S3_REGION_NAME')
+AWS_S3_ENDPOINT_URL=env('AWS_S3_ENDPOINT_URL')
 
 CORS_ORIGIN_ALLOW_ALL = True
 # ALLOWED_HOSTS = ['*']

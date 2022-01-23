@@ -1,7 +1,7 @@
 import { Formik, Field, Form } from 'formik';
 import { useState, useEffect } from 'react';
 import axios from "axios";
-import { useNavigate, NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { useParams } from "react-router-dom"
 import { useContext } from 'react';
@@ -707,9 +707,9 @@ export default function JobUpdate(){
                           </label>
                         )}
                     </Field>
-                    <NavLink to={`/jobs/${id}/sponsor`}>
+                    {/* <NavLink to={`/jobs/${id}/sponsor`}> */}
                         <button className="border-solid border-2 flex justify-center m-auto my-2 w-5/6 border-black bg-black hover:text-black hover:bg-white text-white font-bold py-2 shadow-lg rounded-lg" type="submit">Update Post</button>
-                    </NavLink>
+                    {/* </NavLink> */}
 
                 </Form>
                 )}    

@@ -41,7 +41,6 @@ class JobListSerializer(serializers.ModelSerializer):
 
     def get_is_owner(self, obj):
         user = self.context["request"].user
-        user.id = obj.id.hex
         return obj.user == user
 
 class GeneralFeedbackSerializer(serializers.Serializer):

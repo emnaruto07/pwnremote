@@ -14,7 +14,6 @@ export default function JobDetail(){
 
     // useEffect(() => {
     //     if (job && !job.is_owner){
-    //         navigate("/")
     //     }
     //     return () => null
     // })
@@ -30,7 +29,6 @@ export default function JobDetail(){
     }
     fetchJobList()
 }, [id])
-
 
 return(
     <div>
@@ -83,7 +81,7 @@ return(
                     </div>      
             </div>
 
-        {!job.is_owner && (
+        {job.is_owner && (
             <div className="flex items-center mt-2">
                 <NavLink to={`/jobs/${id}/update`}>
                         <h5 className="border-solid border-2 border-black bg-black hover:text-black hover:bg-white text-white font-bold py-2 px-4 shadow-md rounded-xl">Update</h5>

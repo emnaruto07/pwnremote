@@ -12,10 +12,10 @@ export const API = {
         verifyEmail: `${baseURL}/dj-rest-auth/registration/verify-email/`
 
     },
-    payment: {
-        createPayment: `${apiURL}/create-checkout-session/`,
-        updatePayment: `${apiURL}/payments/create-payment/`
-    },
+    // payment: {
+    //     createPayment: `${apiURL}/create-checkout-session/`,
+    //     updatePayment: `${apiURL}/payments/create-payment/`
+    // },
 
     jobs: {
         list: `${apiURL}/jobs/`,

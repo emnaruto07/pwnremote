@@ -1,7 +1,7 @@
 import { Formik, Field, Form } from 'formik';
 import { useState, useEffect } from 'react';
 import axios from "axios";
-// import {useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { useContext } from 'react';
 // import { useParams } from "react-router"
@@ -31,11 +31,10 @@ function ImagePreview({ file }) {
 export default function JobCreate(){
     const [loading, setLoading] = useState(false)
     const [file, setFile] = useState(null)
-    const [price, setPrice] = useState(200)
+    // const [price, setPrice] = useState(200)
     // const { id } = useParams()
     const { user: { token } } = useContext(AuthContext)
-    // const navigate = useNavigate()
-    // var job_id = '${job_id}';
+    const navigate = useNavigate()
     function handleSubmit(values) {
         setLoading(true)
         const data = new FormData()
@@ -70,19 +69,19 @@ export default function JobCreate(){
       })
           .then(res => {
               console.log(res.data)
-              // navigate("/")
-              axios.post(API.payment.createPayment, {params:{'price': price, 'Company_name': values.Company_name}}, 
-              {
-                headers: {
-                    "Authorization": `Token ${token}`
-                }
-            })
-                .then(res => {
-                    console.log(res)
-                    window.location.assign(res.data.sessionUrl);
-                    console.log(res.data)
+              navigate("/")
+            //   axios.post(API.payment.createPayment, {params:{'price': price, 'Company_name': values.Company_name}}, 
+            //   {
+            //     headers: {
+            //         "Authorization": `Token ${token}`
+            //     }
+            // })
+            //     .then(res => {
+            //         console.log(res)
+            //         window.location.assign(res.data.sessionUrl);
+            //         console.log(res.data)
       
-                })
+            //     })
   
           })
           .finally(() => {
@@ -92,14 +91,14 @@ export default function JobCreate(){
     }
 
 
-  function IncreasePrice() { 
-    if (price === 200) {
-      setPrice(price + 25)
-    }else {
-      setPrice(price - 25)
-    }
-    // console.log(price)
-  }
+  // function IncreasePrice() { 
+  //   if (price === 200) {
+  //     setPrice(price + 25)
+  //   }else {
+  //     setPrice(price - 25)
+  //   }
+  //   // console.log(price)
+  // }
 
     return(
         <div className="border-solid border-2 shadow-md p-4 rounded-lg">
@@ -522,7 +521,7 @@ export default function JobCreate(){
                         )}
                     </Field> */}
 
-                        <Field name="Highlight">
+                        {/* <Field name="Highlight">
                             {({ field, form }) => (
                                 <div className="block">
                                     <div className="mt-2">
@@ -546,7 +545,7 @@ export default function JobCreate(){
                                     </label>
                                 </div>
                             )}
-                        </Field>
+                        </Field> */}
 
                        
                     {/* <Field name="sticky_day">
@@ -735,7 +734,7 @@ export default function JobCreate(){
                     </Field>
                     
                      {/* <NavLink to="/payments/create-payment/"> */}
-                        <button id="total" className="border-solid border-2 flex justify-center m-auto my-2 w-5/6 border-black bg-black hover:text-black hover:bg-white text-white font-bold py-2 shadow-lg rounded-lg" type="submit">Post Job - ${price}</button>
+                        <button id="total" className="border-solid border-2 flex justify-center m-auto my-2 w-5/6 border-black bg-black hover:text-black hover:bg-white text-white font-bold py-2 shadow-lg rounded-lg" type="submit">Post Job</button>
                      {/* </NavLink>  */}
                 </Form>
                 )}    

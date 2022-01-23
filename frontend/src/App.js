@@ -50,8 +50,8 @@ export default function App() {
                 <Routes>
                   <Route path="/create-job" element={<PrivateRoute><JobCreate /></PrivateRoute>} exact />
                   <Route path="/login" element={<Login />} exact />
-                  <Route path="/payment" element={<PrivateRoute><Payment /></PrivateRoute>} exact />
-                  <Route path="/jobs/:id/sponsor" element={<PrivateRoute><Payment /></PrivateRoute>} exact />
+                  {/* <Route path="/payment" element={<PrivateRoute><Payment /></PrivateRoute>} exact /> */}
+                  {/* <Route path="/jobs/:id/sponsor" element={<PrivateRoute><Payment /></PrivateRoute>} exact /> */}
                   <Route path="/signup" element={<Signup />} exact />
                   <Route path="/accounts/confirm-email/:key" element={<ConfirmEmail />} exact />
                   <Route path="/jobs/:id" element={<JobDetail />} exact/>
